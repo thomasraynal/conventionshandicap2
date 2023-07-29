@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+	<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Model\**" />
+    <EmbeddedResource Remove="Model\**" />
+    <None Remove="Model\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\ConventionsHandicap.EntityFramework\config.app.json" Link="config.app.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ConventionsHandicap.EntityFramework\config.app.production.json" Link="config.app.production.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ConventionsHandicap.EntityFramework\config.group.json" Link="config.group.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ConventionsHandicap.EntityFramework\ConventionsHandicap.EntityFramework.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Anabasis.Api" Version="1.0.191" />
+		<PackageReference Include="Anabasis.Common" Version="1.0.191" />
+		<PackageReference Include="Anabasis.EntityFramework" Version="1.0.191" />
+		<PackageReference Include="Anabasis.Identity" Version="1.0.191" />
+		<PackageReference Include="Anabasis.TableStorage" Version="1.0.191" />
+		<PackageReference Include="NETCore.MailKit" Version="2.1.0" />
+		<PackageReference Include="OpenXMLTemplates" Version="2.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="config.group.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="config.app.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+
+</Project>

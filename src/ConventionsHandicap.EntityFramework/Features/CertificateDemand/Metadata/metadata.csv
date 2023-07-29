@@ -1,0 +1,110 @@
+Code,Label,Information,Group,DataType,MetadataType
+selectedCertificates, Attestations à générer, Attestations à générer,Informations techniques, System.String, Field
+academyName,Académie,L'académie dont dépend votre enfant,Votre projet,System.String, Field
+academyDepartement,Département,Le département de scolarisation de votre enfant,Votre projet,System.String,Field
+childLastName,Nom(s) enfant,Le nom de votre enfant,Votre enfant,System.String,Field
+childFirstName,Prénom(s) enfant,Le Prénom de votre enfant,Votre enfant,System.String,Field
+childDateOfBirth,Date de naissance,,Votre enfant,System.DateTime,Field
+childMDPHReference,Numéro dossier MDPH,,Votre enfant,System.String,Field
+childSchoolClass,Classe,,Votre école,System.String,Field
+schoolName,Nom Ecole,,Votre école,System.String,Field
+schoolAdress,Adresse Ecole,,Votre école,System.String,Field
+schoolPhone,Téléphone Ecole,,Votre école,System.String,Field
+schoolMail,Mail Ecole,,Votre école,System.String,Field
+schoolMainTeacherLastName,Nom(s) enseignant(s) principaux,,Votre école,System.String,Field
+schoolMainTeacherFirstName,Prénom(s) enseignant(s) principaux,,Votre école,System.String,Field
+schoolPrincipalLastName,Nom directeur Ã©tablissement,,Votre école,System.String,Field
+schoolPrincipalMail,Mail du directeur Ã©tablissement,,Votre école,System.String,Field
+schoolPrincipalFirstName,Prénom directeur Ã©tablissement,,Votre école,System.String,Field
+schoolTeacherHandicapReferentLastName,Nom du professeur référent handicap,,Votre école,System.String,Field
+schoolTeacherHandicapReferentFirstName,Prénom du professeur référent handicap,,Votre école,System.String,Field
+assocationAgreementType,Type d'agréement entre l'association et l'éducation nationale,,Votre école,System.String,Field
+interventionMondayMorningStart,lundi matin intervention début,,Interventions,System.String,Field
+interventionMondayMorningEnd,lundi matin intervention fin,,Interventions,System.String,Field
+interventionMondayAfternoonStart,lundi après-midi intervention début,,Interventions,System.String,Field
+interventionMondayAfternoonEnd,lundi après-midi intervention fin,,Interventions,System.String,Field
+interventionTuesdayMorningStart,mardi matin intervention début,,Interventions,System.String,Field
+interventionTuesdayMorningEnd,mardi matin intervention fin,,Interventions,System.String,Field
+interventionTuesdayAfternoonStart,mardi après-midi intervention début,,Interventions,System.String,Field
+interventionTuesdayAfternoonEnd,mardi après-midi intervention fin,,Interventions,System.String,Field
+interventionWednesdayMorningStart,mercredi matin intervention début,,Interventions,System.String,Field
+interventionWednesdayMorningEnd,mercredi matin intervention fin,,Interventions,System.String,Field
+interventionWednesdayAfternoonStart,mercredi après-midi intervention début,,Interventions,System.String,Field
+interventionWednesdayAfternoonEnd,mercredi après-midi intervention fin,,Interventions,System.String,Field
+interventionThursdayMorningStart,jeudi matin intervention début,,Interventions,System.String,Field
+interventionThursdayMorningEnd,jeudi matin intervention fin,,Interventions,System.String,Field
+interventionThursdayAfternoonStart,jeudi après-midi intervention début,,Interventions,System.String,Field
+interventionThursdayAfternoonEnd,jeudi après-midi intervention fin,,Interventions,System.String,Field
+interventionFridayMorningStart,vendredi matin intervention début,,Interventions,System.String,Field
+interventionFridayMorningEnd,vendredi matin intervention fin,,Interventions,System.String,Field
+interventionFridayAfternoonStart,vendredi après-midi intervention début,,Interventions,System.String,Field
+interventionFridayAfternoonEnd,vendredi après-midi intervention fin,,Interventions,System.String,Field
+interventionSaturdayMorningStart,samedi matin intervention début,,Interventions,System.String,Field
+interventionSaturdayMorningEnd,samedi matin intervention fin,,Interventions,System.String,Field
+interventionSaturdayAfternoonStart,samedi après-midi intervention début,,Interventions,System.String,Field
+interventionSaturdayAfternoonEnd,samedi après-midi intervention fin,,Interventions,System.String,Field
+legalRepresentant1LastName,Nom représentant légal 1,,Votre état civil,System.String,Field
+legalRepresentant1FirstName,Prénom représentant légal 1,,Votre état civil,System.String,Field
+legalRepresentant1Adress,Adresse représentant légal 1,,Votre état civil,System.String,Field
+legalRepresentant1Phone,Téléphone représentant légal 1,,Votre état civil,System.String,Field
+legalRepresentant1MobilePhone,Mobile représentant légal 1,,Votre état civil,System.String,Field
+legalRepresentant1Mail,Mail représentant légal 1,,Votre état civil,System.String,Field
+legalRepresentant2LastName,Nom représentant légal 2,,Votre état civil,System.String,Field
+legalRepresentant2FirstName,Prénom représentant légal 2,,Votre état civil,System.String,Field
+legalRepresentant2Adress,Adresse représentant légal 2,,Votre état civil,System.String,Field
+legalRepresentant2Phone,Téléphone représentant légal 2,,Votre état civil,System.String,Field
+legalRepresentant2MobilePhone,Mobile représentant légal 2,,Votre état civil,System.String,Field
+legalRepresentant2Mail,Mail représentant légal 2,,Votre état civil,System.String,Field
+careGiver1LastName,Nom accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver1FirstName,Prénom accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver1UsageName,Nom d'usage accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver1Phone,Téléphone accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver1Mail,Mail accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver1Sex,Sexe accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver1DateOfBirth,Date de naissance accompagnant 1,,Vos accompagnants,System.DateTime,Field
+careGiver1Commune,Commune de naissance accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver1Department,Département de naissance accompagant 1,,Vos accompagnants,System.String,Field
+careGiver1CountryOfBirth,Pays de naissance accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver1FatherFirstName,Prénom père accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver1FatherLastName,Nom père accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver1MotherFirstName,Prénom mère accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver1MotherLastName,Nom mère accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver1Qualification,Qualification accompagnant 1,,Vos accompagnants,System.String,Field
+careGiver2LastName,Nom accompagnant 2,,Vos accompagnants,System.String,Field
+careGiver2FirstName,Prénom accompagnant 2,,Vos accompagnants,System.String,Field
+careGiver2UsageName,Nom d'usage accompagnant 2,,Vos accompagnants,System.String,Field
+careGiver2Phone,Téléphone accompagnant 2,,Vos accompagnants,System.String,Field
+careGiver2Mail,Mail accompagnant 2,,Vos accompagnants,System.String,Field
+careGiver2Sex,Sexe accompagnant 2,,Vos accompagnants,System.String,Field
+careGiver2DateOfBirth,Date de naissance accompagnant 2,,Vos accompagnants,System.DateTime,Field
+careGiver2Commune,Commune de naissance accompagnant 2,,Vos accompagnants,System.String,Field
+careGiver2Department,Département de naissance accompagant 2,,Vos accompagnants,System.String,Field
+careGiver2CountryOfBirth,Pays de naissance accompagnant 2,,Vos accompagnants,System.String,Field
+careGiver2FatherFirstName,Prénom père accompagnant 2,,Vos accompagnants,System.String,Field
+careGiver2FatherLastName,Nom père accompagnant 2,,Vos accompagnants,System.String,Field
+careGiver2MotherFirstName,Prénom mère accompagnant 2,,Vos accompagnants,System.String,Field
+careGiver2MotherLastName,Nom mère accompagnant 2,,Vos accompagnants,System.String,Field
+supervisorLastName,Nom superviseur,,Votre superviseur,System.String,Field
+supervisorFirstName,Prénom superviseur,,Votre superviseur,System.String,Field
+supervisorMail,Mail superviseur,,Votre superviseur,System.String,Field
+supervisorQualification, Qualification du superviseur,,Votre superviseur,System.String,Field
+dateCDAPHNotification,Date notification CDAPH,,Votre enfant,System.DateTime,Field
+dateCDAPHNotificationValidUntil,Date limite notification CDAPH,,Votre enfant,System.DateTime,Field
+quotityCDAPH,Quotité notifiée CDAPH,,Votre enfant,System.String,Field
+interventionTotalHoursByWeek,Total des heures d'intervention,,Interventions,Double,Field
+careGiver1ContractDuration,Durée contrat accompagnant 1,,Vos accompagnants,System.String,Field
+interventionCalendar,Calendrier d'interventions,,Interventions,System.String,Field
+careGiverAttestationCivilResponsability,Attestation responsabilité civile de l'intervenant,,Vos documents,System.String,File
+careGiverCriminalRecord,Extrait de casier judiciaire de l'intervenant,,Vos documents,System.String,File
+careGiverContract,Contrat signé de l'intervenant,,Vos documents,System.String,File
+careGiverResume,CV de l'intervenant,,Vos documents,System.String,File
+careGiverIdCard,Carte d'identité de l'intervenant,,Vos documents,System.String,File
+careGiverDegree,Diplôme de l'intervenant,,Vos documents,System.String,File
+careGiverInsurance,Attestation d'assurance de l'intervenant,,Vos documents,System.String,File
+supervisorIdCard,Carte d'identité du superviseur,,Vos documents,System.String,File
+supervisorResume,CV du superviseur,,Vos documents,System.String,File
+supervisorDegree,Diplôme du superviseur,,Vos documents,System.String,File
+supervisorInsurance,Attestation d'assurance du superviseur,,Vos documents,System.String,File
+psychologistPEI,Plan éducatif personnalisé du psychologue,,Vos documents,System.String,File
+mdphNotification,Notification MDPH,,Vos documents,System.String,File
+aeshSupervisionNotification,Courrier de la famille demandant la supervision de l'aesh éducation nationale,,Vos documents,System.String,File

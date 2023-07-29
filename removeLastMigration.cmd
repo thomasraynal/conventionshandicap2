@@ -1,0 +1,1 @@
+dotnet ef migrations remove --context ConventionHandicapDbContext --project ConventionsHandicap.EntityFramework\ConventionsHandicap.EntityFramework.csproj 

@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "PROD_ConventionsHandicap.App": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    },
+    "DEV_ConventionsHandicap.App": {
+      "commandName": "Project"
+    }
+  }
+}
