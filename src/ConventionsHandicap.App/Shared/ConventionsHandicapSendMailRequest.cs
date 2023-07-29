@@ -1,3 +1,4 @@
+using ConventionsHandicap.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,25 +7,45 @@ using System.Threading.Tasks;
 
 namespace ConventionsHandicap.Contracts
 {
-    public class ConventionsHandicapSendMailRequest
+    public class ConventionsHandicapSendMailToConventionsHandicapRequest
     {
-        public ConventionsHandicapSendMailRequest()
+        public ConventionsHandicapSendMailToConventionsHandicapRequest()
         {
         }
 
-        public ConventionsHandicapSendMailRequest(Guid? userId, Guid workspaceId, bool isMailToUser, string subjectText, string bodyText, bool isHtml)
+        public ConventionsHandicapSendMailToConventionsHandicapRequest(Guid workspaceId, ConventionsHandicapUser conventionsHandicapUser, string subjectText, string bodyText, bool isHtml)
         {
-            UserId = userId;
+            ConventionsHandicapUser = conventionsHandicapUser;
             WorkspaceId = workspaceId;
-            IsMailToUser = isMailToUser;
             SubjectText = subjectText;
             BodyText = bodyText;
             IsHtml = isHtml;
         }
 
-        public Guid? UserId { get; set; }
+        public ConventionsHandicapUser ConventionsHandicapUser { get; set; }
         public Guid WorkspaceId { get; set; }
-        public bool IsMailToUser { get; set; }
+        public string SubjectText { get; set; }
+        public string BodyText { get; set; }
+        public bool IsHtml { get; set; }
+    }
+
+    public class ConventionsHandicapSendMailFromConventionsHandicapRequest
+    {
+        public ConventionsHandicapSendMailFromConventionsHandicapRequest()
+        {
+        }
+
+        public ConventionsHandicapSendMailFromConventionsHandicapRequest(Guid workspaceId, ConventionsHandicapUser conventionsHandicapUser, string subjectText, string bodyText, bool isHtml)
+        {
+            ConventionsHandicapUser = conventionsHandicapUser;
+            WorkspaceId = workspaceId;
+            SubjectText = subjectText;
+            BodyText = bodyText;
+            IsHtml = isHtml;
+        }
+
+        public ConventionsHandicapUser ConventionsHandicapUser { get; set; }
+        public Guid WorkspaceId { get; set; }
         public string SubjectText { get; set; }
         public string BodyText { get; set; }
         public bool IsHtml { get; set; }

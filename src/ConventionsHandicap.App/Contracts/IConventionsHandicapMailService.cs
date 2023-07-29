@@ -10,6 +10,7 @@ namespace ConventionsHandicap.App.Contracts
 {
     public interface IConventionsHandicapMailService
     {
-        Task SendEmailToConventionsHandicap(ConventionsHandicapUser conventionsHandicapUser, ConventionsHandicapSendMailRequest sendMailRequest);
+        Task SendEmailFromConventionsHandicap(ConventionsHandicapUser conventionsHandicapUser, ConventionsHandicapSendMailFromConventionsHandicapRequest sendMailRequest);
+        Task SendEmailToConventionsHandicap(ConventionsHandicapUser conventionsHandicapUser, ConventionsHandicapSendMailToConventionsHandicapRequest sendMailRequest);
     }
 }

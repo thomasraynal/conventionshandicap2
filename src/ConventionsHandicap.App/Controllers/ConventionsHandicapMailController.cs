@@ -1,5 +1,6 @@
 using Anabasis.Api;
 using ConventionsHandicap.App.Contracts;
+using ConventionsHandicap.App.Controllers.Dto;
 using ConventionsHandicap.Contracts;
 using ConventionsHandicap.EntityFramework;
 using ConventionsHandicap.Model;
@@ -32,11 +33,20 @@ namespace ConventionsHandicap.App.Controllers
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         [SwaggerOperation("SendMailToConventionHandicap")]
         [HttpPost()]
-        public async Task<IActionResult> SendMailToConventionHandicapAsync([FromBody] ConventionsHandicapSendMailRequest sendMailRequest)
+        public async Task<IActionResult> SendMailToConventionHandicapAsync([FromBody] ConventionsHandicapSendMailToConventionHandicapDto sendMailRequest)
         {
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
 
-            await _mailService.SendEmailToConventionsHandicap(currentUser, sendMailRequest);
+            var sendMailToCapHandicapRequest = new ConventionsHandicapSendMailToConventionsHandicapRequest()
+            {
+                BodyText = sendMailRequest.BodyText,
+                ConventionsHandicapUser = currentUser,
+                IsHtml = false,
+                SubjectText = sendMailRequest.SubjectText,
+                WorkspaceId = sendMailRequest.WorkspaceId.Value
+            };
+
+            await _mailService.SendEmailToConventionsHandicap(currentUser, sendMailToCapHandicapRequest);
 
             return Accepted();
         }

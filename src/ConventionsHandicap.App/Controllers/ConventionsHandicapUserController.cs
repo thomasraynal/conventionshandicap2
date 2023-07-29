@@ -21,6 +21,7 @@ using MailKit;
 using Anabasis.Api;
 using ConventionsHandicap.App.Shared.Extensions;
 using ConventionsHandicap.App.Controllers.Dto;
+using ConventionsHandicap.App.Contracts;
 
 namespace ConventionsHandicap.Controller
 {
@@ -33,13 +34,13 @@ namespace ConventionsHandicap.Controller
 
         private readonly UserManager<ConventionsHandicapUser> _userManager;
         private readonly RoleManager<ConventionsHandicapIdentityRole> _roleManager;
-        private readonly IConventionsHandicapCertificateDemandMailService _mailService;
+        private readonly IConventionsHandicapMailService _mailService;
         private readonly IConventionsHandicapWorkspaceService _conventionsHandicapWorkspaceService;
         private readonly ConventionsHandicapConfigurationOptions _conventionsHandicapConfigurationOptions;
 
         public ConventionsHandicapUserController(
             ConventionsHandicapConfigurationOptions conventionsHandicapConfigurationOptions,
-            IConventionsHandicapCertificateDemandMailService mailService, 
+            IConventionsHandicapMailService mailService, 
             IConventionsHandicapWorkspaceService conventionsHandicapWorkspaceService, 
             UserManager<ConventionsHandicapUser> userManager,
             RoleManager<ConventionsHandicapIdentityRole> roleManager)
@@ -118,16 +119,38 @@ namespace ConventionsHandicap.Controller
                 throw new ConventionsHandicapNotFoundException($"User with id {updateUserRequest.UserId} does not exist");
             }
 
-            if(null != updateUserRequest.UserEmail)
+            var hasEmailChanged = false;
+
+            if (null != updateUserRequest.UserEmail)
             {
+                conventionsHandicapUser.UserName = updateUserRequest.UserEmail;
                 conventionsHandicapUser.Email = updateUserRequest.UserEmail;
+
+                hasEmailChanged = updateUserRequest.UserEmail != updateUserRequest.UserEmail;
             }
 
-            if(null != updateUserRequest.UserRole)
+            IdentityResult identityResult;
+
+            if (null != updateUserRequest.UserRole)
             {
                 var userRoleKey = workspace.GetWorkspaceUserRoleKey(updateUserRequest.UserRole.Value);
 
                 var isAlreadyInRole = await _userManager.IsInRoleAsync(conventionsHandicapUser, userRoleKey);
+
+                var userRole = ConventionsHandicapIdentityRole.GetRoleName(updateUserRequest.UserRole.Value, updateUserRequest.WorkspaceId);
+
+                var doesRoleExist = await _roleManager.RoleExistsAsync(userRole);
+
+                if (!doesRoleExist)
+                {
+                    identityResult = await _roleManager.CreateAsync(new ConventionsHandicapIdentityRole(updateUserRequest.UserRole.Value, updateUserRequest.WorkspaceId));
+
+                    if (!identityResult.Succeeded)
+                    {
+                        throw new InvalidOperationException($"Error during role creation {identityResult.FlattenErrors()}");
+                    }
+
+                }
 
                 if (!isAlreadyInRole)
                 {
@@ -135,14 +158,37 @@ namespace ConventionsHandicap.Controller
                 }
             }
 
-            var identityResult = await _userManager.UpdateAsync(conventionsHandicapUser);
+            identityResult = await _userManager.UpdateAsync(conventionsHandicapUser);
 
             if (!identityResult.Succeeded)
             {
                 throw new InvalidOperationException($"An issue occured during the user update - {identityResult.FlattenErrors()}");
             }
 
-            conventionsHandicapUser = await _userManager.FindByIdAsync($"{updateUserRequest.UserId}");
+            if (hasEmailChanged)
+            {
+                var emailConfirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(conventionsHandicapUser);
+
+                var httpEncodedToken = HttpUtility.UrlEncode(emailConfirmationToken);
+
+                conventionsHandicapUser = await _userManager.FindByIdAsync($"{updateUserRequest.UserId}");
+
+                await _mailService.SendEmailFromConventionsHandicap(conventionsHandicapUser,
+                    new ConventionsHandicapSendMailFromConventionsHandicapRequest(
+                        isHtml: true,
+                        conventionsHandicapUser: conventionsHandicapUser,
+                        workspaceId: workspaceId,
+                        subjectText: "Modification de votre compte ConventionsHandicap",
+                        bodyText: $"<h2 style=\"color: #2e6c80;\">" +
+                        $"Vos identifiant ConventionsHandicap:" +
+                        $"</h2> " +
+                        $"<p>Identifiant: {conventionsHandicapUser.UserEmail}</p> " +
+                        $"<p>Confirmer votre mail: {_conventionsHandicapConfigurationOptions.ConventionsHandicapUri}/confirm?email={conventionsHandicapUser.Email}&token={httpEncodedToken}</p> " +
+                        $"<p>Rendez-vous sur le site pour faire votre demande: <a href=\"https://conventionshandicap.fr\">https://conventionshandicap.fr</a></p> <p>&nbsp;</p>"
+                    ));
+            }
+
+        
 
             return Ok(conventionsHandicapUser.ToUserDto());
         }
@@ -247,13 +293,12 @@ namespace ConventionsHandicap.Controller
 
                 var httpEncodedToken = HttpUtility.UrlEncode(emailConfirmationToken);
 
-                await _mailService.SendEmailToCertificateDemandOwner(currentUser,
-                    createUserRequest.UserEmail,
-                    new ConventionsHandicapCertificateDemandSendMailRequest(
+                await _mailService.SendEmailFromConventionsHandicap(currentUser,
+                    new ConventionsHandicapSendMailFromConventionsHandicapRequest(
                         isHtml: true,
                         workspaceId: workspaceId,
-                        certificateDemandId: null,
-                        subjectText: "Cr�ation de votre compte ConventionsHandicap",
+                        conventionsHandicapUser: conventionsHandicapUser,
+                        subjectText: "Création de votre compte ConventionsHandicap",
                         bodyText: $"<h2 style=\"color: #2e6c80;\">" +
                         $"Vos identifiant ConventionsHandicap:" +
                         $"</h2> " +

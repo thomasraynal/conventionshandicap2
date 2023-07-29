@@ -3,10 +3,6 @@ using ConventionsHandicap.App.Shared;
 using ConventionsHandicap.Contracts;
 using ConventionsHandicap.EntityFramework;
 using ConventionsHandicap.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ConventionsHandicap.App.Services
@@ -17,14 +13,23 @@ namespace ConventionsHandicap.App.Services
         {
         }
 
-        public async Task SendEmailToConventionsHandicap(ConventionsHandicapUser conventionsHandicapUser, ConventionsHandicapSendMailRequest sendMailRequest)
+        public async Task SendEmailFromConventionsHandicap(ConventionsHandicapUser conventionsHandicapUser, ConventionsHandicapSendMailFromConventionsHandicapRequest sendMailRequest)
         {
-
-            var conventionsHandicapMailMessage = new ConventionsHandicapMailMessage(ConventionsHandicapConfigurationOptions.ConventionsHandicapMail,
+            var conventionsHandicapMailMessage = new ConventionsHandicapMailMessage(conventionsHandicapUser.Email,
               sendMailRequest.SubjectText,
-              sendMailRequest.BodyText, conventionsHandicapUser);
+              sendMailRequest.BodyText);
 
             await SendEmailAsync(conventionsHandicapMailMessage, sendMailRequest.IsHtml);
         }
+
+        public async Task SendEmailToConventionsHandicap(ConventionsHandicapUser conventionsHandicapUser, ConventionsHandicapSendMailToConventionsHandicapRequest sendMailRequest)
+        {
+            var conventionsHandicapMailMessage = new ConventionsHandicapMailMessage(ConventionsHandicapConfigurationOptions.ConventionsHandicapMail,
+              sendMailRequest.SubjectText,
+              sendMailRequest.BodyText);
+
+            await SendEmailAsync(conventionsHandicapMailMessage, sendMailRequest.IsHtml);
+        }
+
     }
 }

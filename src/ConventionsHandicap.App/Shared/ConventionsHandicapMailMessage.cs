@@ -12,16 +12,13 @@ namespace ConventionsHandicap.App.Shared
         public MailboxAddress To { get; }
         public string Subject { get; }
         public string Content { get; }
-        public ConventionsHandicapUser ConventionsHandicapUser { get; }
       
 
-        public ConventionsHandicapMailMessage(string to, string subject, string content, ConventionsHandicapUser conventionsHandicapUser)
+        public ConventionsHandicapMailMessage(string to, string subject, string content)
         {
             To = new MailboxAddress(to, to);
             Subject = subject;
             Content = content;
-            ConventionsHandicapUser = conventionsHandicapUser;
-
         }
     }
 }

@@ -1,20 +1,12 @@
 ﻿using Anabasis.Api;
-using ConventionsHandicap.App.Contracts;
 using ConventionsHandicap.App.Features.CertificateDemand.Contracts;
 using ConventionsHandicap.App.Features.CertificateDemand.Controllers.Dto;
-using ConventionsHandicap.App.Features.CertificateDemand.Services;
-using ConventionsHandicap.Contracts;
-using ConventionsHandicap.Controller.Dto;
 using ConventionsHandicap.EntityFramework;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ConventionsHandicap.App.Features.CertificateDemand.Controllers
