@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Anabasis.Common" Version="1.0.191" />
-    <PackageReference Include="Anabasis.Identity" Version="1.0.191" />
+    <PackageReference Include="Anabasis.Common" Version="1.0.192" />
+    <PackageReference Include="Anabasis.Identity" Version="1.0.192" />
   </ItemGroup>
 
 </Project>

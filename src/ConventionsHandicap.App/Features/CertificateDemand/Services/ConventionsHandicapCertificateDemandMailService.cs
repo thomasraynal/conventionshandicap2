@@ -40,8 +40,7 @@ namespace ConventionsHandicap.App.Features.CertificateDemand.Services
 
             var conventionsHandicapMailMessage = new ConventionsHandicapMailMessage(certificateDemandOwnerMail,
                 sendMailRequest.SubjectText,
-                sendMailRequest.BodyText,
-                currentUser);
+                sendMailRequest.BodyText);
 
             await SendEmailAsync(conventionsHandicapMailMessage, sendMailRequest.IsHtml);
         }

@@ -31,11 +31,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Anabasis.Api" Version="1.0.191" />
-		<PackageReference Include="Anabasis.Common" Version="1.0.191" />
-		<PackageReference Include="Anabasis.EntityFramework" Version="1.0.191" />
-		<PackageReference Include="Anabasis.Identity" Version="1.0.191" />
-		<PackageReference Include="Anabasis.TableStorage" Version="1.0.191" />
+		<PackageReference Include="Anabasis.Api" Version="1.0.192" />
+		<PackageReference Include="Anabasis.Common" Version="1.0.192" />
+		<PackageReference Include="Anabasis.EntityFramework" Version="1.0.192" />
+		<PackageReference Include="Anabasis.Identity" Version="1.0.192" />
+		<PackageReference Include="Anabasis.TableStorage" Version="1.0.192" />
 		<PackageReference Include="NETCore.MailKit" Version="2.1.0" />
 		<PackageReference Include="OpenXMLTemplates" Version="2.0.4" />
 	</ItemGroup>
