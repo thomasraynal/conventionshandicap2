@@ -1,11 +1,15 @@
-﻿using ConventionsHandicap.Model;
+﻿using Anabasis.Common.Utilities;
+using ConventionsHandicap.Model;
 using ConventionsHandicap.Model.Features.CertificateDemand;
 using ConventionsHandicap.Shared;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ConventionsHandicap.App.Features.CertificateDemand.Controllers.Dto
 {
+
     public class CertificateDemandDto
     {
         public CertificateDemandDto(Guid id, string academy, string department, string childFirstName, string childLastName, DateTime childDateOfBirth, Guid workspaceId, ConventionsHandicapCertificateDemandStatus certificateDemandStatus, Guid userId, Guid[]? certificateTemplates, Property[]? properties)
@@ -20,7 +24,7 @@ namespace ConventionsHandicap.App.Features.CertificateDemand.Controllers.Dto
             CertificateDemandStatus = certificateDemandStatus;
             UserId = userId;
             CertificateTemplates = certificateTemplates;
-            Properties = properties;
+            Properties = properties?.ToDictionary(property => property.Code, property => property.Value);
         }
 
         public Guid Id { get; set; }
@@ -44,6 +48,6 @@ namespace ConventionsHandicap.App.Features.CertificateDemand.Controllers.Dto
         public Guid[]? CertificateTemplates { get; set; }
 
         [JsonConverter(typeof(PropertyArrayDtoJsonConverter))]
-        public Property[]? Properties { get; set; }
+        public Dictionary<string, string?>? Properties { get; set; }
     }
 }

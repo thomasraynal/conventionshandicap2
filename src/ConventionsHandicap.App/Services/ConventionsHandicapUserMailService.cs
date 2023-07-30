@@ -12,7 +12,7 @@ namespace ConventionsHandicap.App.Services
         {
         }
 
-        public async Task SendEmailConfirmationToken(string email, string token)
+        public async Task SendEmailConfirmationTokenAsync(string email, string token)
         {
             var bodyContent = 
                 "Cliquez sur le lien pour confirmer votre email:" +
@@ -26,7 +26,7 @@ namespace ConventionsHandicap.App.Services
             await SendEmailAsync(cpnventionsHandicapMailMessage, false);
         }
 
-        public Task SendEmailPasswordReset(string email, string token)
+        public Task SendEmailPasswordResetAsync(string email, string token)
         {
             throw new NotImplementedException();
 
