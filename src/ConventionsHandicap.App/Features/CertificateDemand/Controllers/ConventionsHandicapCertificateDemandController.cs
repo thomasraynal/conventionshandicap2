@@ -130,7 +130,7 @@ namespace ConventionsHandicap
 
                 var certficateDemandUser = await _userManager.FindByIdAsync($"{certificateDemandOwnerId}");
 
-                await _mailService.SendEmailToCertificateDemandOwner(ConventionsHandicapUserAdmin.Self, certficateDemandUser.Email, new ConventionsHandicapCertificateDemandSendMailRequest()
+                await _mailService.SendEmailToCertificateDemandOwnerAsync(ConventionsHandicapUserAdmin.Self, certficateDemandUser.Email, new ConventionsHandicapCertificateDemandSendMailRequest()
                 {
                     IsHtml = true,
                     BodyText = $"<h2 style=\"color: #2e6c80;\">Attestation pour {certificateDemand.ChildLastName} {certificateDemand.ChildFirstName}:</h2> <p>Status: {certificateDemand.CertificateDemandStatus}</p> <p>Rendez-vous sur le site pour consulter votre demande : <a href=\"https://conventionshandicap.fr\">https://conventionshandicap.fr</a></p> <p>&nbsp;</p>",
@@ -199,7 +199,7 @@ namespace ConventionsHandicap
             {
                 var certficateDemandUser = await _userManager.FindByIdAsync($"{certificateDemandOwnerId}");
 
-                await _mailService.SendEmailToCertificateDemandOwner(ConventionsHandicapUserAdmin.Self, certficateDemandUser.Email, new ConventionsHandicapCertificateDemandSendMailRequest()
+                await _mailService.SendEmailToCertificateDemandOwnerAsync(ConventionsHandicapUserAdmin.Self, certficateDemandUser.Email, new ConventionsHandicapCertificateDemandSendMailRequest()
                 {
                     IsHtml = true,
                     BodyText = $"<h2 style=\"color: #2e6c80;\">Attestation pour {updatedCertificateDemand.ChildLastName} {updatedCertificateDemand.ChildFirstName}:</h2> <p>Status: {updatedCertificateDemand.CertificateDemandStatus}</p> <p>Rendez-vous sur le site pour consulter votre demande : <a href=\"https://conventionshandicap.fr\">https://conventionshandicap.fr</a></p> <p>&nbsp;</p>",

@@ -46,7 +46,7 @@ namespace ConventionsHandicap.App.Controllers
                 WorkspaceId = sendMailRequest.WorkspaceId.Value
             };
 
-            await _mailService.SendEmailToConventionsHandicap(currentUser, sendMailToCapHandicapRequest);
+            await _mailService.SendEmailToConventionsHandicapAsync(currentUser, sendMailToCapHandicapRequest);
 
             return Accepted();
         }

@@ -29,7 +29,7 @@ namespace ConventionsHandicap.App.Features.CertificateDemand.Services
             _conventionsHandicapWorkspaceService = conventionsHandicapWorkspaceService;
         }
 
-        public async Task SendEmailToCertificateDemandOwner(ConventionsHandicapUser currentUser, string certificateDemandOwnerMail, ConventionsHandicapCertificateDemandSendMailRequest sendMailRequest)
+        public async Task SendEmailToCertificateDemandOwnerAsync(ConventionsHandicapUser currentUser, string certificateDemandOwnerMail, ConventionsHandicapCertificateDemandSendMailRequest sendMailRequest)
         {
             var currentUserRoleOnWorkspace = await _conventionsHandicapWorkspaceService.GetUserRoleForWorkpaceAsync(currentUser, sendMailRequest.WorkspaceId);
 

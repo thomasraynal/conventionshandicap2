@@ -70,7 +70,7 @@ namespace ConventionsHandicap.Services
 
                     await conventionHandicapDbContext.SaveChangesAsync();
 
-                    return workspace;
+                    return await GetOneWorkspaceByIdAsync(currentUser, workspace.Id);
 
                 }
             }

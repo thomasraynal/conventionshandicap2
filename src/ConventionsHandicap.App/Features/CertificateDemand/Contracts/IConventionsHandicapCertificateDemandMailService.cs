@@ -7,6 +7,6 @@ namespace ConventionsHandicap.App.Features.CertificateDemand.Contracts
 {
     public interface IConventionsHandicapCertificateDemandMailService
     {
-        Task SendEmailToCertificateDemandOwner(ConventionsHandicapUser currentUser, string certificateDemandOwnerMail, ConventionsHandicapCertificateDemandSendMailRequest sendMailRequest);
+        Task SendEmailToCertificateDemandOwnerAsync(ConventionsHandicapUser currentUser, string certificateDemandOwnerMail, ConventionsHandicapCertificateDemandSendMailRequest sendMailRequest);
     }
 }

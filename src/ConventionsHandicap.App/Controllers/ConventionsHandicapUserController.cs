@@ -173,7 +173,7 @@ namespace ConventionsHandicap.Controller
 
                 conventionsHandicapUser = await _userManager.FindByIdAsync($"{updateUserRequest.UserId}");
 
-                await _mailService.SendEmailFromConventionsHandicap(conventionsHandicapUser,
+                await _mailService.SendEmailFromConventionsHandicapAsync(conventionsHandicapUser,
                     new ConventionsHandicapSendMailFromConventionsHandicapRequest(
                         isHtml: true,
                         conventionsHandicapUser: conventionsHandicapUser,
@@ -293,7 +293,7 @@ namespace ConventionsHandicap.Controller
 
                 var httpEncodedToken = HttpUtility.UrlEncode(emailConfirmationToken);
 
-                await _mailService.SendEmailFromConventionsHandicap(currentUser,
+                await _mailService.SendEmailFromConventionsHandicapAsync(currentUser,
                     new ConventionsHandicapSendMailFromConventionsHandicapRequest(
                         isHtml: true,
                         workspaceId: workspaceId,

@@ -45,7 +45,7 @@ namespace ConventionsHandicap.App.Features.CertificateDemand.Controllers
 
             var certificateOwner = await _userManager.FindByIdAsync($"{certificateDemandOwnerId}");
 
-            await _conventionsHandicapCertificateDemandMailService.SendEmailToCertificateDemandOwner(currentUser, certificateOwner.Email, sendMailRequest);
+            await _conventionsHandicapCertificateDemandMailService.SendEmailToCertificateDemandOwnerAsync(currentUser, certificateOwner.Email, sendMailRequest);
 
             return Accepted();
         }

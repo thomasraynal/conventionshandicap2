@@ -13,7 +13,7 @@ namespace ConventionsHandicap.App.Services
         {
         }
 
-        public async Task SendEmailFromConventionsHandicap(ConventionsHandicapUser conventionsHandicapUser, ConventionsHandicapSendMailFromConventionsHandicapRequest sendMailRequest)
+        public async Task SendEmailFromConventionsHandicapAsync(ConventionsHandicapUser conventionsHandicapUser, ConventionsHandicapSendMailFromConventionsHandicapRequest sendMailRequest)
         {
             var conventionsHandicapMailMessage = new ConventionsHandicapMailMessage(conventionsHandicapUser.Email,
               sendMailRequest.SubjectText,
@@ -22,7 +22,7 @@ namespace ConventionsHandicap.App.Services
             await SendEmailAsync(conventionsHandicapMailMessage, sendMailRequest.IsHtml);
         }
 
-        public async Task SendEmailToConventionsHandicap(ConventionsHandicapUser conventionsHandicapUser, ConventionsHandicapSendMailToConventionsHandicapRequest sendMailRequest)
+        public async Task SendEmailToConventionsHandicapAsync(ConventionsHandicapUser conventionsHandicapUser, ConventionsHandicapSendMailToConventionsHandicapRequest sendMailRequest)
         {
             var conventionsHandicapMailMessage = new ConventionsHandicapMailMessage(ConventionsHandicapConfigurationOptions.ConventionsHandicapMail,
               sendMailRequest.SubjectText,
