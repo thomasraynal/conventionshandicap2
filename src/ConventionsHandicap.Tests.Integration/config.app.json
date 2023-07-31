@@ -1,0 +1,18 @@
+{
+  "appConfigurationOptions": {
+    "applicationName": "ConventionsHandicapApi",
+    "apiVersion": "1.0"
+  },
+  "conventionsHandicapConfigurationOptions": {
+    "conventionsHandicapUri": "https://conventionshandicap.fr",
+    "conventionsHandicapMail": "admin@conventionshandicap.fr",
+    "tableStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=test;AccountKey=XXXXXX;BlobEndpoint=https://test.blob.core.windows.net/;QueueEndpoint=https://test.queue.core.windows.net/;TableEndpoint=https://test.table.core.windows.net/;FileEndpoint=https://test.file.core.windows.net/;",
+    "sqlServerDbConnectionString": "Server=tcp:localhost,5434;Initial Catalog=tempdb;Persist Security Info=False;User ID=SA;Password=Your_password123;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=True;Connection Timeout=30;",
+    "mailgunConfiguration": {
+      "smtpServer": "",
+      "port": 587,
+      "userName": "",
+      "password": ""
+    }
+  }
+}

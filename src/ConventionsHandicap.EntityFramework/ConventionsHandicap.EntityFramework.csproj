@@ -7,10 +7,6 @@
 		<Configurations>Debug;Release;DebugProduction</Configurations>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\ConventionsHandicap.Model\ConventionsHandicap.Model.csproj" />
-	</ItemGroup>
-
 
 	<ItemGroup>
 		<PackageReference Include="Anabasis.EntityFramework" Version="1.0.193" />
@@ -78,6 +74,11 @@
 
 	<ItemGroup>
 	  <Folder Include="Migrations\" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ConventionsHandicap.Model\ConventionsHandicap.Model.csproj" />
 	</ItemGroup>
 	
 </Project>

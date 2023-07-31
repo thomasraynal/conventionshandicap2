@@ -1,9 +1,37 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="ConventionsHandicap.Tests.Integration" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.20" />
+		<PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.20" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.20" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+		<PackageReference Include="NSubstitute" Version="4.4.0" />
+		<PackageReference Include="NUnit" Version="3.13.3" />
+		<PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ConventionsHandicap.App\ConventionsHandicap.App.csproj" />
+		<ProjectReference Include="..\ConventionsHandicap.EntityFramework\ConventionsHandicap.EntityFramework.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="config.app.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="config.group.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 
 </Project>
