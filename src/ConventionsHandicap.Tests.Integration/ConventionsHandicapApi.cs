@@ -1,5 +1,6 @@
 ﻿using Anabasis.Common;
 using Anabasis.Common.Configuration;
+using Anabasis.Identity;
 using ConventionsHandicap.App;
 using ConventionsHandicap.Controller;
 using ConventionsHandicap.EntityFramework;
@@ -12,19 +13,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NSubstitute;
 using NSubstitute.Extensions;
-using NUnit.Framework;
 using System;
 using System.IO;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConventionsHandicap.Tests.Integration
 {
-    public partial class Program { }
-
-
     public class ConventionsHandicapApi : WebApplicationFactory<Program>
     {
 
@@ -60,52 +55,44 @@ namespace ConventionsHandicap.Tests.Integration
 
 
             builder.ConfigureServices(serviceCollection =>
-             {
+            {
 
-                 serviceCollection.AddDbContext<ConventionHandicapDbContext>((builder) =>
-                 {
-                     builder.UseInMemoryDatabase("Tests");
-                 });
+                serviceCollection.AddDbContext<ConventionHandicapDbContext>((builder) =>
+                {
+                    builder.UseInMemoryDatabase("Tests");
+                });
 
-                 ServicesSetup.ConfigureServiceCollection(appContext, serviceCollection, configuration.ConfigurationRoot);
+                serviceCollection.AddTransient((_) => Substitute.For<IUserMailService>());
 
-                 serviceCollection.AddControllers();
+                ServicesSetup.ConfigureServiceCollection(appContext, serviceCollection, configuration.ConfigurationRoot);
 
-                 serviceCollection.AddMvc().AddApplicationPart(typeof(ConventionsHandicapWorkspaceController).Assembly);
+                serviceCollection.AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
 
-             });
+                    var jsonSerializerSettings = options.SerializerSettings;
+                    var defaultJsonSerializerSettings = Json.GetDefaultJsonSerializerSettings();
+
+                    jsonSerializerSettings.ReferenceLoopHandling = defaultJsonSerializerSettings.ReferenceLoopHandling;
+                    jsonSerializerSettings.NullValueHandling = defaultJsonSerializerSettings.NullValueHandling;
+                    jsonSerializerSettings.DateTimeZoneHandling = defaultJsonSerializerSettings.DateTimeZoneHandling;
+                    jsonSerializerSettings.Formatting = defaultJsonSerializerSettings.Formatting;
+                    jsonSerializerSettings.DateFormatHandling = defaultJsonSerializerSettings.DateFormatHandling;
+
+                    jsonSerializerSettings.Converters = defaultJsonSerializerSettings.Converters;
+
+                    jsonSerializerSettings.StringEscapeHandling = defaultJsonSerializerSettings.StringEscapeHandling;
+
+                    Json.SetDefaultJsonSerializerSettings(jsonSerializerSettings);
+
+                });
+
+                serviceCollection.AddMvc().AddApplicationPart(typeof(ConventionsHandicapWorkspaceController).Assembly);
+
+            });
 
 
             return base.CreateHost(builder);
-        }
-    }
-
-
-    [TestFixture]
-    public class TestUsers
-    {
-        private Task EnsureRootUserIsCreated()
-        {
-            return Task.CompletedTask;
-        }
-
-        [Test]
-        public async Task ShouldLogin()
-        {
-
-            var conventionsHandicapApi = new ConventionsHandicapApi();
-
-            var httpClient = conventionsHandicapApi.Server.CreateClient();
-
-            var conventionHandicapDbContext = conventionsHandicapApi.Services.GetService<ConventionHandicapDbContext>();
-
-            var body = "{\"workspaceId\": \"91181DDC-6AE5-4CA1-B07C-623B876EB670\",\"userName\": \"thomas.raynal2@gmail.com\",\"password\": \"pwd\"}";
-
-            var httpResponseMessage = await httpClient.PostAsync("v1/login", new StringContent(body, Encoding.UTF8, "application/json"));
-
-            var content = await httpResponseMessage.Content.ReadAsStringAsync();
-
-
         }
     }
 }

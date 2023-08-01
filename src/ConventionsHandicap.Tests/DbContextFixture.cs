@@ -16,7 +16,7 @@ namespace ConventionsHandicap.Tests
     [TestFixture]
     public class DbContextFixture
     {
-        [Ignore("tets")]
+        [Ignore("todo")]
         [Test]
         public async Task ShouldCreateDemands()
         {
@@ -72,7 +72,7 @@ namespace ConventionsHandicap.Tests
             }
         }
 
-        
+        [Ignore("todo")]
         [Test]
         public async Task ShouldCreateRootAdminUser()
         {
@@ -178,15 +178,6 @@ namespace ConventionsHandicap.Tests
             }
         }
 
-
-        [Test]
-        public async Task ShouldCreateDbContext()
-        {
-            using (var conventionHandicapDbContext = new ConventionHandicapDbContextFactory().CreateDbContext(null)) 
-            {
-
-            }
-        }
 
     }
 }

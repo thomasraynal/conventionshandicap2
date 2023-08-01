@@ -11,11 +11,16 @@ namespace ConventionsHandicap.Model
 {
     public class ConventionsHandicapFeature : IConventionsHandicapFeature
     {
+        public ConventionsHandicapFeature()
+        {
+            Workspaces = new List<ConventionsHandicapWorkspace>();
+        }
+
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string? Icon { get; set; }
 
         [JsonIgnore]
-        public ICollection<ConventionsHandicapWorkspace>? Workspaces { get; set; }
+        public ICollection<ConventionsHandicapWorkspace> Workspaces { get; set; }
     }
 }

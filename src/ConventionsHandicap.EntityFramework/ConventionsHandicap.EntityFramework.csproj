@@ -9,7 +9,7 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Anabasis.EntityFramework" Version="1.0.193" />
+		<PackageReference Include="Anabasis.EntityFramework" Version="1.0.194" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
