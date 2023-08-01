@@ -1,0 +1,18 @@
+﻿### FILE _Generated/Service/I{{uppercase_first_letter x-product.appService}}Service.generated.cs
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace {{uppercase_first_letter x-product.appName}}.{{uppercase_first_letter x-product.appService}}
+{
+    public interface I{{uppercase_first_letter x-product.appService}}Service
+    {
+{{#each paths}}
+{{#each this}}
+
+{{#one_line}}{{> getResponse}}  {{uppercase_first_letter this.operationId}}({{uppercase_first_letter this.operationId}}Request request);{{/one_line}}
+
+{{/each}}
+{{/each}}
+    }
+}
