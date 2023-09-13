@@ -1,0 +1,12 @@
+/// <summary>
+///  {{description}}
+/// </summary>
+[JsonConverter(typeof(StringEnumConverter))]
+[DataContract]
+public enum {{uppercase_first_letter @key}}
+{
+    {{#each enum}}
+    [EnumMember]
+    @{{uppercase_first_letter .}},
+    {{/each}}
+}

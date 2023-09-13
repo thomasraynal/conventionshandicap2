@@ -1,0 +1,8 @@
+﻿{{#if_not_empty this.x-fromRef}}
+    {{split_get_last this.x-fromRef '/'}}
+{{/if_not_empty}}
+{{#if_not_empty this.schema}}
+    {{#if_not_empty this.schema.x-fromRef}}
+        {{split_get_last this.schema.x-fromRef '/'}} 
+    {{/if_not_empty}}
+{{/if_not_empty}}

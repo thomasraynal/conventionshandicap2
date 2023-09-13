@@ -1,0 +1,20 @@
+{{#if_not_empty x-refName}}
+{{uppercase_first_letter x-refName}}
+{{else}}
+{{#if_equals type 'integer'}}
+{{#if_equals format 'int64'}}
+long
+{{else}}
+int
+{{/if_equals}}
+{{/if_equals}}
+{{#if_equals type 'string'}}
+string
+{{/if_equals}}
+{{#if_equals type 'boolean'}}
+bool
+{{/if_equals}}
+{{#if_equals type 'array'}}
+ {{>ConvertType items }}[]
+{{/if_equals}}
+{{/if_not_empty}}

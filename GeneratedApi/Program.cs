@@ -1,6 +1,6 @@
 ﻿namespace GeneratedApi
 {
-    public class Class1
+    public class Program
     {
 
     }

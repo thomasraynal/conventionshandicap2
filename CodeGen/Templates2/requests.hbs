@@ -1,0 +1,52 @@
+﻿{{#each paths}}
+{{#each this}}
+
+### FILE _Generated/Request/{{uppercase_first_letter this.operationId}}Request.generated.cs
+
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Nancy;
+using SwaggerPlayground.Common;
+using FluentValidation;
+
+namespace {{ uppercase_first_letter @root.x-product.appName}}.{{uppercase_first_letter @root.x-product.appService}}
+{
+    public partial class {{uppercase_first_letter this.operationId}}Request
+    {
+{{#each this.parameters}}
+       public {{> selectType }} {{uppercase_first_letter this.name}} {get; set; } 
+{{/each}}
+
+      public override bool Equals(object obj)
+        {
+            return obj is {{uppercase_first_letter this.operationId}}Request && obj.GetHashCode() == GetHashCode();
+        }
+
+      public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = nameof({{uppercase_first_letter this.operationId}}Request).GetHashCode();
+{{#each this.parameters}}
+                if(default != {{uppercase_first_letter this.name}}) hashCode = (hashCode * 397) ^ {{uppercase_first_letter this.name}}.GetHashCode();
+{{/each}}
+                return hashCode;
+            }
+        }
+
+
+    }
+
+{{#each this.responses}}
+
+public class {{uppercase_first_letter ../this.operationId}}{{@key}}ResponseBuilder
+{
+
+}
+
+{{/each}}
+
+{{/each}}
+{{/each}}

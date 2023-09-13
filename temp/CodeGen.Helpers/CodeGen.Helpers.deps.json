@@ -1,0 +1,185 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "CodeGen.Helpers/1.0.0": {
+        "dependencies": {
+          "CodegenUP.Engine": "0.0.0.17"
+        },
+        "runtime": {
+          "CodeGen.Helpers.dll": {}
+        }
+      },
+      "CodegenUP.DocumentRefLoader/0.0.0.17": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "Newtonsoft.Json": "12.0.3",
+          "YamlDotNet": "8.1.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/CodegenUP.DocumentRefLoader.dll": {
+            "assemblyVersion": "0.0.0.17",
+            "fileVersion": "0.0.0.17"
+          }
+        }
+      },
+      "CodegenUP.Engine/0.0.0.17": {
+        "dependencies": {
+          "CodegenUP.DocumentRefLoader": "0.0.0.17",
+          "Handlebars.Net": "1.10.1",
+          "Microsoft.OpenApi.Readers": "1.2.3",
+          "Newtonsoft.Json": "12.0.3",
+          "YamlDotNet": "8.1.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/CodegenUP.Engine.dll": {
+            "assemblyVersion": "0.0.0.17",
+            "fileVersion": "0.0.0.17"
+          }
+        }
+      },
+      "Handlebars.Net/1.10.1": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "System.Reflection.TypeExtensions": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Handlebars.dll": {
+            "assemblyVersion": "1.10.1.0",
+            "fileVersion": "1.10.1.0"
+          }
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {},
+      "Microsoft.OpenApi/1.2.3": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
+            "assemblyVersion": "1.2.3.0",
+            "fileVersion": "1.2.3.0"
+          }
+        }
+      },
+      "Microsoft.OpenApi.Readers/1.2.3": {
+        "dependencies": {
+          "Microsoft.OpenApi": "1.2.3",
+          "SharpYaml": "1.6.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.OpenApi.Readers.dll": {
+            "assemblyVersion": "1.2.3.0",
+            "fileVersion": "1.2.3.0"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
+      },
+      "SharpYaml/1.6.5": {
+        "dependencies": {
+          "System.Reflection.TypeExtensions": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SharpYaml.dll": {
+            "assemblyVersion": "1.6.5.0",
+            "fileVersion": "1.6.5.0"
+          }
+        }
+      },
+      "System.Reflection.TypeExtensions/4.4.0": {},
+      "YamlDotNet/8.1.2": {
+        "runtime": {
+          "lib/netstandard2.1/YamlDotNet.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.1.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CodeGen.Helpers/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CodegenUP.DocumentRefLoader/0.0.0.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eQZBJ2Ja03wwDD/3qsTobsmL6SejLekXB6WRf16In+tvApSXvotjjOTaEzkNTUySV0mEI3LRh9h/j/DKJVGFZQ==",
+      "path": "codegenup.documentrefloader/0.0.0.17",
+      "hashPath": "codegenup.documentrefloader.0.0.0.17.nupkg.sha512"
+    },
+    "CodegenUP.Engine/0.0.0.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iXI+brBoFHVOzels2wlVlsjdnEK/cbLxAI9fSaDgj6cmUcURmz43T6GNIkDSO1/78/+UuD2dqdPFlljHWjm2/Q==",
+      "path": "codegenup.engine/0.0.0.17",
+      "hashPath": "codegenup.engine.0.0.0.17.nupkg.sha512"
+    },
+    "Handlebars.Net/1.10.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-F/1eETC5AUfxaK+zG6EhUZa89TfxRtTMvTg9T6AsWzPkli/szv+OWEKpgQgXcONtM+nLkn7Q5Lfau0BA8eTxlQ==",
+      "path": "handlebars.net/1.10.1",
+      "hashPath": "handlebars.net.1.10.1.nupkg.sha512"
+    },
+    "Microsoft.CSharp/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
+      "path": "microsoft.csharp/4.7.0",
+      "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
+    },
+    "Microsoft.OpenApi/1.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
+      "path": "microsoft.openapi/1.2.3",
+      "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
+    },
+    "Microsoft.OpenApi.Readers/1.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-r1KBRewLxmCYuQ3fBksYQ2u/D1FtsN3zlPvOsZoiugzVgJbtq1wFD25Rgh/UAonUXgTpmlHciM5WHMavR9bk2g==",
+      "path": "microsoft.openapi.readers/1.2.3",
+      "hashPath": "microsoft.openapi.readers.1.2.3.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "SharpYaml/1.6.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-z4MKt+NxdGE5BsmNDNkcTylNx6evl9kvia/ER3jfBf+j2mLUUDz8pTbzoQLCTULR02tziDtX1Ij+eQcAey11Gw==",
+      "path": "sharpyaml/1.6.5",
+      "hashPath": "sharpyaml.1.6.5.nupkg.sha512"
+    },
+    "System.Reflection.TypeExtensions/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dkmh/ySlwnXJp/1qYP9uyKkCK1CXR/REFzl7abHcArxBcV91mY2CgrrzSRA5Z/X4MevJWwXsklGRdR3A7K9zbg==",
+      "path": "system.reflection.typeextensions/4.4.0",
+      "hashPath": "system.reflection.typeextensions.4.4.0.nupkg.sha512"
+    },
+    "YamlDotNet/8.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GlPKbb4l+91dyYVKV7UnJlr2CWooNNM1ayZWC90QAmlFPgbwSkfhgId7dGjTAHqkB84BZqjMSy5PlAYf1iejVA==",
+      "path": "yamldotnet/8.1.2",
+      "hashPath": "yamldotnet.8.1.2.nupkg.sha512"
+    }
+  }
+}

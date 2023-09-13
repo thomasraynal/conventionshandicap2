@@ -1,0 +1,8 @@
+public partial class {{@key}} 
+{ 
+    {{#each properties}}
+    {{#if_array_contains ../required @key}}[Required(ErrorMessage = "{{@key}} is required")]{{/if_array_contains}}
+    public {{>ConvertType}}  {{#one_line}} {{uppercase_first_letter @key}}  {get; set;} {{/one_line}}
+    {{/each}}
+}
+

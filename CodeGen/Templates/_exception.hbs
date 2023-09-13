@@ -1,0 +1,19 @@
+{{set 'typeName' (uppercase_first_letter @key)}}
+
+    [ErrorTranslation("{{../x-beezup-ops.appRoot}}", "Exceptions", "{{this.description}}")]
+    [Serializable]
+    {{#one_line}}{{#trim_block}}
+    public class {{get 'typeName'}} : BeezUPException<{{get 'typeName'}}>
+        {{#if x-transient}}, ITransient{{/if}}
+        {{#unless x-technical}}, IBusinessException{{/unless}}
+    {{/trim_block}}{{/one_line}}
+    {
+        [BusinessExceptionConstructor]
+        public {{get 'typeName'}}({{>ConstructorParameters properties}}) : base () {}
+    
+{{!-- {{#each .}}{{is_required @key}}[NotNull]{{else}}[CanBeNull]{{/is_required}} {{#each this}}{{this}}{{/each}} {{@key}}{{#is_last_object_property @key}}{{else}}, {{/is_last_object_property}}{{/each}} --}}
+
+        protected {{get 'typeName'}}(SerializationInfo info, StreamingContext context) : base(info, context) {} 
+    }
+
+{{clear 'typeName'}}

@@ -1,0 +1,1646 @@
+openapi: 3.0.1
+info:
+  title: ConventionsHandicapApi
+  version: v1
+paths:
+  /v1/referential/academies:
+    get:
+      tags:
+        - Academy
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Academy'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/referential/academies/{academyName}:
+    get:
+      tags:
+        - Academy
+      parameters:
+        - name: academyName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Academy'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features/certificates/demands:
+    get:
+      tags:
+        - ConventionsHandicapCertificateDemand
+      parameters:
+        - name: workspaceId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: Guid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CertificateDemandDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+    delete:
+      tags:
+        - ConventionsHandicapCertificateDemand
+      parameters:
+        - name: CertificateDemandId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: Guid
+        - name: WorkspaceId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: Guid
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+    put:
+      tags:
+        - ConventionsHandicapCertificateDemand
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CreateCertificateDemandDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCertificateDemandDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateCertificateDemandDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateCertificateDemandDto'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateDemandDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+    patch:
+      tags:
+        - ConventionsHandicapCertificateDemand
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/UpdateCertificateDemandDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCertificateDemandDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCertificateDemandDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateCertificateDemandDto'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateDemandDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features/certificates/demands/{certificateDemandId}:
+    get:
+      tags:
+        - ConventionsHandicapCertificateDemand
+      parameters:
+        - name: certificateDemandId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: Guid
+        - name: workspaceId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: Guid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateDemandDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features/certificates/demands/{certificateDemandId}/file/{metadataCode}:
+    post:
+      tags:
+        - ConventionsHandicapCertificateDemand
+      parameters:
+        - name: certificateDemandId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: Guid
+        - name: metadataCode
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workspaceId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: Guid
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+            encoding:
+              file:
+                style: form
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateDemandDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features/certificates/demands/mail:
+    post:
+      tags:
+        - ConventionsHandicapCertificateDemandMail
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ConventionsHandicapCertificateDemandSendMailRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConventionsHandicapCertificateDemandSendMailRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ConventionsHandicapCertificateDemandSendMailRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ConventionsHandicapCertificateDemandSendMailRequest'
+      responses:
+        '202':
+          description: Accepted
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features/certificates/demands/medatada:
+    get:
+      tags:
+        - ConventionsHandicapCertificateDemandMetadata
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConventionsHandicapCertificateMetadata'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features/certificates/demands/medatada/{academyId}:
+    get:
+      tags:
+        - ConventionsHandicapCertificateDemandMetadata
+      parameters:
+        - name: academyId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConventionsHandicapCertificateMetadata'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features/certificates/demands/medatada/{academyId}/{departmentId}:
+    get:
+      tags:
+        - ConventionsHandicapCertificateDemandMetadata
+      parameters:
+        - name: academyId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: departmentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConventionsHandicapCertificateMetadata'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}:
+    get:
+      tags:
+        - ConventionsHandicapCertificateDemandTemplate
+      parameters:
+        - name: certificateDemandId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: Guid
+        - name: certificateTemplateId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: Guid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features/certificates/demands/template:
+    get:
+      tags:
+        - ConventionsHandicapCertificateDemandTemplate
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateTemplateDto'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features/certificates/demands/template/{academy}:
+    get:
+      tags:
+        - ConventionsHandicapCertificateDemandTemplate
+      parameters:
+        - name: academy
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CertificateTemplateDto'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features/certificates/demands/template/{academy}/{department}:
+    get:
+      tags:
+        - ConventionsHandicapCertificateDemandTemplate
+      parameters:
+        - name: academy
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: department
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CertificateTemplateDto'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features:
+    get:
+      tags:
+        - ConventionsHandicapFeature
+      parameters:
+        - name: workspaceId
+          in: query
+          schema:
+            type: string
+            format: Guid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConventionsHandicapFeature'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/features/{featureId}:
+    get:
+      tags:
+        - ConventionsHandicapFeature
+      parameters:
+        - name: featureId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: Guid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConventionsHandicapFeature'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/mail:
+    post:
+      tags:
+        - ConventionsHandicapMail
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ConventionsHandicapSendMailToConventionHandicapDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConventionsHandicapSendMailToConventionHandicapDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ConventionsHandicapSendMailToConventionHandicapDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ConventionsHandicapSendMailToConventionHandicapDto'
+      responses:
+        '202':
+          description: Accepted
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/users:
+    get:
+      tags:
+        - ConventionsHandicapUser
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+    patch:
+      tags:
+        - ConventionsHandicapUser
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+    put:
+      tags:
+        - ConventionsHandicapUser
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+    delete:
+      tags:
+        - ConventionsHandicapUser
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/DeleteUserRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteUserRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DeleteUserRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/DeleteUserRequest'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/users/current:
+    get:
+      tags:
+        - ConventionsHandicapUser
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/login:
+    post:
+      tags:
+        - ConventionsHandicapUserManagement
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ConventionsHandicapLoginDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConventionsHandicapLoginDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ConventionsHandicapLoginDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ConventionsHandicapLoginDto'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/register:
+    post:
+      tags:
+        - ConventionsHandicapUserManagement
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RegistrationDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RegistrationDto'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/confirm:
+    get:
+      tags:
+        - ConventionsHandicapUserManagement
+      parameters:
+        - name: Email
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: Token
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/forgot:
+    post:
+      tags:
+        - ConventionsHandicapUserManagement
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordDto'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/reset:
+    post:
+      tags:
+        - ConventionsHandicapUserManagement
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordDto'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/workspaces:
+    get:
+      tags:
+        - ConventionsHandicapWorkspace
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IConventionsHandicapWorkspace'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+    put:
+      tags:
+        - ConventionsHandicapWorkspace
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkspaceDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkspaceDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkspaceDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkspaceDto'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IConventionsHandicapWorkspace'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+  /v1/workspaces/{workspaceId}:
+    patch:
+      tags:
+        - ConventionsHandicapWorkspace
+      parameters:
+        - name: workspaceId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: Guid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/UpdateWorkspaceDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWorkspaceDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWorkspaceDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateWorkspaceDto'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IConventionsHandicapWorkspace'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+    delete:
+      tags:
+        - ConventionsHandicapWorkspace
+      parameters:
+        - name: workspaceId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: Guid
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+    get:
+      tags:
+        - ConventionsHandicapWorkspace
+      parameters:
+        - name: workspaceId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: Guid
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IConventionsHandicapWorkspace'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseMessage'
+components:
+  schemas:
+    Academy:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        departments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
+          nullable: true
+      additionalProperties: false
+    CertificateDemandDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: Guid
+        academy:
+          type: string
+          nullable: true
+        department:
+          type: string
+          nullable: true
+        childFirstName:
+          type: string
+          nullable: true
+        childLastName:
+          type: string
+          nullable: true
+        childDateOfBirth:
+          type: string
+          format: date-time
+        workspaceId:
+          type: string
+          format: Guid
+        certificateDemandStatus:
+          enum:
+            - A COMPLETER
+            - A VALIDER
+            - VALIDÉ
+          type: string
+        userId:
+          type: string
+          format: Guid
+        certificateTemplates:
+          type: array
+          items:
+            type: string
+            format: Guid
+          nullable: true
+        properties:
+          type: object
+          additionalProperties:
+            type: string
+            nullable: true
+          nullable: true
+      additionalProperties: false
+    CertificateTemplateDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: Guid
+        academy:
+          type: string
+          nullable: true
+        department:
+          type: string
+          nullable: true
+        templateName:
+          type: string
+          nullable: true
+        friendlyName:
+          type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    ConventionsHandicapCertificateDemandSendMailRequest:
+      type: object
+      properties:
+        workspaceId:
+          type: string
+          format: Guid
+        certificateDemandId:
+          type: string
+          format: Guid
+          nullable: true
+        subjectText:
+          type: string
+          nullable: true
+        bodyText:
+          type: string
+          nullable: true
+        isHtml:
+          type: boolean
+      additionalProperties: false
+    ConventionsHandicapCertificateMetadata:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        label:
+          type: string
+          nullable: true
+        information:
+          type: string
+          nullable: true
+        group:
+          type: string
+          nullable: true
+        metadataType:
+          enum:
+            - Technical
+            - Field
+            - File
+          type: string
+      additionalProperties: false
+    ConventionsHandicapFeature:
+      type: object
+      properties:
+        id:
+          type: string
+          format: Guid
+        name:
+          type: string
+          nullable: true
+        icon:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ConventionsHandicapLoginDto:
+      required:
+        - password
+        - username
+        - workspaceId
+      type: object
+      properties:
+        workspaceId:
+          type: string
+          format: Guid
+        username:
+          minLength: 1
+          type: string
+        password:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    ConventionsHandicapSendMailToConventionHandicapDto:
+      required:
+        - bodyText
+        - subjectText
+        - workspaceId
+      type: object
+      properties:
+        bodyText:
+          minLength: 1
+          type: string
+        subjectText:
+          minLength: 1
+          type: string
+        workspaceId:
+          type: string
+          format: Guid
+      additionalProperties: false
+    CreateCertificateDemandDto:
+      required:
+        - academy
+        - certificates
+        - childDateOfBirth
+        - childFirstName
+        - childLastName
+        - department
+        - workspaceId
+      type: object
+      properties:
+        academy:
+          minLength: 1
+          type: string
+        childFirstName:
+          minLength: 1
+          type: string
+        childLastName:
+          minLength: 1
+          type: string
+        department:
+          minLength: 1
+          type: string
+        certificates:
+          type: array
+          items:
+            type: string
+            format: Guid
+        childDateOfBirth:
+          type: string
+          format: date-time
+        workspaceId:
+          type: string
+          format: Guid
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+          nullable: true
+      additionalProperties: false
+    CreateUserRequest:
+      required:
+        - userEmail
+        - userRole
+        - workspaceId
+      type: object
+      properties:
+        workspaceId:
+          type: string
+          format: Guid
+        userRole:
+          enum:
+            - None
+            - User
+            - Manager
+            - Administrator
+          type: string
+        userEmail:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    CreateWorkspaceDto:
+      required:
+        - name
+      type: object
+      properties:
+        logo:
+          type: string
+          format: uri
+          nullable: true
+        name:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    DeleteUserRequest:
+      required:
+        - userId
+        - workspaceId
+      type: object
+      properties:
+        workspaceId:
+          type: string
+          format: Guid
+        userId:
+          type: string
+          format: Guid
+      additionalProperties: false
+    Department:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ErrorResponseMessage:
+      required:
+        - errors
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserErrorMessage'
+      additionalProperties: false
+    ForgotPasswordDto:
+      required:
+        - email
+      type: object
+      properties:
+        email:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    IConventionsHandicapWorkspace:
+      type: object
+      properties:
+        id:
+          type: string
+          format: Guid
+          readOnly: true
+        logo:
+          type: string
+          format: uri
+          nullable: true
+          readOnly: true
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConventionsHandicapFeature'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    Property:
+      required:
+        - code
+      type: object
+      properties:
+        code:
+          minLength: 1
+          type: string
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RegistrationDto:
+      required:
+        - password
+        - userEmail
+        - username
+      type: object
+      properties:
+        username:
+          minLength: 1
+          type: string
+        password:
+          minLength: 1
+          type: string
+        userEmail:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    ResetPasswordDto:
+      required:
+        - email
+        - password
+        - token
+      type: object
+      properties:
+        email:
+          minLength: 1
+          type: string
+        token:
+          minLength: 1
+          type: string
+        password:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    UpdateCertificateDemandDto:
+      required:
+        - certificateDemandId
+        - certificates
+        - childDateOfBirth
+        - childFirstName
+        - childLastName
+        - workspaceId
+      type: object
+      properties:
+        academy:
+          type: string
+          nullable: true
+        childFirstName:
+          minLength: 1
+          type: string
+        childLastName:
+          minLength: 1
+          type: string
+        childDateOfBirth:
+          type: string
+          format: date-time
+        certificateDemandStatus:
+          enum:
+            - A COMPLETER
+            - A VALIDER
+            - VALIDÉ
+          type: string
+        department:
+          type: string
+          nullable: true
+        certificates:
+          type: array
+          items:
+            type: string
+            format: Guid
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+          nullable: true
+        workspaceId:
+          type: string
+          format: Guid
+        certificateDemandId:
+          type: string
+          format: Guid
+      additionalProperties: false
+    UpdateUserRequest:
+      required:
+        - userId
+        - userRole
+        - workspaceId
+      type: object
+      properties:
+        workspaceId:
+          type: string
+          format: Guid
+        userRole:
+          enum:
+            - None
+            - User
+            - Manager
+            - Administrator
+          type: string
+        userEmail:
+          type: string
+          nullable: true
+        userId:
+          type: string
+          format: Guid
+      additionalProperties: false
+    UpdateWorkspaceDto:
+      required:
+        - features
+        - name
+      type: object
+      properties:
+        logo:
+          type: string
+          format: uri
+          nullable: true
+        name:
+          minLength: 1
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+            format: Guid
+      additionalProperties: false
+    UserDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: Guid
+        email:
+          type: string
+          nullable: true
+        mailConfirmed:
+          type: boolean
+      additionalProperties: false
+    UserErrorMessage:
+      required:
+        - httpStatusCode
+        - message
+      type: object
+      properties:
+        docUrl:
+          type: string
+          format: uri
+          nullable: true
+        httpStatusCode:
+          enum:
+            - Continue
+            - SwitchingProtocols
+            - Processing
+            - EarlyHints
+            - OK
+            - Created
+            - Accepted
+            - NonAuthoritativeInformation
+            - NoContent
+            - ResetContent
+            - PartialContent
+            - MultiStatus
+            - AlreadyReported
+            - IMUsed
+            - Ambiguous
+            - Moved
+            - Redirect
+            - RedirectMethod
+            - NotModified
+            - UseProxy
+            - Unused
+            - TemporaryRedirect
+            - PermanentRedirect
+            - BadRequest
+            - Unauthorized
+            - PaymentRequired
+            - Forbidden
+            - NotFound
+            - MethodNotAllowed
+            - NotAcceptable
+            - ProxyAuthenticationRequired
+            - RequestTimeout
+            - Conflict
+            - Gone
+            - LengthRequired
+            - PreconditionFailed
+            - RequestEntityTooLarge
+            - RequestUriTooLong
+            - UnsupportedMediaType
+            - RequestedRangeNotSatisfiable
+            - ExpectationFailed
+            - MisdirectedRequest
+            - UnprocessableEntity
+            - Locked
+            - FailedDependency
+            - UpgradeRequired
+            - PreconditionRequired
+            - TooManyRequests
+            - RequestHeaderFieldsTooLarge
+            - UnavailableForLegalReasons
+            - InternalServerError
+            - NotImplemented
+            - BadGateway
+            - ServiceUnavailable
+            - GatewayTimeout
+            - HttpVersionNotSupported
+            - VariantAlsoNegotiates
+            - InsufficientStorage
+            - LoopDetected
+            - NotExtended
+            - NetworkAuthenticationRequired
+          type: string
+        message: {}
+        properties:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        stackTrace:
+          type: string
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: "JWT Authorization header using the Bearer scheme. \r\n                       Example: 'Bearer 12345abcdef'"
+      name: Authorization
+      in: header
+security:
+  - Bearer: []
