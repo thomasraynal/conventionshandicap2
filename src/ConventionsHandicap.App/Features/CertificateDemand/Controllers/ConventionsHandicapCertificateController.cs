@@ -59,7 +59,7 @@ namespace ConventionsHandicap.Controller
 
         [ProducesResponseType(typeof(ErrorResponseMessage), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ErrorResponseMessage), (int)HttpStatusCode.Unauthorized)]
-        [ProducesResponseType(typeof(CertificateTemplateDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(CertificateTemplateDto[]), (int)HttpStatusCode.OK)]
         [SwaggerOperation("GetCertificateTemplates")]
         [HttpGet()]
         public async Task<IActionResult> GetCertificateTemplatesAsync()

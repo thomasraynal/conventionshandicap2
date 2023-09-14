@@ -54,18 +54,18 @@ public abstract partial class {{uppercase_first_letter x-product.appName}}Contro
 {{/each}}
 [Route("{{get 'path'}}", Name = "{{uppercase_first_letter operationId}}")]
 [Http{{uppercase_first_letter (get 'httpMethod')}}]
-{{#one_line}}
+
 
 {{set 'operationId' operationId}}
 
 public async Task<IActionResult>
     {{uppercase_first_letter operationId}}Async({{#each parameters}}
-    {{#if_equals in 'path'}}{{type}} {{name}}{{/if_equals}}
-    {{#if_equals in 'body'}}{{schema.x-refName}} {{name}}{{/if_equals}}
-    {{#if_equals in 'header'}}{{type}} {{name}}{{/if_equals}}
-    {{#if_equals in 'query'}}{{type}} {{name}}{{/if_equals}}
+    {{#if_equals in 'path'}} {{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}} {{/if_equals}}
+    {{#if_equals in 'body'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_equals}}
+    {{#if_equals in 'header'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_equals}}
+    {{#if_equals in 'query'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}} {{/if_equals}}
     {{#unless @last}}, {{/unless}}{{/each}})
-    {{/one_line}}
+
 
     {
      var responseBuilder = await {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{name}}{{#unless @last}}, {{/unless}}{{/each}});
@@ -74,7 +74,7 @@ public async Task<IActionResult>
     
     }
 
-  protected virtual Task<{{uppercase_first_letter operationId}}ResponseBuilder> {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{#if_not_equals in 'body'}}{{type}} {{name}}{{/if_not_equals}}{{#if_equals in 'body'}}{{schema.x-refName}} {{name}}{{/if_equals}}{{#unless @last}}, {{/unless}} {{/each}})
+  protected virtual Task<{{uppercase_first_letter operationId}}ResponseBuilder> {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{#if_not_equals in 'body'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_not_equals}}{{#if_equals in 'body'}}{{schema.x-refName}} {{name}}{{/if_equals}}{{#unless @last}}, {{/unless}} {{/each}})
             {
                 throw new NotImplementedException();
             }

@@ -14,10 +14,10 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace 
+namespace ConventionsHandicap
 {
 
-public abstract partial class ControllerBase:ControllerBase
+public abstract partial class ConventionsHandicapApiControllerBase:ControllerBase
 {
 
 
@@ -31,38 +31,44 @@ public abstract partial class ControllerBase:ControllerBase
 
 /// <response code="200"></response>
 /// <response code="401"></response>
-[Route("/v1/referential/academies", Name = "")]
+[Route("/v1/referential/academies", Name = "GetAcademies")]
 [HttpGet]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    GetAcademiesAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await GetAcademiesInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<GetAcademiesResponseBuilder> GetAcademiesInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetAcademiesResponseBuilder : ResponseBuilder<GetAcademiesResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetAcademiesResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetAcademiesResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetAcademiesResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -73,12 +79,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetAcademiesResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetAcademiesResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -110,38 +116,51 @@ public async Task<IActionResult>Async()
 /// <response code="200"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/referential/academies/{academyName}", Name = "")]
+[Route("/v1/referential/academies/{academyName}", Name = "GetAcademy")]
 [HttpGet]
-public async Task<IActionResult>Async(academyName)
+
+
+
+
+public async Task<IActionResult>
+    GetAcademyAsync(
+      string
+  academyName 
+    
+    
+    
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(academyName);
+     var responseBuilder = await GetAcademyInternalAsync(academyName);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( academyName )
+  protected virtual Task<GetAcademyResponseBuilder> GetAcademyInternalAsync( string
+  academyName )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetAcademyResponseBuilder : ResponseBuilder<GetAcademyResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetAcademyResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetAcademyResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetAcademyResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -152,12 +171,12 @@ public async Task<IActionResult>Async(academyName)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetAcademyResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetAcademyResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -168,12 +187,12 @@ public async Task<IActionResult>Async(academyName)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetAcademyResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetAcademyResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -206,38 +225,51 @@ public async Task<IActionResult>Async(academyName)
 /// <response code="400"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands", Name = "")]
+[Route("/v1/features/certificates/demands", Name = "GetCertificateDemands")]
 [HttpGet]
-public async Task<IActionResult>Async(workspaceId)
+
+
+
+
+public async Task<IActionResult>
+    GetCertificateDemandsAsync(
+    
+    
+    
+     Guid
+  workspaceId 
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(workspaceId);
+     var responseBuilder = await GetCertificateDemandsInternalAsync(workspaceId);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( workspaceId )
+  protected virtual Task<GetCertificateDemandsResponseBuilder> GetCertificateDemandsInternalAsync( Guid
+  workspaceId )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetCertificateDemandsResponseBuilder : ResponseBuilder<GetCertificateDemandsResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetCertificateDemandsResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandsResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandsResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -248,12 +280,12 @@ public async Task<IActionResult>Async(workspaceId)
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandsResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandsResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -264,12 +296,12 @@ public async Task<IActionResult>Async(workspaceId)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandsResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandsResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -280,12 +312,12 @@ public async Task<IActionResult>Async(workspaceId)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandsResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandsResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -320,38 +352,58 @@ public async Task<IActionResult>Async(workspaceId)
 /// <response code="400"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands", Name = "")]
+[Route("/v1/features/certificates/demands", Name = "DeleteCertificateDemand")]
 [HttpDelete]
-public async Task<IActionResult>Async(CertificateDemandId,WorkspaceId)
+
+
+
+
+public async Task<IActionResult>
+    DeleteCertificateDemandAsync(
+      Guid
+  CertificateDemandId 
+    
+    
+    
+    , 
+      Guid
+  WorkspaceId 
+    
+    
+    
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(CertificateDemandId, WorkspaceId);
+     var responseBuilder = await DeleteCertificateDemandInternalAsync(CertificateDemandId, WorkspaceId);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( CertificateDemandId,   WorkspaceId )
+  protected virtual Task<DeleteCertificateDemandResponseBuilder> DeleteCertificateDemandInternalAsync( Guid
+  CertificateDemandId,   Guid
+  WorkspaceId )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class DeleteCertificateDemandResponseBuilder : ResponseBuilder<DeleteCertificateDemandResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private DeleteCertificateDemandResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build204(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static DeleteCertificateDemandResponseBuilder Build204(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)204, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new DeleteCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("204" == "default" ? 500 : 204);
             }
@@ -362,12 +414,12 @@ public async Task<IActionResult>Async(CertificateDemandId,WorkspaceId)
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static DeleteCertificateDemandResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new DeleteCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -378,12 +430,12 @@ public async Task<IActionResult>Async(CertificateDemandId,WorkspaceId)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static DeleteCertificateDemandResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new DeleteCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -394,12 +446,12 @@ public async Task<IActionResult>Async(CertificateDemandId,WorkspaceId)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static DeleteCertificateDemandResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new DeleteCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -428,38 +480,44 @@ public async Task<IActionResult>Async(CertificateDemandId,WorkspaceId)
 /// <response code="400"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands", Name = "")]
+[Route("/v1/features/certificates/demands", Name = "CreateCertificateDemand")]
 [HttpPut]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    CreateCertificateDemandAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await CreateCertificateDemandInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<CreateCertificateDemandResponseBuilder> CreateCertificateDemandInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class CreateCertificateDemandResponseBuilder : ResponseBuilder<CreateCertificateDemandResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private CreateCertificateDemandResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static CreateCertificateDemandResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new CreateCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -470,12 +528,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static CreateCertificateDemandResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new CreateCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -486,12 +544,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static CreateCertificateDemandResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new CreateCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -502,12 +560,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static CreateCertificateDemandResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new CreateCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -536,38 +594,44 @@ public async Task<IActionResult>Async()
 /// <response code="400"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands", Name = "")]
+[Route("/v1/features/certificates/demands", Name = "UpdateCertificateDemand")]
 [HttpPatch]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    UpdateCertificateDemandAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await UpdateCertificateDemandInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<UpdateCertificateDemandResponseBuilder> UpdateCertificateDemandInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class UpdateCertificateDemandResponseBuilder : ResponseBuilder<UpdateCertificateDemandResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private UpdateCertificateDemandResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static UpdateCertificateDemandResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new UpdateCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -578,12 +642,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static UpdateCertificateDemandResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new UpdateCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -594,12 +658,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static UpdateCertificateDemandResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new UpdateCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -610,12 +674,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static UpdateCertificateDemandResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new UpdateCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -651,38 +715,58 @@ public async Task<IActionResult>Async()
 /// <response code="400"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands/{certificateDemandId}", Name = "")]
+[Route("/v1/features/certificates/demands/{certificateDemandId}", Name = "GetCertificateDemand")]
 [HttpGet]
-public async Task<IActionResult>Async(certificateDemandId,workspaceId)
+
+
+
+
+public async Task<IActionResult>
+    GetCertificateDemandAsync(
+      Guid
+  certificateDemandId 
+    
+    
+    
+    , 
+    
+    
+    
+     Guid
+  workspaceId 
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(certificateDemandId, workspaceId);
+     var responseBuilder = await GetCertificateDemandInternalAsync(certificateDemandId, workspaceId);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( certificateDemandId,   workspaceId )
+  protected virtual Task<GetCertificateDemandResponseBuilder> GetCertificateDemandInternalAsync( Guid
+  certificateDemandId,   Guid
+  workspaceId )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetCertificateDemandResponseBuilder : ResponseBuilder<GetCertificateDemandResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetCertificateDemandResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -693,12 +777,12 @@ public async Task<IActionResult>Async(certificateDemandId,workspaceId)
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -709,12 +793,12 @@ public async Task<IActionResult>Async(certificateDemandId,workspaceId)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -725,12 +809,12 @@ public async Task<IActionResult>Async(certificateDemandId,workspaceId)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -769,38 +853,65 @@ public async Task<IActionResult>Async(certificateDemandId,workspaceId)
 /// <response code="400"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands/{certificateDemandId}/file/{metadataCode}", Name = "")]
+[Route("/v1/features/certificates/demands/{certificateDemandId}/file/{metadataCode}", Name = "AddFileToCertificateDemand")]
 [HttpPost]
-public async Task<IActionResult>Async(certificateDemandId,metadataCode,workspaceId)
+
+
+
+
+public async Task<IActionResult>
+    AddFileToCertificateDemandAsync(
+      Guid
+  certificateDemandId 
+    
+    
+    
+    , 
+      string
+  metadataCode 
+    
+    
+    
+    , 
+    
+    
+    
+     Guid
+  workspaceId 
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(certificateDemandId, metadataCode, workspaceId);
+     var responseBuilder = await AddFileToCertificateDemandInternalAsync(certificateDemandId, metadataCode, workspaceId);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( certificateDemandId,   metadataCode,   workspaceId )
+  protected virtual Task<AddFileToCertificateDemandResponseBuilder> AddFileToCertificateDemandInternalAsync( Guid
+  certificateDemandId,   string
+  metadataCode,   Guid
+  workspaceId )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class AddFileToCertificateDemandResponseBuilder : ResponseBuilder<AddFileToCertificateDemandResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private AddFileToCertificateDemandResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static AddFileToCertificateDemandResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new AddFileToCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -811,12 +922,12 @@ public async Task<IActionResult>Async(certificateDemandId,metadataCode,workspace
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static AddFileToCertificateDemandResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new AddFileToCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -827,12 +938,12 @@ public async Task<IActionResult>Async(certificateDemandId,metadataCode,workspace
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static AddFileToCertificateDemandResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new AddFileToCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -843,12 +954,12 @@ public async Task<IActionResult>Async(certificateDemandId,metadataCode,workspace
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static AddFileToCertificateDemandResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new AddFileToCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -878,38 +989,44 @@ public async Task<IActionResult>Async(certificateDemandId,metadataCode,workspace
 /// <response code="400"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands/mail", Name = "")]
+[Route("/v1/features/certificates/demands/mail", Name = "SendMailForCertificateDemand")]
 [HttpPost]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    SendMailForCertificateDemandAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await SendMailForCertificateDemandInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<SendMailForCertificateDemandResponseBuilder> SendMailForCertificateDemandInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class SendMailForCertificateDemandResponseBuilder : ResponseBuilder<SendMailForCertificateDemandResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private SendMailForCertificateDemandResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build202(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static SendMailForCertificateDemandResponseBuilder Build202(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)202, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new SendMailForCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("202" == "default" ? 500 : 202);
             }
@@ -920,12 +1037,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static SendMailForCertificateDemandResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new SendMailForCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -936,12 +1053,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static SendMailForCertificateDemandResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new SendMailForCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -952,12 +1069,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static SendMailForCertificateDemandResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new SendMailForCertificateDemandResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -985,38 +1102,44 @@ public async Task<IActionResult>Async()
 
 /// <response code="200"></response>
 /// <response code="401"></response>
-[Route("/v1/features/certificates/demands/medatada", Name = "")]
+[Route("/v1/features/certificates/demands/medatada", Name = "GetAllCertificateDemandMetadata")]
 [HttpGet]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    GetAllCertificateDemandMetadataAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await GetAllCertificateDemandMetadataInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<GetAllCertificateDemandMetadataResponseBuilder> GetAllCertificateDemandMetadataInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetAllCertificateDemandMetadataResponseBuilder : ResponseBuilder<GetAllCertificateDemandMetadataResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetAllCertificateDemandMetadataResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetAllCertificateDemandMetadataResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetAllCertificateDemandMetadataResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -1027,12 +1150,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetAllCertificateDemandMetadataResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetAllCertificateDemandMetadataResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -1064,38 +1187,51 @@ public async Task<IActionResult>Async()
 /// <response code="200"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands/medatada/{academyId}", Name = "")]
+[Route("/v1/features/certificates/demands/medatada/{academyId}", Name = "GetCertificateDemandMetadataForAcademy")]
 [HttpGet]
-public async Task<IActionResult>Async(academyId)
+
+
+
+
+public async Task<IActionResult>
+    GetCertificateDemandMetadataForAcademyAsync(
+      string
+  academyId 
+    
+    
+    
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(academyId);
+     var responseBuilder = await GetCertificateDemandMetadataForAcademyInternalAsync(academyId);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( academyId )
+  protected virtual Task<GetCertificateDemandMetadataForAcademyResponseBuilder> GetCertificateDemandMetadataForAcademyInternalAsync( string
+  academyId )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetCertificateDemandMetadataForAcademyResponseBuilder : ResponseBuilder<GetCertificateDemandMetadataForAcademyResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetCertificateDemandMetadataForAcademyResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandMetadataForAcademyResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandMetadataForAcademyResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -1106,12 +1242,12 @@ public async Task<IActionResult>Async(academyId)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandMetadataForAcademyResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandMetadataForAcademyResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -1122,12 +1258,12 @@ public async Task<IActionResult>Async(academyId)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandMetadataForAcademyResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandMetadataForAcademyResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -1162,38 +1298,58 @@ public async Task<IActionResult>Async(academyId)
 /// <response code="200"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands/medatada/{academyId}/{departmentId}", Name = "")]
+[Route("/v1/features/certificates/demands/medatada/{academyId}/{departmentId}", Name = "GetCertificateDemandMetadataForAcademyAndDepartment")]
 [HttpGet]
-public async Task<IActionResult>Async(academyId,departmentId)
+
+
+
+
+public async Task<IActionResult>
+    GetCertificateDemandMetadataForAcademyAndDepartmentAsync(
+      string
+  academyId 
+    
+    
+    
+    , 
+      string
+  departmentId 
+    
+    
+    
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(academyId, departmentId);
+     var responseBuilder = await GetCertificateDemandMetadataForAcademyAndDepartmentInternalAsync(academyId, departmentId);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( academyId,   departmentId )
+  protected virtual Task<GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder> GetCertificateDemandMetadataForAcademyAndDepartmentInternalAsync( string
+  academyId,   string
+  departmentId )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder : ResponseBuilder<GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -1204,12 +1360,12 @@ public async Task<IActionResult>Async(academyId,departmentId)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -1220,12 +1376,12 @@ public async Task<IActionResult>Async(academyId,departmentId)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -1260,38 +1416,58 @@ public async Task<IActionResult>Async(academyId,departmentId)
 /// <response code="200"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}", Name = "")]
+[Route("/v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}", Name = "GetCertificateDemandTemplate")]
 [HttpGet]
-public async Task<IActionResult>Async(certificateDemandId,certificateTemplateId)
+
+
+
+
+public async Task<IActionResult>
+    GetCertificateDemandTemplateAsync(
+      Guid
+  certificateDemandId 
+    
+    
+    
+    , 
+      Guid
+  certificateTemplateId 
+    
+    
+    
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(certificateDemandId, certificateTemplateId);
+     var responseBuilder = await GetCertificateDemandTemplateInternalAsync(certificateDemandId, certificateTemplateId);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( certificateDemandId,   certificateTemplateId )
+  protected virtual Task<GetCertificateDemandTemplateResponseBuilder> GetCertificateDemandTemplateInternalAsync( Guid
+  certificateDemandId,   Guid
+  certificateTemplateId )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetCertificateDemandTemplateResponseBuilder : ResponseBuilder<GetCertificateDemandTemplateResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetCertificateDemandTemplateResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandTemplateResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandTemplateResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -1302,12 +1478,12 @@ public async Task<IActionResult>Async(certificateDemandId,certificateTemplateId)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandTemplateResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandTemplateResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -1318,12 +1494,12 @@ public async Task<IActionResult>Async(certificateDemandId,certificateTemplateId)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandTemplateResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandTemplateResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -1352,38 +1528,44 @@ public async Task<IActionResult>Async(certificateDemandId,certificateTemplateId)
 /// <response code="200"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands/template", Name = "")]
+[Route("/v1/features/certificates/demands/template", Name = "GetCertificateDemandTemplates")]
 [HttpGet]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    GetCertificateDemandTemplatesAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await GetCertificateDemandTemplatesInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<GetCertificateDemandTemplatesResponseBuilder> GetCertificateDemandTemplatesInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetCertificateDemandTemplatesResponseBuilder : ResponseBuilder<GetCertificateDemandTemplatesResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetCertificateDemandTemplatesResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandTemplatesResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandTemplatesResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -1394,12 +1576,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandTemplatesResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandTemplatesResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -1410,12 +1592,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandTemplatesResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandTemplatesResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -1447,38 +1629,51 @@ public async Task<IActionResult>Async()
 /// <response code="200"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands/template/{academy}", Name = "")]
+[Route("/v1/features/certificates/demands/template/{academy}", Name = "GetCertificateDemandTemplatesForAcademy")]
 [HttpGet]
-public async Task<IActionResult>Async(academy)
+
+
+
+
+public async Task<IActionResult>
+    GetCertificateDemandTemplatesForAcademyAsync(
+      string
+  academy 
+    
+    
+    
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(academy);
+     var responseBuilder = await GetCertificateDemandTemplatesForAcademyInternalAsync(academy);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( academy )
+  protected virtual Task<GetCertificateDemandTemplatesForAcademyResponseBuilder> GetCertificateDemandTemplatesForAcademyInternalAsync( string
+  academy )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetCertificateDemandTemplatesForAcademyResponseBuilder : ResponseBuilder<GetCertificateDemandTemplatesForAcademyResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetCertificateDemandTemplatesForAcademyResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandTemplatesForAcademyResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandTemplatesForAcademyResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -1489,12 +1684,12 @@ public async Task<IActionResult>Async(academy)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandTemplatesForAcademyResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandTemplatesForAcademyResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -1505,12 +1700,12 @@ public async Task<IActionResult>Async(academy)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandTemplatesForAcademyResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandTemplatesForAcademyResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -1545,38 +1740,58 @@ public async Task<IActionResult>Async(academy)
 /// <response code="200"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/certificates/demands/template/{academy}/{department}", Name = "")]
+[Route("/v1/features/certificates/demands/template/{academy}/{department}", Name = "GetCertificateDemandTemplatesForAcademyAndDepartment")]
 [HttpGet]
-public async Task<IActionResult>Async(academy,department)
+
+
+
+
+public async Task<IActionResult>
+    GetCertificateDemandTemplatesForAcademyAndDepartmentAsync(
+      string
+  academy 
+    
+    
+    
+    , 
+      string
+  department 
+    
+    
+    
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(academy, department);
+     var responseBuilder = await GetCertificateDemandTemplatesForAcademyAndDepartmentInternalAsync(academy, department);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( academy,   department )
+  protected virtual Task<GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder> GetCertificateDemandTemplatesForAcademyAndDepartmentInternalAsync( string
+  academy,   string
+  department )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder : ResponseBuilder<GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -1587,12 +1802,12 @@ public async Task<IActionResult>Async(academy,department)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -1603,12 +1818,12 @@ public async Task<IActionResult>Async(academy,department)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -1639,38 +1854,51 @@ public async Task<IActionResult>Async(academy,department)
 ///</param>
 /// <response code="200"></response>
 /// <response code="401"></response>
-[Route("/v1/features", Name = "")]
+[Route("/v1/features", Name = "GetFeatures")]
 [HttpGet]
-public async Task<IActionResult>Async(workspaceId)
+
+
+
+
+public async Task<IActionResult>
+    GetFeaturesAsync(
+    
+    
+    
+     Guid
+  workspaceId 
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(workspaceId);
+     var responseBuilder = await GetFeaturesInternalAsync(workspaceId);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( workspaceId )
+  protected virtual Task<GetFeaturesResponseBuilder> GetFeaturesInternalAsync( Guid
+  workspaceId )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetFeaturesResponseBuilder : ResponseBuilder<GetFeaturesResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetFeaturesResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetFeaturesResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetFeaturesResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -1681,12 +1909,12 @@ public async Task<IActionResult>Async(workspaceId)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetFeaturesResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetFeaturesResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -1718,38 +1946,51 @@ public async Task<IActionResult>Async(workspaceId)
 /// <response code="200"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/features/{featureId}", Name = "")]
+[Route("/v1/features/{featureId}", Name = "GetFeatureById")]
 [HttpGet]
-public async Task<IActionResult>Async(featureId)
+
+
+
+
+public async Task<IActionResult>
+    GetFeatureByIdAsync(
+      Guid
+  featureId 
+    
+    
+    
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(featureId);
+     var responseBuilder = await GetFeatureByIdInternalAsync(featureId);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( featureId )
+  protected virtual Task<GetFeatureByIdResponseBuilder> GetFeatureByIdInternalAsync( Guid
+  featureId )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetFeatureByIdResponseBuilder : ResponseBuilder<GetFeatureByIdResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetFeatureByIdResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetFeatureByIdResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetFeatureByIdResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -1760,12 +2001,12 @@ public async Task<IActionResult>Async(featureId)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetFeatureByIdResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetFeatureByIdResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -1776,12 +2017,12 @@ public async Task<IActionResult>Async(featureId)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetFeatureByIdResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetFeatureByIdResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -1810,38 +2051,44 @@ public async Task<IActionResult>Async(featureId)
 /// <response code="202"></response>
 /// <response code="400"></response>
 /// <response code="401"></response>
-[Route("/v1/mail", Name = "")]
+[Route("/v1/mail", Name = "SendMail")]
 [HttpPost]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    SendMailAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await SendMailInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<SendMailResponseBuilder> SendMailInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class SendMailResponseBuilder : ResponseBuilder<SendMailResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private SendMailResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build202(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static SendMailResponseBuilder Build202(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)202, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new SendMailResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("202" == "default" ? 500 : 202);
             }
@@ -1852,12 +2099,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static SendMailResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new SendMailResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -1868,12 +2115,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static SendMailResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new SendMailResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -1901,38 +2148,44 @@ public async Task<IActionResult>Async()
 
 /// <response code="200"></response>
 /// <response code="401"></response>
-[Route("/v1/users", Name = "")]
+[Route("/v1/users", Name = "GetUsers")]
 [HttpGet]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    GetUsersAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await GetUsersInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<GetUsersResponseBuilder> GetUsersInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetUsersResponseBuilder : ResponseBuilder<GetUsersResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetUsersResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetUsersResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetUsersResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -1943,12 +2196,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetUsersResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetUsersResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -1977,38 +2230,44 @@ public async Task<IActionResult>Async()
 /// <response code="400"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/users", Name = "")]
+[Route("/v1/users", Name = "UpdateUser")]
 [HttpPatch]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    UpdateUserAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await UpdateUserInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<UpdateUserResponseBuilder> UpdateUserInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class UpdateUserResponseBuilder : ResponseBuilder<UpdateUserResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private UpdateUserResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static UpdateUserResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new UpdateUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -2019,12 +2278,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static UpdateUserResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new UpdateUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -2035,12 +2294,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static UpdateUserResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new UpdateUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -2051,12 +2310,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static UpdateUserResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new UpdateUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -2084,38 +2343,44 @@ public async Task<IActionResult>Async()
 /// <response code="200"></response>
 /// <response code="400"></response>
 /// <response code="401"></response>
-[Route("/v1/users", Name = "")]
+[Route("/v1/users", Name = "CreateUser")]
 [HttpPut]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    CreateUserAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await CreateUserInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<CreateUserResponseBuilder> CreateUserInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class CreateUserResponseBuilder : ResponseBuilder<CreateUserResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private CreateUserResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static CreateUserResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new CreateUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -2126,12 +2391,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static CreateUserResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new CreateUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -2142,12 +2407,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static CreateUserResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new CreateUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -2175,38 +2440,44 @@ public async Task<IActionResult>Async()
 /// <response code="204"></response>
 /// <response code="400"></response>
 /// <response code="401"></response>
-[Route("/v1/users", Name = "")]
+[Route("/v1/users", Name = "DeleteUser")]
 [HttpDelete]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    DeleteUserAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await DeleteUserInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<DeleteUserResponseBuilder> DeleteUserInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class DeleteUserResponseBuilder : ResponseBuilder<DeleteUserResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private DeleteUserResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build204(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static DeleteUserResponseBuilder Build204(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)204, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new DeleteUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("204" == "default" ? 500 : 204);
             }
@@ -2217,12 +2488,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static DeleteUserResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new DeleteUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -2233,12 +2504,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static DeleteUserResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new DeleteUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -2267,38 +2538,44 @@ public async Task<IActionResult>Async()
 /// <response code="200"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/users/current", Name = "")]
+[Route("/v1/users/current", Name = "GetCurrentUser")]
 [HttpGet]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    GetCurrentUserAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await GetCurrentUserInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<GetCurrentUserResponseBuilder> GetCurrentUserInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetCurrentUserResponseBuilder : ResponseBuilder<GetCurrentUserResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetCurrentUserResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCurrentUserResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCurrentUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -2309,12 +2586,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCurrentUserResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCurrentUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -2325,12 +2602,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetCurrentUserResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetCurrentUserResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -2358,38 +2635,44 @@ public async Task<IActionResult>Async()
 
 /// <response code="200"></response>
 /// <response code="400"></response>
-[Route("/v1/login", Name = "")]
+[Route("/v1/login", Name = "Login")]
 [HttpPost]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    LoginAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await LoginInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<LoginResponseBuilder> LoginInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class LoginResponseBuilder : ResponseBuilder<LoginResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private LoginResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static LoginResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new LoginResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -2400,12 +2683,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static LoginResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new LoginResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -2433,38 +2716,44 @@ public async Task<IActionResult>Async()
 
 /// <response code="201"></response>
 /// <response code="400"></response>
-[Route("/v1/register", Name = "")]
+[Route("/v1/register", Name = "Register")]
 [HttpPost]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    RegisterAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await RegisterInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<RegisterResponseBuilder> RegisterInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class RegisterResponseBuilder : ResponseBuilder<RegisterResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private RegisterResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build201(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static RegisterResponseBuilder Build201(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)201, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new RegisterResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("201" == "default" ? 500 : 201);
             }
@@ -2475,12 +2764,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static RegisterResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new RegisterResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -2514,38 +2803,58 @@ public async Task<IActionResult>Async()
 ///</param>
 /// <response code="200"></response>
 /// <response code="400"></response>
-[Route("/v1/confirm", Name = "")]
+[Route("/v1/confirm", Name = "ConfirmMail")]
 [HttpGet]
-public async Task<IActionResult>Async(Email,Token)
+
+
+
+
+public async Task<IActionResult>
+    ConfirmMailAsync(
+    
+    
+    
+     string
+  Email 
+    , 
+    
+    
+    
+     string
+  Token 
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(Email, Token);
+     var responseBuilder = await ConfirmMailInternalAsync(Email, Token);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( Email,   Token )
+  protected virtual Task<ConfirmMailResponseBuilder> ConfirmMailInternalAsync( string
+  Email,   string
+  Token )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class ConfirmMailResponseBuilder : ResponseBuilder<ConfirmMailResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private ConfirmMailResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static ConfirmMailResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new ConfirmMailResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -2556,12 +2865,12 @@ public async Task<IActionResult>Async(Email,Token)
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static ConfirmMailResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new ConfirmMailResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -2589,38 +2898,44 @@ public async Task<IActionResult>Async(Email,Token)
 
 /// <response code="204"></response>
 /// <response code="400"></response>
-[Route("/v1/forgot", Name = "")]
+[Route("/v1/forgot", Name = "ForgotPassword")]
 [HttpPost]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    ForgotPasswordAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await ForgotPasswordInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<ForgotPasswordResponseBuilder> ForgotPasswordInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class ForgotPasswordResponseBuilder : ResponseBuilder<ForgotPasswordResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private ForgotPasswordResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build204(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static ForgotPasswordResponseBuilder Build204(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)204, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new ForgotPasswordResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("204" == "default" ? 500 : 204);
             }
@@ -2631,12 +2946,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static ForgotPasswordResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new ForgotPasswordResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -2664,38 +2979,44 @@ public async Task<IActionResult>Async()
 
 /// <response code="200"></response>
 /// <response code="400"></response>
-[Route("/v1/reset", Name = "")]
+[Route("/v1/reset", Name = "ResetPassword")]
 [HttpPost]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    ResetPasswordAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await ResetPasswordInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<ResetPasswordResponseBuilder> ResetPasswordInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class ResetPasswordResponseBuilder : ResponseBuilder<ResetPasswordResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private ResetPasswordResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static ResetPasswordResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new ResetPasswordResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -2706,12 +3027,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static ResetPasswordResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new ResetPasswordResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -2739,38 +3060,44 @@ public async Task<IActionResult>Async()
 
 /// <response code="200"></response>
 /// <response code="401"></response>
-[Route("/v1/workspaces", Name = "")]
+[Route("/v1/workspaces", Name = "GetWorkspaces")]
 [HttpGet]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    GetWorkspacesAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await GetWorkspacesInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<GetWorkspacesResponseBuilder> GetWorkspacesInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetWorkspacesResponseBuilder : ResponseBuilder<GetWorkspacesResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetWorkspacesResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetWorkspacesResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetWorkspacesResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -2781,12 +3108,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetWorkspacesResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetWorkspacesResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -2814,38 +3141,44 @@ public async Task<IActionResult>Async()
 /// <response code="200"></response>
 /// <response code="400"></response>
 /// <response code="401"></response>
-[Route("/v1/workspaces", Name = "")]
+[Route("/v1/workspaces", Name = "PutWorkspace")]
 [HttpPut]
-public async Task<IActionResult>Async()
+
+
+
+
+public async Task<IActionResult>
+    PutWorkspaceAsync()
+
 
     {
-     var responseBuilder = await InternalAsync();
+     var responseBuilder = await PutWorkspaceInternalAsync();
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync()
+  protected virtual Task<PutWorkspaceResponseBuilder> PutWorkspaceInternalAsync()
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class PutWorkspaceResponseBuilder : ResponseBuilder<PutWorkspaceResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private PutWorkspaceResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static PutWorkspaceResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new PutWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -2856,12 +3189,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static PutWorkspaceResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new PutWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -2872,12 +3205,12 @@ public async Task<IActionResult>Async()
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static PutWorkspaceResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new PutWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -2910,38 +3243,51 @@ public async Task<IActionResult>Async()
 /// <response code="400"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/workspaces/{workspaceId}", Name = "")]
+[Route("/v1/workspaces/{workspaceId}", Name = "UpdateWorkspace")]
 [HttpPatch]
-public async Task<IActionResult>Async(workspaceId)
+
+
+
+
+public async Task<IActionResult>
+    UpdateWorkspaceAsync(
+      Guid
+  workspaceId 
+    
+    
+    
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(workspaceId);
+     var responseBuilder = await UpdateWorkspaceInternalAsync(workspaceId);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( workspaceId )
+  protected virtual Task<UpdateWorkspaceResponseBuilder> UpdateWorkspaceInternalAsync( Guid
+  workspaceId )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class UpdateWorkspaceResponseBuilder : ResponseBuilder<UpdateWorkspaceResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private UpdateWorkspaceResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static UpdateWorkspaceResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new UpdateWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
@@ -2952,12 +3298,12 @@ public async Task<IActionResult>Async(workspaceId)
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static UpdateWorkspaceResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new UpdateWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -2968,12 +3314,12 @@ public async Task<IActionResult>Async(workspaceId)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static UpdateWorkspaceResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new UpdateWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -2984,12 +3330,12 @@ public async Task<IActionResult>Async(workspaceId)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static UpdateWorkspaceResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new UpdateWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -3021,38 +3367,51 @@ public async Task<IActionResult>Async(workspaceId)
 /// <response code="400"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/workspaces/{workspaceId}", Name = "")]
+[Route("/v1/workspaces/{workspaceId}", Name = "DeleteWorkspace")]
 [HttpDelete]
-public async Task<IActionResult>Async(workspaceId)
+
+
+
+
+public async Task<IActionResult>
+    DeleteWorkspaceAsync(
+      Guid
+  workspaceId 
+    
+    
+    
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(workspaceId);
+     var responseBuilder = await DeleteWorkspaceInternalAsync(workspaceId);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( workspaceId )
+  protected virtual Task<DeleteWorkspaceResponseBuilder> DeleteWorkspaceInternalAsync( Guid
+  workspaceId )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class DeleteWorkspaceResponseBuilder : ResponseBuilder<DeleteWorkspaceResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private DeleteWorkspaceResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build204(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static DeleteWorkspaceResponseBuilder Build204(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)204, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new DeleteWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("204" == "default" ? 500 : 204);
             }
@@ -3063,12 +3422,12 @@ public async Task<IActionResult>Async(workspaceId)
 
 			
 
-			public static ResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static DeleteWorkspaceResponseBuilder Build400(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)400, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new DeleteWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("400" == "default" ? 500 : 400);
             }
@@ -3079,12 +3438,12 @@ public async Task<IActionResult>Async(workspaceId)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static DeleteWorkspaceResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new DeleteWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -3095,12 +3454,12 @@ public async Task<IActionResult>Async(workspaceId)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static DeleteWorkspaceResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new DeleteWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }
@@ -3128,43 +3487,56 @@ public async Task<IActionResult>Async(workspaceId)
 ///<param name="workspaceId">
 ///
 ///</param>
-/// <response code="204"></response>
+/// <response code="200"></response>
 /// <response code="401"></response>
 /// <response code="404"></response>
-[Route("/v1/workspaces/{workspaceId}", Name = "")]
+[Route("/v1/workspaces/{workspaceId}", Name = "GetWorkspace")]
 [HttpGet]
-public async Task<IActionResult>Async(workspaceId)
+
+
+
+
+public async Task<IActionResult>
+    GetWorkspaceAsync(
+      Guid
+  workspaceId 
+    
+    
+    
+    )
+
 
     {
-     var responseBuilder = await InternalAsync(workspaceId);
+     var responseBuilder = await GetWorkspaceInternalAsync(workspaceId);
 
         return responseBuilder.BuildResult();
     
     }
 
-  protected virtual Task<ResponseBuilder> InternalAsync( workspaceId )
+  protected virtual Task<GetWorkspaceResponseBuilder> GetWorkspaceInternalAsync( Guid
+  workspaceId )
             {
                 throw new NotImplementedException();
             }
 
-        public partial class ResponseBuilder : ResponseBuilder<ResponseBuilder>
+        public partial class GetWorkspaceResponseBuilder : ResponseBuilder<GetWorkspaceResponseBuilder>
         {
             [JsonConstructor]
-            private ResponseBuilder() { }
+            private GetWorkspaceResponseBuilder() { }
 
             
             
 
 			
 
-			public static ResponseBuilder Build204(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetWorkspaceResponseBuilder Build200(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
-				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)204, errorMessage, arguments) });
+				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetWorkspaceResponseBuilder()
 				   .WithContent(content)
-				   .WithStatusCode("204" == "default" ? 500 : 204);
+				   .WithStatusCode("200" == "default" ? 500 : 200);
             }
 
             
@@ -3173,12 +3545,12 @@ public async Task<IActionResult>Async(workspaceId)
 
 			
 
-			public static ResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetWorkspaceResponseBuilder Build401(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("401" == "default" ? 500 : 401);
             }
@@ -3189,12 +3561,12 @@ public async Task<IActionResult>Async(workspaceId)
 
 			
 
-			public static ResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
+			public static GetWorkspaceResponseBuilder Build404(string errorMessage = "", Dictionary<string,object> arguments=null)
             {
 				
 				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 				
-				return new ResponseBuilder()
+				return new GetWorkspaceResponseBuilder()
 				   .WithContent(content)
 				   .WithStatusCode("404" == "default" ? 500 : 404);
             }

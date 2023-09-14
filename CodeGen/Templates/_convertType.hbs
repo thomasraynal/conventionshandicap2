@@ -9,7 +9,11 @@ int
 {{/if_equals}}
 {{/if_equals}}
 {{#if_equals type 'string'}}
+{{#if_equals format 'guid'}}
+Guid
+{{else}}
 string
+{{/if_equals}}
 {{/if_equals}}
 {{#if_equals type 'boolean'}}
 bool

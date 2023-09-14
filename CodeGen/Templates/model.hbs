@@ -50,12 +50,7 @@ namespace {{uppercase_first_letter (get 'appNamespace')}}
 {{/if_equals}}
 
 {{#if_equals type 'object'}}
-{{#if_equals x-format 'exception'}}
-{{>Exception}}
-{{/if_equals }}
-{{#if_empty x-format }}
 {{>Object}}
-{{/if_empty }}
 {{/if_equals }}
 
 }
