@@ -1,0 +1,140 @@
+﻿
+
+{{#if_not_empty definitions}}
+
+{{set 'appNamespace' x-product.appNamespace}}
+
+{{#each definitions}}
+
+{{#if_not_empty x-skip}}
+
+{{else}}
+
+
+{{set 'name' @key}}
+
+### FILE _Generated/Models/{{get 'name'}}.Generated.cs
+
+using Anabasis.Api;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Swashbuckle.AspNetCore.Annotations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using Newtonsoft.Json.Converters;
+
+
+{{#each ../x-product.appUsing}}
+using {{this}};
+{{/each}}
+
+namespace {{uppercase_first_letter (get 'appNamespace')}}
+{
+
+{{#if_not_equals type 'object'}}
+  {{#if_not_equals type 'array'}}
+        {{#if_empty enum }}
+          {{>Object}}
+        {{/if_empty }}
+      {{/if_equals }}
+  {{/if_not_equals }}
+{{/if_not_equals }}
+
+{{#if_equals type 'string'}}
+        {{#if_not_empty enum }}
+          {{>Enum}}
+        {{/if_not_empty }}
+{{/if_equals}}
+
+{{#if_equals type 'object'}}
+{{>Object}}
+{{/if_equals }}
+
+}
+{{/each}}
+
+
+{{/if_not_empty}}
+
+{{/each}}
+
+{{/if_not_empty}}
+
+
+
+
+{{#if_not_empty components.schemas}}
+
+{{set 'appNamespace' x-product.appNamespace}}
+
+{{#each components.schemas}}
+
+{{set 'name' @key}}
+
+{{#if_not_empty x-skip}}
+
+{{else}}
+
+### FILE _Generated/Models/{{get 'name'}}.Generated.cs
+
+using Anabasis.Api;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Swashbuckle.AspNetCore.Annotations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using Newtonsoft.Json.Converters;
+
+
+{{#each ../x-product.appUsing}}
+using {{this}};
+{{/each}}
+
+namespace {{uppercase_first_letter (get 'appNamespace')}}
+{
+
+{{#if_not_equals type 'object'}}
+  {{#if_not_equals type 'array'}}
+        {{#if_empty enum }}
+          {{>Object}}
+        {{/if_empty }}
+      {{/if_equals }}
+  {{/if_not_equals }}
+{{/if_not_equals }}
+
+{{#if_equals type 'string'}}
+        {{#if_not_empty enum }}
+          {{>Enum}}
+        {{/if_not_empty }}
+{{/if_equals}}
+
+{{#if_equals type 'object'}}
+{{>Object}}
+{{/if_equals }}
+
+}
+{{/each}}
+
+{{/if_not_empty}}
+
+{{/each}}
+
+
+{{/if_not_empty}}
+

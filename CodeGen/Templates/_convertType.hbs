@@ -1,6 +1,10 @@
+{{#if_not_empty x-type}}
+{{x-type}}
+{{else}}
 {{#if_not_empty x-refName}}
 {{uppercase_first_letter x-refName}}
 {{else}}
+{{#if_not_empty type}}
 {{#if_equals type 'integer'}}
 {{#if_equals format 'int64'}}
 long
@@ -21,4 +25,23 @@ bool
 {{#if_equals type 'array'}}
  {{>ConvertType items }}[]
 {{/if_equals}}
+{{#if_equals type 'object'}}
+{{#if_not_empty additionalProperties}}
+Dictionary<string, {{>ConvertType additionalProperties }}>
+{{else}}
+{{#if_not_empty properties}}
+{{#with properties}}
+{{#if_equals file.format 'binary'}}
+IFormFile
+{{/if_equals}}
+{{/with}}
+{{else}}
+object
+{{/if_not_empty}}
+{{/if_not_empty }}  
+{{/if_equals}}
+{{else}}
+object
+{{/if_not_empty }}  
+{{/if_not_empty}}
 {{/if_not_empty}}

@@ -6,7 +6,7 @@
 public enum {{uppercase_first_letter @key}}
 {
     {{#each enum}}
-    [EnumMember]
-    @{{uppercase_first_letter .}},
+    [EnumMember(Value = "{{.}}")]
+    @{{.}},
     {{/each}}
 }

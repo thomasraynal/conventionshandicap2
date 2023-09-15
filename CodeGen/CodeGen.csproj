@@ -11,4 +11,8 @@
 		<PackageReference Include="Anabasis.Common" Version="1.0.194" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Controllers\" />
+	</ItemGroup>
+
 </Project>

@@ -17,6 +17,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 {{#each x-product.appUsing}}
 using {{this}};
@@ -52,19 +53,30 @@ public abstract partial class {{uppercase_first_letter x-product.appName}}Contro
 {{#each responses}}
 /// <response code="{{@key}}">{{{message}}}</response>
 {{/each}}
+
+
 [Route("{{get 'path'}}", Name = "{{uppercase_first_letter operationId}}")]
 [Http{{uppercase_first_letter (get 'httpMethod')}}]
-
-
+{{#each responses}}
+{{#one_line}}[SwaggerResponse({{@key}}, 
+{{#if_not_empty schema}}type: typeof({{schema.x-refName}}),{{/if_not_empty}}
+{{#if_not_empty content}}  {{#with content.[0]}}type: typeof({{>ConvertType [0].schema}}), {{/with}}{{/if_not_empty}} 
+Description = "{{message}}")]{{/one_line}}{{/each}}[ApiExplorerSettings(GroupName = "{{get 'path'}}")][SwaggerOperation("{{uppercase_first_letter operationId}}")]
 {{set 'operationId' operationId}}
-
-public async Task<IActionResult>
-    {{uppercase_first_letter operationId}}Async({{#each parameters}}
+public async Task<IActionResult>{{uppercase_first_letter operationId}}Async(
+    {{#each parameters}}
     {{#if_equals in 'path'}} {{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}} {{/if_equals}}
     {{#if_equals in 'body'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_equals}}
     {{#if_equals in 'header'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_equals}}
     {{#if_equals in 'query'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}} {{/if_equals}}
-    {{#unless @last}}, {{/unless}}{{/each}})
+    {{#unless @last}}, {{/unless}}{{/each}}
+        {{#if_not_empty requestBody}} 
+            {{#if_not_empty parameters}},{{/if_not_empty}}
+            {{#with requestBody.content.[0]}}
+              {{>ConvertType [0].schema}} requestBody
+            {{/with}}
+    {{/if_not_empty}}
+    )
 
 
     {
