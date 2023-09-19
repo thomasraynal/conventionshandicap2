@@ -14,4 +14,22 @@
     <PackageReference Include="Nuke.Common" Version="6.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="CodeGenTemplates\controller.hbs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CodeGenTemplates\definition.hbs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CodeGenTemplates\_convertType.hbs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CodeGenTemplates\_enum.hbs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CodeGenTemplates\_object.hbs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

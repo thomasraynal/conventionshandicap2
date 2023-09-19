@@ -6,6 +6,15 @@
     "build": {
       "type": "object",
       "properties": {
+        "CodeGenForce": {
+          "type": "boolean"
+        },
+        "CodeGenProjectKind": {
+          "type": "string"
+        },
+        "CodeGenProjectName": {
+          "type": "string"
+        },
         "Configuration": {
           "type": "string",
           "description": "Configuration to build - Default is 'Debug' (local) or 'Release' (server)",
@@ -72,8 +81,10 @@
           "items": {
             "type": "string",
             "enum": [
+              "CodeGen",
               "DeployHeroku",
               "HerokuLogin",
+              "InstallCodeGenUp",
               "PushHeroku"
             ]
           }
@@ -88,8 +99,10 @@
           "items": {
             "type": "string",
             "enum": [
+              "CodeGen",
               "DeployHeroku",
               "HerokuLogin",
+              "InstallCodeGenUp",
               "PushHeroku"
             ]
           }

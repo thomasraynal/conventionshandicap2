@@ -1,5 +1,0 @@
-//todo:
-
-generate project
-generate dependencies
-add project nuget or dependencies
