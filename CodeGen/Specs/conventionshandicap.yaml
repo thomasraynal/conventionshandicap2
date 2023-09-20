@@ -6,6 +6,8 @@ x-product:
     appName: conventionsHandicapApi
     appNamespace: conventionsHandicap
     appUsing : []
+    appProjectReferences : []
+    appPackageReferences : []
 paths:
   /v1/referential/academies:
     get:

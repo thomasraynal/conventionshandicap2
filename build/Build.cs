@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using CodeGen;
 using Microsoft.Build.ObjectModelRemoting;
 using Microsoft.Build.Utilities;
 using Nuke.Common;
@@ -16,59 +17,18 @@ using Nuke.Common.Utilities.Collections;
 using static Nuke.Common.EnvironmentInfo;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
+using static Nuke.Common.IO.XmlTasks;
+using static Nuke.Common.Tools.DotNet.DotNetTasks;
+using Logger = Serilog.Log;
 
 [CheckBuildProjectConfigurations]
 class Build : NukeBuild
 {
-    public static int Main() => Execute<Build>(x => x.DeployHeroku);
+    public static int Main() => Execute<Build>(build => build.DeployHeroku);
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
     [Solution] readonly Solution Solution;
-
-    //public static AbsolutePath DotNetNewIfNotExists(ProjectKind kind, string name, AbsolutePath directory,
-    //bool useOldFramework)
-    //{
-    //    var projFile = directory / $"{name}.csproj";
-    //    if (!FileExists(projFile))
-    //    {
-
-    //        DotNet($"new {kind.GetDotNetNewKind()} -n {name} -f {kind.GetTargetFramework(useOldFramework)} -o {directory} --force");
-
-    //        //pending dotnet new templates
-    //        {
-    //            var generatedNetCoreVersion = "netcoreapp2.1";
-    //            var targetNetCoreVersion = "netcoreapp2.2";
-    //            var netFrameworkVersion = "net462";
-
-    //            var netVersionReplacement = useOldFramework ? netFrameworkVersion : targetNetCoreVersion;
-
-    //            var newProjFileContent = File.ReadAllText(projFile).Replace(generatedNetCoreVersion, netVersionReplacement);
-
-    //            File.WriteAllText(projFile, newProjFileContent);
-    //        }
-
-    //        // TODO: GetDotNetNewKind should also give instructions for cleanup, so the maintenance is in the same place
-    //        switch (kind)
-    //        {
-    //            case ProjectKind.ClassLib:
-    //                DeleteFile(directory / "Class1.cs");
-    //                break;
-    //            case ProjectKind.WebApi:
-    //                DeleteDirectory(directory / "Controllers");
-    //                break;
-    //            case ProjectKind.Tests:
-    //                DeleteFile(directory / "UnitTest1.cs");
-    //                break;
-    //            case ProjectKind.Console:
-    //                // leave program.cs
-    //                break;
-    //            default:
-    //                throw new ArgumentOutOfRangeException(nameof(kind));
-    //        }
-    //    }
-    //    return projFile;
-    //}
 
     [Parameter]
     public bool CodeGenForce;
@@ -81,15 +41,74 @@ class Build : NukeBuild
 
     private const string CodeGenDotNetFrameworkVersion = "net6.0";
 
+    private static string GetPackageVersionInternal(string projectPath, string packageName)
+    {
+        return XmlPeek(projectPath, $"/Project/ItemGroup/PackageReference[@Include='{packageName}']/@Version").FirstOrDefault();
+    }
+
+    public static bool HasPackageVersion(string projectPath, string packageName, string expectedVersion)
+    {
+        return GetPackageVersionInternal(projectPath, packageName) == expectedVersion;
+    }
+
+    public static bool HasPackageVersion(AbsolutePath project, string packageName, string expectedVersion)
+    {
+       return GetPackageVersionInternal(project, packageName) == expectedVersion;
+    }
+
+    public static void DotNetAddReference(AbsolutePath projectPath, AbsolutePath referenceToAddProjectPath)
+    {
+        var projectReferences = XmlPeek(projectPath, $"/Project/ItemGroup/ProjectReference/@Include");
+        var projectDirectory = Path.GetDirectoryName(projectPath);
+
+        foreach (var projectReference in projectReferences)
+        {
+            try
+            {
+                var path = (AbsolutePath)Path.Combine(projectDirectory, projectReference);
+
+                if (path.Equals(referenceToAddProjectPath))
+                {
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Warning(ex.Message);
+            }
+        }
+
+        DotNet($"add {projectPath} reference {referenceToAddProjectPath}");
+    }
+
+    public static void DotNetAddPackage(AbsolutePath projectPath, PackageDefinition packageDefinition)
+    {
+        if (!HasPackageVersion(projectPath, packageDefinition.Name, packageDefinition.Version))
+        {
+        
+            try
+            {
+                DotNet($"add {projectPath} package {packageDefinition.Name} -v {packageDefinition.Version}");
+            }
+            catch (Exception exception)
+            {
+                Logger.Warning($"There was an exception trying run a dotnet add with project {projectPath}, package {packageDefinition.Name}, version {packageDefinition.Version}");
+                Logger.Warning($"{exception}");
+            }
+
+        }
+    }
+
     Target CodeGenInstallCodeGenUp => _ => _
-     .Requires(() => CodeGenProjectKind, () => CodeGenProjectName, () => CodeGenProjectKind, () => CodeGenOpenApiSpecLocalPath)
-       .ProceedAfterFailure()
+      .Requires(() => CodeGenProjectKind, () => CodeGenProjectName, () => CodeGenProjectKind, () => CodeGenOpenApiSpecLocalPath)
+      .ProceedAfterFailure()
       .Executes(() =>
       {
           try
           {
 
-              var dotNetToolInstallOutputs = DotNetTasks.DotNetToolInstall((dotNetToolInstallSettings) =>
+              var dotNetToolInstallOutputs = DotNetToolInstall((dotNetToolInstallSettings) =>
               {
                   dotNetToolInstallSettings = dotNetToolInstallSettings.SetGlobal(true);
                   dotNetToolInstallSettings = dotNetToolInstallSettings.SetPackageName("CodegenUP");
@@ -100,13 +119,13 @@ class Build : NukeBuild
 
               foreach (var dotNetToolInstallOutput in dotNetToolInstallOutputs)
               {
-                  Console.WriteLine(dotNetToolInstallOutput.Text);
+                  Logger.Information(dotNetToolInstallOutput.Text);
               }
 
           }
           catch(Exception ex)
           {
-              Console.WriteLine(ex.ToString());
+              Logger.Information($"{ex}");
           }
 
       });
@@ -128,11 +147,11 @@ class Build : NukeBuild
               }
 
 
-              var dotNetNewOutputs = DotNetTasks.DotNet($"new {CodeGenProjectKind} -n {CodeGenProjectName} -f {CodeGenDotNetFrameworkVersion} -o ./src/{CodeGenProjectName} --force");
+              var dotNetNewOutputs = DotNet($"new {CodeGenProjectKind} -n {CodeGenProjectName} -f {CodeGenDotNetFrameworkVersion} -o ./src/{CodeGenProjectName} --force");
 
               foreach (var dotNetNewOutput in dotNetNewOutputs)
               {
-                  Console.WriteLine(dotNetNewOutput.Text);
+                  Logger.Information(dotNetNewOutput.Text);
               }
 
           }
