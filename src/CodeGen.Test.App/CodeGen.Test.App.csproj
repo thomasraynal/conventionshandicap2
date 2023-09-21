@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Anabasis.Api" Version="1.0.194" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CodeGen.Helpers\CodeGen.Helpers.csproj" />
+  </ItemGroup>
+
 </Project>

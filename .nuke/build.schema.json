@@ -9,6 +9,9 @@
         "CodeGenForce": {
           "type": "boolean"
         },
+        "CodeGenOpenApiSpecLocalPath": {
+          "type": "string"
+        },
         "CodeGenProjectKind": {
           "type": "string"
         },
@@ -81,10 +84,12 @@
           "items": {
             "type": "string",
             "enum": [
-              "CodeGen",
+              "CodeGenCreateProject",
+              "CodeGenGenerateFromOpenApiSpec",
+              "CodeGenInstallCodeGenUp",
+              "CodeGenParseApiSpec",
               "DeployHeroku",
               "HerokuLogin",
-              "InstallCodeGenUp",
               "PushHeroku"
             ]
           }
@@ -99,10 +104,12 @@
           "items": {
             "type": "string",
             "enum": [
-              "CodeGen",
+              "CodeGenCreateProject",
+              "CodeGenGenerateFromOpenApiSpec",
+              "CodeGenInstallCodeGenUp",
+              "CodeGenParseApiSpec",
               "DeployHeroku",
               "HerokuLogin",
-              "InstallCodeGenUp",
               "PushHeroku"
             ]
           }

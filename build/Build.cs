@@ -14,12 +14,17 @@ using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities.Collections;
+using YamlDotNet.Serialization.NamingConventions;
+using YamlDotNet.Serialization;
 using static Nuke.Common.EnvironmentInfo;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.IO.XmlTasks;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using Logger = Serilog.Log;
+using YamlDotNet.Core;
+using Anabasis.Common;
+using Microsoft.Azure.KeyVault.Models;
 
 [CheckBuildProjectConfigurations]
 class Build : NukeBuild
@@ -39,24 +44,11 @@ class Build : NukeBuild
     [Parameter]
     public string CodeGenOpenApiSpecLocalPath;
 
+    private CodeGenSpec CodeGenSpec;
+
     private const string CodeGenDotNetFrameworkVersion = "net6.0";
 
-    private static string GetPackageVersionInternal(string projectPath, string packageName)
-    {
-        return XmlPeek(projectPath, $"/Project/ItemGroup/PackageReference[@Include='{packageName}']/@Version").FirstOrDefault();
-    }
-
-    public static bool HasPackageVersion(string projectPath, string packageName, string expectedVersion)
-    {
-        return GetPackageVersionInternal(projectPath, packageName) == expectedVersion;
-    }
-
-    public static bool HasPackageVersion(AbsolutePath project, string packageName, string expectedVersion)
-    {
-       return GetPackageVersionInternal(project, packageName) == expectedVersion;
-    }
-
-    public static void DotNetAddReference(AbsolutePath projectPath, AbsolutePath referenceToAddProjectPath)
+    public static void DotNetAddReference(string projectPath, string referenceToAddProjectPath)
     {
         var projectReferences = XmlPeek(projectPath, $"/Project/ItemGroup/ProjectReference/@Include");
         var projectDirectory = Path.GetDirectoryName(projectPath);
@@ -65,9 +57,9 @@ class Build : NukeBuild
         {
             try
             {
-                var path = (AbsolutePath)Path.Combine(projectDirectory, projectReference);
+                var path = Path.Combine(projectDirectory, projectReference);
 
-                if (path.Equals(referenceToAddProjectPath))
+                if (path == referenceToAddProjectPath)
                 {
                     return;
                 }
@@ -82,26 +74,30 @@ class Build : NukeBuild
         DotNet($"add {projectPath} reference {referenceToAddProjectPath}");
     }
 
-    public static void DotNetAddPackage(AbsolutePath projectPath, PackageDefinition packageDefinition)
+    public static void DotNetAddPackage(string projectPath, PackageDefinition packageDefinition)
     {
-        if (!HasPackageVersion(projectPath, packageDefinition.Name, packageDefinition.Version))
+
+        try
         {
-        
-            try
+            var packageAddCommand = $"add {projectPath} package {packageDefinition.Name}";
+
+            if (null != packageDefinition.Version)
             {
-                DotNet($"add {projectPath} package {packageDefinition.Name} -v {packageDefinition.Version}");
-            }
-            catch (Exception exception)
-            {
-                Logger.Warning($"There was an exception trying run a dotnet add with project {projectPath}, package {packageDefinition.Name}, version {packageDefinition.Version}");
-                Logger.Warning($"{exception}");
+                packageAddCommand += $" -v {packageDefinition.Version}";
             }
 
+            DotNet(packageAddCommand);
         }
+        catch (Exception exception)
+        {
+            Logger.Warning($"There was an exception trying run a dotnet add with project {projectPath}, package {packageDefinition.Name}, version {packageDefinition.Version}");
+            Logger.Warning($"{exception}");
+        }
+
     }
 
     Target CodeGenInstallCodeGenUp => _ => _
-      .Requires(() => CodeGenProjectKind, () => CodeGenProjectName, () => CodeGenProjectKind, () => CodeGenOpenApiSpecLocalPath)
+      .Requires(() => CodeGenProjectKind, () => CodeGenProjectName, () => CodeGenOpenApiSpecLocalPath)
       .ProceedAfterFailure()
       .Executes(() =>
       {
@@ -130,36 +126,77 @@ class Build : NukeBuild
 
       });
 
-      Target CodeGenCreateProject => _ => _
+     Target CodeGenParseApiSpec=> _ => _
       .DependsOn(CodeGenInstallCodeGenUp)
-      .Requires(()=> CodeGenProjectKind, () => CodeGenProjectName, () => CodeGenProjectKind, () => CodeGenOpenApiSpecLocalPath)
+      .Requires(() => CodeGenProjectKind, () => CodeGenProjectName, () => CodeGenOpenApiSpecLocalPath)
+      .ProceedAfterFailure()
+      .Executes(() =>
+      {
+          var deserializer = new DeserializerBuilder()
+            .IgnoreUnmatchedProperties()
+          .Build();
+
+          var yamlString = File.ReadAllText(CodeGenOpenApiSpecLocalPath);
+
+          CodeGenSpec = deserializer.Deserialize<CodeGenSpec>(yamlString);
+
+          Logger.Information(CodeGenSpec.ToJson());
+
+      });
+
+    Target CodeGenCreateProject => _ => _
+      .DependsOn(CodeGenParseApiSpec)
+      .Requires(()=> CodeGenProjectKind, () => CodeGenProjectName,  () => CodeGenOpenApiSpecLocalPath)
       .Executes(() =>
       {
         
           var outputDirectory = $"./src/{CodeGenProjectName}";
+          var projectDirectory = $"./src/{CodeGenProjectName}";
+          var projectFilePath = Path.Combine(projectDirectory, CodeGenProjectName + ".csproj");
 
+          var doesProjectExist = Directory.Exists(outputDirectory);
 
-          if (CodeGenForce)
+          if (CodeGenForce || !doesProjectExist)
           {
-              if (Directory.Exists(outputDirectory))
+              if (doesProjectExist)
               {
                   Directory.Delete(outputDirectory, true);
               }
 
-
-              var dotNetNewOutputs = DotNet($"new {CodeGenProjectKind} -n {CodeGenProjectName} -f {CodeGenDotNetFrameworkVersion} -o ./src/{CodeGenProjectName} --force");
+              var dotNetNewOutputs = DotNet($"new {CodeGenProjectKind} -n {CodeGenProjectName} -f {CodeGenDotNetFrameworkVersion} -o {projectDirectory} --force");
 
               foreach (var dotNetNewOutput in dotNetNewOutputs)
               {
                   Logger.Information(dotNetNewOutput.Text);
               }
 
+              if (null != CodeGenSpec?.CodeGenSpecProduct?.AppPackageReferences)
+              {
+                  foreach (var appPackageReference in CodeGenSpec?.CodeGenSpecProduct?.AppPackageReferences)
+                  {
+                      Logger.Information($"Adding package reference {appPackageReference}");
+
+                      DotNetAddPackage(projectFilePath, new PackageDefinition() { Name = appPackageReference });
+                  }
+              }
+
+              if (null != CodeGenSpec?.CodeGenSpecProduct?.AppProjectReferences)
+              {
+                  foreach (var appProjectReference in CodeGenSpec?.CodeGenSpecProduct?.AppProjectReferences)
+                  {
+
+                      Logger.Information($"Adding project reference {appProjectReference}");
+
+                      DotNetAddReference(projectFilePath, appProjectReference);
+                  }
+              }
           }
+
       });
 
         Target CodeGenGenerateFromOpenApiSpec => _ => _
         .DependsOn(CodeGenCreateProject)
-        .Requires(() => CodeGenProjectKind, () => CodeGenProjectName, () => CodeGenProjectKind, () => CodeGenOpenApiSpecLocalPath)
+        .Requires(() => CodeGenProjectKind, () => CodeGenProjectName,  () => CodeGenOpenApiSpecLocalPath)
         .Executes(() =>
         {
 
@@ -170,8 +207,8 @@ class Build : NukeBuild
             {
                 Directory.Delete(outputDirectoryGeneratedFolder, true);
             }
- 
-            var startProcess = ProcessTasks.StartProcess("CodegenUP", $"-s {CodeGenOpenApiSpecLocalPath} -o {outputDirectory} -t ./_build/CodeGenTemplates", logOutput: true);
+
+            var startProcess = ProcessTasks.StartProcess("CodegenUP", $"-s {CodeGenOpenApiSpecLocalPath} -o {outputDirectory} -t {BuildProjectDirectory / "CodeGenTemplates"}", logOutput: true);
 
             if (!startProcess.WaitForExit())
             {
