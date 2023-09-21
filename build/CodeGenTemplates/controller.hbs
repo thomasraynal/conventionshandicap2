@@ -1,6 +1,4 @@
-﻿
-
-{{#if_not_empty paths}}
+﻿{{#if_not_empty paths}}
 
 ### FILE _Generated/Controllers/{{uppercase_first_letter x-product.appName}}ControllerBase.Generated.cs
 
@@ -18,8 +16,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
+using {{uppercase_first_letter x-product.appNamespace}}.Model;
 
-{{#each x-product.appUsing}}
+{{#each x-product.appUsings}}
 using {{this}};
 {{/each}}
 
@@ -46,6 +45,7 @@ public abstract partial class {{uppercase_first_letter x-product.appName}}Contro
 ///</summary>
 
 {{#each parameters}}
+///
 ///<param name="{{name}}">
 ///{{description}}
 ///</param>
@@ -58,41 +58,43 @@ public abstract partial class {{uppercase_first_letter x-product.appName}}Contro
 [Route("{{get 'path'}}", Name = "{{uppercase_first_letter operationId}}")]
 [Http{{uppercase_first_letter (get 'httpMethod')}}]
 {{#each responses}}
-{{#one_line}}[SwaggerResponse({{@key}}, 
+{{#one_line}}[SwaggerResponse({{@key}},
 {{#if_not_empty schema}}type: typeof({{schema.x-refName}}),{{/if_not_empty}}
-{{#if_not_empty content}}  {{#with content.[0]}}type: typeof({{>ConvertType [0].schema}}), {{/with}}{{/if_not_empty}} 
+{{#if_not_empty content}}  {{#with content.[0]}}type: typeof({{>ConvertType [0].schema}}), {{/with}}{{/if_not_empty}}
 Description = "{{message}}")]{{/one_line}}{{/each}}[ApiExplorerSettings(GroupName = "{{get 'path'}}")][SwaggerOperation("{{uppercase_first_letter operationId}}")]
 {{set 'operationId' operationId}}
-public async Task<IActionResult>{{uppercase_first_letter operationId}}Async(
+public async Task<IActionResult>
+    {{uppercase_first_letter operationId}}Async(
     {{#each parameters}}
     {{#if_equals in 'path'}} {{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}} {{/if_equals}}
     {{#if_equals in 'body'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_equals}}
     {{#if_equals in 'header'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_equals}}
     {{#if_equals in 'query'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}} {{/if_equals}}
     {{#unless @last}}, {{/unless}}{{/each}}
-        {{#if_not_empty requestBody}} 
-            {{#if_not_empty parameters}},{{/if_not_empty}}
-            {{#with requestBody.content.[0]}}
-              {{>ConvertType [0].schema}} requestBody
-            {{/with}}
+    {{#if_not_empty requestBody}}
+    {{#if_not_empty parameters}},{{/if_not_empty}}
+    {{#with requestBody.content.[0]}}
+    {{>ConvertType [0].schema}} requestBody
+    {{/with}}
     {{/if_not_empty}}
     )
 
 
     {
-     var responseBuilder = await {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{name}}{{#unless @last}}, {{/unless}}{{/each}});
+    var responseBuilder = await {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{name}}{{#unless @last}}, {{/unless}}{{/each}});
 
-        return responseBuilder.BuildResult();
-    
+    return responseBuilder.BuildResult();
+
     }
 
-  protected virtual Task<{{uppercase_first_letter operationId}}ResponseBuilder> {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{#if_not_equals in 'body'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_not_equals}}{{#if_equals in 'body'}}{{schema.x-refName}} {{name}}{{/if_equals}}{{#unless @last}}, {{/unless}} {{/each}})
-            {
-                throw new NotImplementedException();
-            }
+    protected virtual Task<{{uppercase_first_letter operationId}}ResponseBuilder>
+        {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{#if_not_equals in 'body'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_not_equals}}{{#if_equals in 'body'}}{{schema.x-refName}} {{name}}{{/if_equals}}{{#unless @last}}, {{/unless}} {{/each}})
+        {
+        throw new NotImplementedException();
+        }
 
         public partial class {{uppercase_first_letter operationId}}ResponseBuilder : ResponseBuilder<{{uppercase_first_letter operationId}}ResponseBuilder>
-        {
+            {
             [JsonConstructor]
             private {{uppercase_first_letter operationId}}ResponseBuilder() { }
 
@@ -100,51 +102,53 @@ public async Task<IActionResult>{{uppercase_first_letter operationId}}Async(
             {{set 'code' @key}}
             {{#if_equals @key 'default'}} public static {{uppercase_first_letter operationId}}ResponseBuilder Build{{set 'code'}}({{#if_not_empty schema}}{{schema.x-refName}} content{{/if_not_empty}})
             {
-				return new {{uppercase_first_letter operationId}}ResponseBuilder()
-				   {{#if_not_empty schema}}.WithContent(content){{/if_not_empty}}
-				   .WithStatusCode("{{@key}}" == "default" ? 500 : {{@key}});
+            return new {{uppercase_first_letter operationId}}ResponseBuilder()
+            {{#if_not_empty schema}}.WithContent(content){{/if_not_empty}}
+            .WithStatusCode("{{@key}}" == "default" ? 500 : {{@key}});
             } {{/if_equals}}
 
-			{{#if_not_equals @key 'default'}}{{#if_not_empty schema}}public static {{uppercase_first_letter (get 'operationId') }}ResponseBuilder Build{{@key}}({{#if_not_empty schema}}{{schema.x-refName}} content{{/if_not_empty}})
+            {{#if_not_equals @key 'default'}}{{#if_not_empty schema}}public static {{uppercase_first_letter (get 'operationId') }}ResponseBuilder Build{{@key}}({{#if_not_empty schema}}{{schema.x-refName}} content{{/if_not_empty}})
             {
-				return new {{uppercase_first_letter (get 'operationId') }}ResponseBuilder()
-				   {{#if_not_empty schema}}.WithContent(content){{/if_not_empty}}
-				   .WithStatusCode("{{@key}}" == "default" ? 500 : {{@key}});
+            return new {{uppercase_first_letter (get 'operationId') }}ResponseBuilder()
+            {{#if_not_empty schema}}.WithContent(content){{/if_not_empty}}
+            .WithStatusCode("{{@key}}" == "default" ? 500 : {{@key}});
 
             }{{/if_not_empty}}{{/if_not_equals}}
 
-			{{#if_not_equals @key 'default'}}public static {{uppercase_first_letter (get 'operationId') }}ResponseBuilder Build{{@key}}(string errorMessage = "{{{message}}}", Dictionary<string,object> arguments=null)
-            {
-				
-				var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode){{@key}}, errorMessage, arguments) });
-				
-				return new {{uppercase_first_letter (get 'operationId') }}ResponseBuilder()
-				   .WithContent(content)
-				   .WithStatusCode("{{@key}}" == "default" ? 500 : {{@key}});
-            }
-            {{/if_not_equals}}
+            {{#if_not_equals @key 'default'}}public static {{uppercase_first_letter (get 'operationId') }}ResponseBuilder Build{{@key}}(string errorMessage = "{{{message}}}", Dictionary<string,object>
+                arguments=null)
+                {
 
-            {{#if_not_empty schema}}public static ErrorResponseMessage GetDefaultErrorResponseMessage{{@key}}(string errorMessage = "{{{message}}}", Dictionary<string,object> arguments=null)
-            {
-                return new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode){{@key}}, errorMessage, arguments) });
-           
-            }{{/if_not_empty}}
-            {{/each}}
-        }
+                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode){{@key}}, errorMessage, arguments) });
 
+                return new {{uppercase_first_letter (get 'operationId') }}ResponseBuilder()
+                .WithContent(content)
+                .WithStatusCode("{{@key}}" == "default" ? 500 : {{@key}});
+                }
+                {{/if_not_equals}}
 
+                {{#if_not_empty schema}}public static ErrorResponseMessage GetDefaultErrorResponseMessage{{@key}}(string errorMessage = "{{{message}}}", Dictionary<string,object>
+                    arguments=null)
+                    {
+                    return new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode){{@key}}, errorMessage, arguments) });
 
-
+                    }{{/if_not_empty}}
+                    {{/each}}
+                    }
 
 
 
 
 
 
-{{/each}}
-{{/each}}
 
-    }
-}
 
-{{/if_not_empty}}
+
+
+                    {{/each}}
+                    {{/each}}
+
+                    }
+                    }
+
+                    {{/if_not_empty}}

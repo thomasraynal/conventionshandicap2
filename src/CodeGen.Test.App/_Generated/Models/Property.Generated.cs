@@ -17,7 +17,7 @@ using Newtonsoft.Json.Converters;
 
 
 
-namespace ConventionsHandicap
+namespace ConventionsHandicap.Model
 {
 
 

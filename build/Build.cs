@@ -158,6 +158,8 @@ class Build : NukeBuild
 
           if (CodeGenForce || !doesProjectExist)
           {
+              Logger.Information($"Creating project {projectFilePath}");
+
               if (doesProjectExist)
               {
                   Directory.Delete(outputDirectory, true);
@@ -190,6 +192,10 @@ class Build : NukeBuild
                       DotNetAddReference(projectFilePath, appProjectReference);
                   }
               }
+          }
+          else
+          {
+              Logger.Information($"Project {projectFilePath} already exist");
           }
 
       });

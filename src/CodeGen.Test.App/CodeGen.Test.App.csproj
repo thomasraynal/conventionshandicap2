@@ -1,14 +1,31 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Anabasis.Api" Version="1.0.194" />
+    <Content Include="..\ConventionsHandicap.EntityFramework\config.app.json" Link="config.app.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ConventionsHandicap.EntityFramework\config.app.production.json" Link="config.app.production.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ConventionsHandicap.EntityFramework\config.group.json" Link="config.group.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Anabasis.Api" Version="1.0.194" />
+	  <PackageReference Include="Anabasis.Common" Version="1.0.194" />
+	  <PackageReference Include="Anabasis.EntityFramework" Version="1.0.194" />
+	  <PackageReference Include="Anabasis.Identity" Version="1.0.194" />
+	  <PackageReference Include="Anabasis.TableStorage" Version="1.0.194" />
+	  <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
+	  <PackageReference Include="OpenXMLTemplates" Version="2.0.4" />
   </ItemGroup>
 
   <ItemGroup>

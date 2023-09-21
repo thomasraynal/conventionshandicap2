@@ -5,6 +5,7 @@ info:
 x-product: 
     appName: conventionsHandicapApi
     appNamespace: conventionsHandicap
+    appUsings: []
     appProjectReferences : ["src/CodeGen.Helpers/CodeGen.Helpers.csproj"]
     appPackageReferences : ['Anabasis.Api']
 paths:

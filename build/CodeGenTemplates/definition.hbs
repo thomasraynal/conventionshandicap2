@@ -32,11 +32,11 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json.Converters;
 
 
-{{#each ../x-product.appUsing}}
+{{#each ../x-product.appUsings}}
 using {{this}};
 {{/each}}
 
-namespace {{uppercase_first_letter (get 'appNamespace')}}
+namespace {{uppercase_first_letter (get 'appNamespace')}}.Model
 {
 
 {{#if_not_equals type 'object'}}
@@ -106,7 +106,7 @@ using Newtonsoft.Json.Converters;
 using {{this}};
 {{/each}}
 
-namespace {{uppercase_first_letter (get 'appNamespace')}}
+namespace {{uppercase_first_letter (get 'appNamespace')}}.Model
 {
 
 {{#if_not_equals type 'object'}}
