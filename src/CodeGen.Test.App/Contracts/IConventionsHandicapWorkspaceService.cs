@@ -1,8 +1,6 @@
-﻿using ConventionsHandicap.Controller.Dto;
-using ConventionsHandicap.EntityFramework;
+﻿using ConventionsHandicap.EntityFramework;
 using ConventionsHandicap.Model;
 using ConventionsHandicap.Model.Contracts;
-using ConventionsHandicap.App.Controllers.Dto;
 using System;
 using System.Threading.Tasks;
 

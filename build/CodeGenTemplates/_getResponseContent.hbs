@@ -1,0 +1,9 @@
+{{#if_not_empty schema}}
+{{ >ConvertType schema}} content
+{{/if_not_empty}}
+
+{{#if_not_empty content}}
+{{#with content.[0]}}
+{{ >ConvertType [0].schema }} content
+{{/with}}
+{{/if_not_empty}}   

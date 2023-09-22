@@ -22,21 +22,21 @@ namespace ConventionsHandicap.Model
 
 
 
-public partial class Academy 
+public partial class ForgotPasswordDto 
 { 
-    
+    [Required(ErrorMessage = "email is required")]
     public string
-?   Name{get; set;}
-
-    
-    public  Department
-[]
-?   Departments{get; set;}
+   Email{get; set;}
 
 }
 
 
 }
+
+
+
+
+
 
 
 

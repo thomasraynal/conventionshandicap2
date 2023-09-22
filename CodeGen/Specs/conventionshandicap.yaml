@@ -5,8 +5,8 @@ info:
 x-product: 
     appName: conventionsHandicapApi
     appNamespace: conventionsHandicap
-    appUsings: []
-    appProjectReferences : ["src/CodeGen.Helpers/CodeGen.Helpers.csproj"]
+    appUsings: ['ConventionsHandicap.EntityFramework']
+    appProjectReferences : ['src/CodeGen.Helpers/CodeGen.Helpers.csproj']
     appPackageReferences : ['Anabasis.Api']
 paths:
   /v1/referential/academies:
@@ -1143,6 +1143,7 @@ paths:
 components:
   schemas:
     Academy:
+      x-codegen-ignore: true
       type: object
       properties:
         name:
@@ -1262,6 +1263,7 @@ components:
           type: string
       additionalProperties: false
     ConventionsHandicapFeature:
+      x-codegen-ignore: true
       type: object
       properties:
         id:
@@ -1403,7 +1405,7 @@ components:
           nullable: true
       additionalProperties: false
     ErrorResponseMessage:
-      x-skip: true
+      x-codegen-ignore: true
       required:
         - errors
       type: object
@@ -1424,6 +1426,7 @@ components:
       additionalProperties: false
     ConventionsHandicapWorkspace:
       type: object
+      x-codegen-ignore: true
       properties:
         id:
           type: string
@@ -1595,7 +1598,7 @@ components:
           type: boolean
       additionalProperties: false
     UserErrorMessage:
-      x-skip: true
+      x-codegen-ignore: true
       required:
         - httpStatusCode
         - message

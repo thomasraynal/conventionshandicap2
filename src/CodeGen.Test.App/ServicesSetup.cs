@@ -2,9 +2,6 @@
 using Anabasis.Common;
 using Anabasis.Identity;
 using ConventionsHandicap.App.Contracts;
-using ConventionsHandicap.App.Features.CertificateDemand.Contracts;
-using ConventionsHandicap.App.Features.CertificateDemand.Services;
-using ConventionsHandicap.App.Features.CertificateDemand.Shared;
 using ConventionsHandicap.App.Services;
 using ConventionsHandicap.App.Shared;
 using ConventionsHandicap.EntityFramework;
@@ -34,15 +31,15 @@ namespace ConventionsHandicap.App
             serviceCollection.AddTransient<IUserMailService, ConventionsHandicapUserMailService>();
             serviceCollection.AddTransient<IConventionsHandicapWorkspaceService, ConventionsHandicapWorkspaceService>();
             serviceCollection.AddTransient<IConventionsHandicapReferentialService, ConventionsHandicapReferentialService>();
-            serviceCollection.AddTransient<IConventionsHandicapMetadataService, ConventionsHandicapMetadataService>();
-            serviceCollection.AddTransient<IConventionsHandicapCertificateDemandService, ConventionsHandicapCertificateDemandService>();
-            serviceCollection.AddTransient<IConventionsHandicapCertificateDemandMailService, ConventionsHandicapCertificateDemandMailService>();
-            serviceCollection.AddTransient<IConventionHandicapMetadataFileStorage, ConventionHandicapMetadataFileStorage>();
-            serviceCollection.AddTransient<IConventionsHandicapGenerateCertificateService, ConventionsHandicapGenerateCertificateService>();
-            serviceCollection.AddTransient<IConventionHandicapMetadataFileStorage, ConventionHandicapMetadataFileStorage>();
+            //serviceCollection.AddTransient<IConventionsHandicapMetadataService, ConventionsHandicapMetadataService>();
+            //serviceCollection.AddTransient<IConventionsHandicapCertificateDemandService, ConventionsHandicapCertificateDemandService>();
+            //serviceCollection.AddTransient<IConventionsHandicapCertificateDemandMailService, ConventionsHandicapCertificateDemandMailService>();
+            //serviceCollection.AddTransient<IConventionHandicapMetadataFileStorage, ConventionHandicapMetadataFileStorage>();
+            //serviceCollection.AddTransient<IConventionsHandicapGenerateCertificateService, ConventionsHandicapGenerateCertificateService>();
+            //serviceCollection.AddTransient<IConventionHandicapMetadataFileStorage, ConventionHandicapMetadataFileStorage>();
             serviceCollection.AddTransient<IConventionsHandicapFeaturesService, ConventionsHandicapFeaturesService>();
             serviceCollection.AddTransient<IConventionsHandicapMailService, ConventionsHandicapMailService>();
-            serviceCollection.AddTransient<IConventionsHandicapCertificateDemandMailService, ConventionsHandicapCertificateDemandMailService>();
+            //serviceCollection.AddTransient<IConventionsHandicapCertificateDemandMailService, ConventionsHandicapCertificateDemandMailService>();
 
             serviceCollection.Configure<IdentityOptions>(options =>
             {

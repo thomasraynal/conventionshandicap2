@@ -1,10 +1,5 @@
-﻿using ConventionsHandicap.App.Controllers.Dto;
-using ConventionsHandicap.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ConventionsHandicap.EntityFramework;
+using ConventionsHandicap.Model;
 
 namespace ConventionsHandicap.App.Shared.Extensions
 {

@@ -22,29 +22,37 @@ namespace ConventionsHandicap.Model
 
 
 
-public partial class ConventionsHandicapWorkspace 
+public partial class ConventionsHandicapCertificateMetadata 
 { 
     
-    public Guid
-   Id{get; set;}
+    public string
+?   Code{get; set;}
 
     
     public string
-?   Logo{get; set;}
+?   Label{get; set;}
 
     
     public string
-?   Name{get; set;}
+?   Information{get; set;}
 
     
-    public  ConventionsHandicapFeature
-[]
-?   Features{get; set;}
+    public string
+?   Group{get; set;}
+
+    
+    public string
+   MetadataType{get; set;}
 
 }
 
 
 }
+
+
+
+
+
 
 
 

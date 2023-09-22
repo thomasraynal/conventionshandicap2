@@ -1,4 +1,3 @@
-using ConventionsHandicap.Controller.Dto;
 using ConventionsHandicap.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

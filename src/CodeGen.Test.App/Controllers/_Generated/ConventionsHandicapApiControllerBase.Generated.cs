@@ -15,6 +15,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 using ConventionsHandicap.Model;
 
+using ConventionsHandicap.EntityFramework;
 
 namespace ConventionsHandicap
 {
@@ -39,7 +40,8 @@ public abstract partial class ConventionsHandicapApiControllerBase:ControllerBas
 [HttpGet]
 [SwaggerResponse(200,type: typeof( Academy[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/referential/academies")][SwaggerOperation("GetAcademies")]
+[ApiExplorerSettings(GroupName = "/v1/referential/academies")]
+[SwaggerOperation("GetAcademies")]
 
 public async Task<IActionResult>
     GetAcademiesAsync(
@@ -66,23 +68,30 @@ public async Task<IActionResult>
             private GetAcademiesResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetAcademiesResponseBuilder Build200
+            (
+ Academy
+[]
+ content
+)
+
+            {
+            return new GetAcademiesResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetAcademiesResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetAcademiesResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -95,7 +104,7 @@ public async Task<IActionResult>
 
                 return new GetAcademiesResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
@@ -133,7 +142,8 @@ public async Task<IActionResult>
 [SwaggerResponse(200,type: typeof(Academy),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/referential/academies/{academyName}")][SwaggerOperation("GetAcademy")]
+[ApiExplorerSettings(GroupName = "/v1/referential/academies/{academyName}")]
+[SwaggerOperation("GetAcademy")]
 
 public async Task<IActionResult>
     GetAcademyAsync(
@@ -166,23 +176,29 @@ public async Task<IActionResult>
             private GetAcademyResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetAcademyResponseBuilder Build200
+            (
+Academy
+ content
+)
+
+            {
+            return new GetAcademyResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetAcademyResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetAcademyResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -195,11 +211,13 @@ public async Task<IActionResult>
 
                 return new GetAcademyResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -212,7 +230,7 @@ public async Task<IActionResult>
 
                 return new GetAcademyResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -252,7 +270,8 @@ public async Task<IActionResult>
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands")][SwaggerOperation("GetCertificateDemands")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands")]
+[SwaggerOperation("GetCertificateDemands")]
 
 public async Task<IActionResult>
     GetCertificateDemandsAsync(
@@ -285,23 +304,30 @@ public async Task<IActionResult>
             private GetCertificateDemandsResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetCertificateDemandsResponseBuilder Build200
+            (
+ CertificateDemandDto
+[]
+ content
+)
+
+            {
+            return new GetCertificateDemandsResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetCertificateDemandsResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetCertificateDemandsResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -314,11 +340,13 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandsResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -331,11 +359,13 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandsResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -348,7 +378,7 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandsResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -391,7 +421,8 @@ public async Task<IActionResult>
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands")][SwaggerOperation("DeleteCertificateDemand")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands")]
+[SwaggerOperation("DeleteCertificateDemand")]
 
 public async Task<IActionResult>
     DeleteCertificateDemandAsync(
@@ -430,23 +461,27 @@ public async Task<IActionResult>
             private DeleteCertificateDemandResponseBuilder() { }
 
             
+
+     
+            
+
+             public static DeleteCertificateDemandResponseBuilder Build204
+            (
+)
+
+            {
+            return new DeleteCertificateDemandResponseBuilder()
+      
+            .WithStatusCode(204);
+            } 
+
             
 
             
-
-            public static DeleteCertificateDemandResponseBuilder Build204(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)204, errorMessage, arguments) });
-
-                return new DeleteCertificateDemandResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("204" == "default" ? 500 : 204);
-                }
-
                 
+     
             
+
             
 
             
@@ -459,11 +494,13 @@ public async Task<IActionResult>
 
                 return new DeleteCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -476,11 +513,13 @@ public async Task<IActionResult>
 
                 return new DeleteCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -493,7 +532,7 @@ public async Task<IActionResult>
 
                 return new DeleteCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -528,7 +567,8 @@ public async Task<IActionResult>
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands")][SwaggerOperation("CreateCertificateDemand")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands")]
+[SwaggerOperation("CreateCertificateDemand")]
 
 public async Task<IActionResult>
     CreateCertificateDemandAsync(
@@ -558,23 +598,29 @@ public async Task<IActionResult>
             private CreateCertificateDemandResponseBuilder() { }
 
             
+
+     
+            
+
+             public static CreateCertificateDemandResponseBuilder Build200
+            (
+CertificateDemandDto
+ content
+)
+
+            {
+            return new CreateCertificateDemandResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static CreateCertificateDemandResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new CreateCertificateDemandResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -587,11 +633,13 @@ public async Task<IActionResult>
 
                 return new CreateCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -604,11 +652,13 @@ public async Task<IActionResult>
 
                 return new CreateCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -621,7 +671,7 @@ public async Task<IActionResult>
 
                 return new CreateCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -656,7 +706,8 @@ public async Task<IActionResult>
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands")][SwaggerOperation("UpdateCertificateDemand")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands")]
+[SwaggerOperation("UpdateCertificateDemand")]
 
 public async Task<IActionResult>
     UpdateCertificateDemandAsync(
@@ -686,23 +737,29 @@ public async Task<IActionResult>
             private UpdateCertificateDemandResponseBuilder() { }
 
             
+
+     
+            
+
+             public static UpdateCertificateDemandResponseBuilder Build200
+            (
+CertificateDemandDto
+ content
+)
+
+            {
+            return new UpdateCertificateDemandResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static UpdateCertificateDemandResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new UpdateCertificateDemandResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -715,11 +772,13 @@ public async Task<IActionResult>
 
                 return new UpdateCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -732,11 +791,13 @@ public async Task<IActionResult>
 
                 return new UpdateCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -749,7 +810,7 @@ public async Task<IActionResult>
 
                 return new UpdateCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -793,7 +854,8 @@ public async Task<IActionResult>
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/{certificateDemandId}")][SwaggerOperation("GetCertificateDemand")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/{certificateDemandId}")]
+[SwaggerOperation("GetCertificateDemand")]
 
 public async Task<IActionResult>
     GetCertificateDemandAsync(
@@ -832,23 +894,29 @@ public async Task<IActionResult>
             private GetCertificateDemandResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetCertificateDemandResponseBuilder Build200
+            (
+CertificateDemandDto
+ content
+)
+
+            {
+            return new GetCertificateDemandResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetCertificateDemandResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetCertificateDemandResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -861,11 +929,13 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -878,11 +948,13 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -895,7 +967,7 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -943,7 +1015,8 @@ public async Task<IActionResult>
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/{certificateDemandId}/file/{metadataCode}")][SwaggerOperation("AddFileToCertificateDemand")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/{certificateDemandId}/file/{metadataCode}")]
+[SwaggerOperation("AddFileToCertificateDemand")]
 
 public async Task<IActionResult>
     AddFileToCertificateDemandAsync(
@@ -991,23 +1064,29 @@ public async Task<IActionResult>
             private AddFileToCertificateDemandResponseBuilder() { }
 
             
+
+     
+            
+
+             public static AddFileToCertificateDemandResponseBuilder Build200
+            (
+CertificateDemandDto
+ content
+)
+
+            {
+            return new AddFileToCertificateDemandResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static AddFileToCertificateDemandResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new AddFileToCertificateDemandResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -1020,11 +1099,13 @@ public async Task<IActionResult>
 
                 return new AddFileToCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -1037,11 +1118,13 @@ public async Task<IActionResult>
 
                 return new AddFileToCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -1054,7 +1137,7 @@ public async Task<IActionResult>
 
                 return new AddFileToCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -1090,7 +1173,8 @@ public async Task<IActionResult>
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/mail")][SwaggerOperation("SendMailForCertificateDemand")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/mail")]
+[SwaggerOperation("SendMailForCertificateDemand")]
 
 public async Task<IActionResult>
     SendMailForCertificateDemandAsync(
@@ -1120,23 +1204,27 @@ public async Task<IActionResult>
             private SendMailForCertificateDemandResponseBuilder() { }
 
             
+
+     
+            
+
+             public static SendMailForCertificateDemandResponseBuilder Build202
+            (
+)
+
+            {
+            return new SendMailForCertificateDemandResponseBuilder()
+      
+            .WithStatusCode(202);
+            } 
+
             
 
             
-
-            public static SendMailForCertificateDemandResponseBuilder Build202(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)202, errorMessage, arguments) });
-
-                return new SendMailForCertificateDemandResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("202" == "default" ? 500 : 202);
-                }
-
                 
+     
             
+
             
 
             
@@ -1149,11 +1237,13 @@ public async Task<IActionResult>
 
                 return new SendMailForCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -1166,11 +1256,13 @@ public async Task<IActionResult>
 
                 return new SendMailForCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -1183,7 +1275,7 @@ public async Task<IActionResult>
 
                 return new SendMailForCertificateDemandResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -1215,7 +1307,8 @@ public async Task<IActionResult>
 [HttpGet]
 [SwaggerResponse(200,type: typeof( ConventionsHandicapCertificateMetadata[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/medatada")][SwaggerOperation("GetAllCertificateDemandMetadata")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/medatada")]
+[SwaggerOperation("GetAllCertificateDemandMetadata")]
 
 public async Task<IActionResult>
     GetAllCertificateDemandMetadataAsync(
@@ -1242,23 +1335,30 @@ public async Task<IActionResult>
             private GetAllCertificateDemandMetadataResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetAllCertificateDemandMetadataResponseBuilder Build200
+            (
+ ConventionsHandicapCertificateMetadata
+[]
+ content
+)
+
+            {
+            return new GetAllCertificateDemandMetadataResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetAllCertificateDemandMetadataResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetAllCertificateDemandMetadataResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -1271,7 +1371,7 @@ public async Task<IActionResult>
 
                 return new GetAllCertificateDemandMetadataResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
@@ -1309,7 +1409,8 @@ public async Task<IActionResult>
 [SwaggerResponse(200,type: typeof( ConventionsHandicapCertificateMetadata[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/medatada/{academyId}")][SwaggerOperation("GetCertificateDemandMetadataForAcademy")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/medatada/{academyId}")]
+[SwaggerOperation("GetCertificateDemandMetadataForAcademy")]
 
 public async Task<IActionResult>
     GetCertificateDemandMetadataForAcademyAsync(
@@ -1342,23 +1443,30 @@ public async Task<IActionResult>
             private GetCertificateDemandMetadataForAcademyResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetCertificateDemandMetadataForAcademyResponseBuilder Build200
+            (
+ ConventionsHandicapCertificateMetadata
+[]
+ content
+)
+
+            {
+            return new GetCertificateDemandMetadataForAcademyResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetCertificateDemandMetadataForAcademyResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetCertificateDemandMetadataForAcademyResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -1371,11 +1479,13 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandMetadataForAcademyResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -1388,7 +1498,7 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandMetadataForAcademyResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -1430,7 +1540,8 @@ public async Task<IActionResult>
 [SwaggerResponse(200,type: typeof( ConventionsHandicapCertificateMetadata[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/medatada/{academyId}/{departmentId}")][SwaggerOperation("GetCertificateDemandMetadataForAcademyAndDepartment")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/medatada/{academyId}/{departmentId}")]
+[SwaggerOperation("GetCertificateDemandMetadataForAcademyAndDepartment")]
 
 public async Task<IActionResult>
     GetCertificateDemandMetadataForAcademyAndDepartmentAsync(
@@ -1469,23 +1580,30 @@ public async Task<IActionResult>
             private GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder Build200
+            (
+ ConventionsHandicapCertificateMetadata
+[]
+ content
+)
+
+            {
+            return new GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -1498,11 +1616,13 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -1515,7 +1635,7 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -1557,7 +1677,8 @@ public async Task<IActionResult>
 [SwaggerResponse(200,type: typeof(string),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}")][SwaggerOperation("GetCertificateDemandTemplate")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}")]
+[SwaggerOperation("GetCertificateDemandTemplate")]
 
 public async Task<IActionResult>
     GetCertificateDemandTemplateAsync(
@@ -1596,23 +1717,29 @@ public async Task<IActionResult>
             private GetCertificateDemandTemplateResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetCertificateDemandTemplateResponseBuilder Build200
+            (
+string
+ content
+)
+
+            {
+            return new GetCertificateDemandTemplateResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetCertificateDemandTemplateResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetCertificateDemandTemplateResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -1625,11 +1752,13 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandTemplateResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -1642,7 +1771,7 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandTemplateResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -1676,7 +1805,8 @@ public async Task<IActionResult>
 [SwaggerResponse(200,type: typeof(CertificateTemplateDto),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template")][SwaggerOperation("GetCertificateDemandTemplates")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template")]
+[SwaggerOperation("GetCertificateDemandTemplates")]
 
 public async Task<IActionResult>
     GetCertificateDemandTemplatesAsync(
@@ -1703,23 +1833,29 @@ public async Task<IActionResult>
             private GetCertificateDemandTemplatesResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetCertificateDemandTemplatesResponseBuilder Build200
+            (
+CertificateTemplateDto
+ content
+)
+
+            {
+            return new GetCertificateDemandTemplatesResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetCertificateDemandTemplatesResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetCertificateDemandTemplatesResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -1732,11 +1868,13 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandTemplatesResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -1749,7 +1887,7 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandTemplatesResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -1787,7 +1925,8 @@ public async Task<IActionResult>
 [SwaggerResponse(200,type: typeof( CertificateTemplateDto[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template/{academy}")][SwaggerOperation("GetCertificateDemandTemplatesForAcademy")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template/{academy}")]
+[SwaggerOperation("GetCertificateDemandTemplatesForAcademy")]
 
 public async Task<IActionResult>
     GetCertificateDemandTemplatesForAcademyAsync(
@@ -1820,23 +1959,30 @@ public async Task<IActionResult>
             private GetCertificateDemandTemplatesForAcademyResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetCertificateDemandTemplatesForAcademyResponseBuilder Build200
+            (
+ CertificateTemplateDto
+[]
+ content
+)
+
+            {
+            return new GetCertificateDemandTemplatesForAcademyResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetCertificateDemandTemplatesForAcademyResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetCertificateDemandTemplatesForAcademyResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -1849,11 +1995,13 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandTemplatesForAcademyResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -1866,7 +2014,7 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandTemplatesForAcademyResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -1908,7 +2056,8 @@ public async Task<IActionResult>
 [SwaggerResponse(200,type: typeof( CertificateTemplateDto[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template/{academy}/{department}")][SwaggerOperation("GetCertificateDemandTemplatesForAcademyAndDepartment")]
+[ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template/{academy}/{department}")]
+[SwaggerOperation("GetCertificateDemandTemplatesForAcademyAndDepartment")]
 
 public async Task<IActionResult>
     GetCertificateDemandTemplatesForAcademyAndDepartmentAsync(
@@ -1947,23 +2096,30 @@ public async Task<IActionResult>
             private GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder Build200
+            (
+ CertificateTemplateDto
+[]
+ content
+)
+
+            {
+            return new GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -1976,11 +2132,13 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -1993,7 +2151,7 @@ public async Task<IActionResult>
 
                 return new GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -2029,7 +2187,8 @@ public async Task<IActionResult>
 [HttpGet]
 [SwaggerResponse(200,type: typeof( ConventionsHandicapFeature[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features")][SwaggerOperation("GetFeatures")]
+[ApiExplorerSettings(GroupName = "/v1/features")]
+[SwaggerOperation("GetFeatures")]
 
 public async Task<IActionResult>
     GetFeaturesAsync(
@@ -2062,23 +2221,30 @@ public async Task<IActionResult>
             private GetFeaturesResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetFeaturesResponseBuilder Build200
+            (
+ ConventionsHandicapFeature
+[]
+ content
+)
+
+            {
+            return new GetFeaturesResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetFeaturesResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetFeaturesResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -2091,7 +2257,7 @@ public async Task<IActionResult>
 
                 return new GetFeaturesResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
@@ -2129,7 +2295,8 @@ public async Task<IActionResult>
 [SwaggerResponse(200,type: typeof(ConventionsHandicapFeature),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/features/{featureId}")][SwaggerOperation("GetFeatureById")]
+[ApiExplorerSettings(GroupName = "/v1/features/{featureId}")]
+[SwaggerOperation("GetFeatureById")]
 
 public async Task<IActionResult>
     GetFeatureByIdAsync(
@@ -2162,23 +2329,29 @@ public async Task<IActionResult>
             private GetFeatureByIdResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetFeatureByIdResponseBuilder Build200
+            (
+ConventionsHandicapFeature
+ content
+)
+
+            {
+            return new GetFeatureByIdResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetFeatureByIdResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetFeatureByIdResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -2191,11 +2364,13 @@ public async Task<IActionResult>
 
                 return new GetFeatureByIdResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -2208,7 +2383,7 @@ public async Task<IActionResult>
 
                 return new GetFeatureByIdResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -2242,7 +2417,8 @@ public async Task<IActionResult>
 [SwaggerResponse(202,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/mail")][SwaggerOperation("SendMail")]
+[ApiExplorerSettings(GroupName = "/v1/mail")]
+[SwaggerOperation("SendMail")]
 
 public async Task<IActionResult>
     SendMailAsync(
@@ -2272,23 +2448,27 @@ public async Task<IActionResult>
             private SendMailResponseBuilder() { }
 
             
+
+     
+            
+
+             public static SendMailResponseBuilder Build202
+            (
+)
+
+            {
+            return new SendMailResponseBuilder()
+      
+            .WithStatusCode(202);
+            } 
+
             
 
             
-
-            public static SendMailResponseBuilder Build202(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)202, errorMessage, arguments) });
-
-                return new SendMailResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("202" == "default" ? 500 : 202);
-                }
-
                 
+     
             
+
             
 
             
@@ -2301,11 +2481,13 @@ public async Task<IActionResult>
 
                 return new SendMailResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -2318,7 +2500,7 @@ public async Task<IActionResult>
 
                 return new SendMailResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
@@ -2350,7 +2532,8 @@ public async Task<IActionResult>
 [HttpGet]
 [SwaggerResponse(200,type: typeof( UserDto[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/users")][SwaggerOperation("GetUsers")]
+[ApiExplorerSettings(GroupName = "/v1/users")]
+[SwaggerOperation("GetUsers")]
 
 public async Task<IActionResult>
     GetUsersAsync(
@@ -2377,23 +2560,30 @@ public async Task<IActionResult>
             private GetUsersResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetUsersResponseBuilder Build200
+            (
+ UserDto
+[]
+ content
+)
+
+            {
+            return new GetUsersResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetUsersResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetUsersResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -2406,7 +2596,7 @@ public async Task<IActionResult>
 
                 return new GetUsersResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
@@ -2441,7 +2631,8 @@ public async Task<IActionResult>
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/users")][SwaggerOperation("UpdateUser")]
+[ApiExplorerSettings(GroupName = "/v1/users")]
+[SwaggerOperation("UpdateUser")]
 
 public async Task<IActionResult>
     UpdateUserAsync(
@@ -2471,23 +2662,29 @@ public async Task<IActionResult>
             private UpdateUserResponseBuilder() { }
 
             
+
+     
+            
+
+             public static UpdateUserResponseBuilder Build200
+            (
+UserDto
+ content
+)
+
+            {
+            return new UpdateUserResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static UpdateUserResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new UpdateUserResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -2500,11 +2697,13 @@ public async Task<IActionResult>
 
                 return new UpdateUserResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -2517,11 +2716,13 @@ public async Task<IActionResult>
 
                 return new UpdateUserResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -2534,7 +2735,7 @@ public async Task<IActionResult>
 
                 return new UpdateUserResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -2567,7 +2768,8 @@ public async Task<IActionResult>
 [SwaggerResponse(200,type: typeof(UserDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/users")][SwaggerOperation("CreateUser")]
+[ApiExplorerSettings(GroupName = "/v1/users")]
+[SwaggerOperation("CreateUser")]
 
 public async Task<IActionResult>
     CreateUserAsync(
@@ -2597,23 +2799,29 @@ public async Task<IActionResult>
             private CreateUserResponseBuilder() { }
 
             
+
+     
+            
+
+             public static CreateUserResponseBuilder Build200
+            (
+UserDto
+ content
+)
+
+            {
+            return new CreateUserResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static CreateUserResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new CreateUserResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -2626,11 +2834,13 @@ public async Task<IActionResult>
 
                 return new CreateUserResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -2643,7 +2853,7 @@ public async Task<IActionResult>
 
                 return new CreateUserResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
@@ -2676,7 +2886,8 @@ public async Task<IActionResult>
 [SwaggerResponse(204,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/users")][SwaggerOperation("DeleteUser")]
+[ApiExplorerSettings(GroupName = "/v1/users")]
+[SwaggerOperation("DeleteUser")]
 
 public async Task<IActionResult>
     DeleteUserAsync(
@@ -2706,23 +2917,27 @@ public async Task<IActionResult>
             private DeleteUserResponseBuilder() { }
 
             
+
+     
+            
+
+             public static DeleteUserResponseBuilder Build204
+            (
+)
+
+            {
+            return new DeleteUserResponseBuilder()
+      
+            .WithStatusCode(204);
+            } 
+
             
 
             
-
-            public static DeleteUserResponseBuilder Build204(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)204, errorMessage, arguments) });
-
-                return new DeleteUserResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("204" == "default" ? 500 : 204);
-                }
-
                 
+     
             
+
             
 
             
@@ -2735,11 +2950,13 @@ public async Task<IActionResult>
 
                 return new DeleteUserResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -2752,7 +2969,7 @@ public async Task<IActionResult>
 
                 return new DeleteUserResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
@@ -2786,7 +3003,8 @@ public async Task<IActionResult>
 [SwaggerResponse(200,type: typeof(UserDto),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/users/current")][SwaggerOperation("GetCurrentUser")]
+[ApiExplorerSettings(GroupName = "/v1/users/current")]
+[SwaggerOperation("GetCurrentUser")]
 
 public async Task<IActionResult>
     GetCurrentUserAsync(
@@ -2813,23 +3031,29 @@ public async Task<IActionResult>
             private GetCurrentUserResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetCurrentUserResponseBuilder Build200
+            (
+UserDto
+ content
+)
+
+            {
+            return new GetCurrentUserResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetCurrentUserResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetCurrentUserResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -2842,11 +3066,13 @@ public async Task<IActionResult>
 
                 return new GetCurrentUserResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -2859,7 +3085,7 @@ public async Task<IActionResult>
 
                 return new GetCurrentUserResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -2891,7 +3117,8 @@ public async Task<IActionResult>
 [HttpPost]
 [SwaggerResponse(200,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/login")][SwaggerOperation("Login")]
+[ApiExplorerSettings(GroupName = "/v1/login")]
+[SwaggerOperation("Login")]
 
 public async Task<IActionResult>
     LoginAsync(
@@ -2921,23 +3148,27 @@ public async Task<IActionResult>
             private LoginResponseBuilder() { }
 
             
+
+     
+            
+
+             public static LoginResponseBuilder Build200
+            (
+)
+
+            {
+            return new LoginResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static LoginResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new LoginResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -2950,7 +3181,7 @@ public async Task<IActionResult>
 
                 return new LoginResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
@@ -2982,7 +3213,8 @@ public async Task<IActionResult>
 [HttpPost]
 [SwaggerResponse(201,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/register")][SwaggerOperation("Register")]
+[ApiExplorerSettings(GroupName = "/v1/register")]
+[SwaggerOperation("Register")]
 
 public async Task<IActionResult>
     RegisterAsync(
@@ -3012,23 +3244,27 @@ public async Task<IActionResult>
             private RegisterResponseBuilder() { }
 
             
+
+     
+            
+
+             public static RegisterResponseBuilder Build201
+            (
+)
+
+            {
+            return new RegisterResponseBuilder()
+      
+            .WithStatusCode(201);
+            } 
+
             
 
             
-
-            public static RegisterResponseBuilder Build201(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)201, errorMessage, arguments) });
-
-                return new RegisterResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("201" == "default" ? 500 : 201);
-                }
-
                 
+     
             
+
             
 
             
@@ -3041,7 +3277,7 @@ public async Task<IActionResult>
 
                 return new RegisterResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
@@ -3081,7 +3317,8 @@ public async Task<IActionResult>
 [HttpGet]
 [SwaggerResponse(200,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/confirm")][SwaggerOperation("ConfirmMail")]
+[ApiExplorerSettings(GroupName = "/v1/confirm")]
+[SwaggerOperation("ConfirmMail")]
 
 public async Task<IActionResult>
     ConfirmMailAsync(
@@ -3120,23 +3357,27 @@ public async Task<IActionResult>
             private ConfirmMailResponseBuilder() { }
 
             
+
+     
+            
+
+             public static ConfirmMailResponseBuilder Build200
+            (
+)
+
+            {
+            return new ConfirmMailResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static ConfirmMailResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new ConfirmMailResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -3149,7 +3390,7 @@ public async Task<IActionResult>
 
                 return new ConfirmMailResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
@@ -3181,7 +3422,8 @@ public async Task<IActionResult>
 [HttpPost]
 [SwaggerResponse(204,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/forgot")][SwaggerOperation("ForgotPassword")]
+[ApiExplorerSettings(GroupName = "/v1/forgot")]
+[SwaggerOperation("ForgotPassword")]
 
 public async Task<IActionResult>
     ForgotPasswordAsync(
@@ -3211,23 +3453,27 @@ public async Task<IActionResult>
             private ForgotPasswordResponseBuilder() { }
 
             
+
+     
+            
+
+             public static ForgotPasswordResponseBuilder Build204
+            (
+)
+
+            {
+            return new ForgotPasswordResponseBuilder()
+      
+            .WithStatusCode(204);
+            } 
+
             
 
             
-
-            public static ForgotPasswordResponseBuilder Build204(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)204, errorMessage, arguments) });
-
-                return new ForgotPasswordResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("204" == "default" ? 500 : 204);
-                }
-
                 
+     
             
+
             
 
             
@@ -3240,7 +3486,7 @@ public async Task<IActionResult>
 
                 return new ForgotPasswordResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
@@ -3272,7 +3518,8 @@ public async Task<IActionResult>
 [HttpPost]
 [SwaggerResponse(200,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/reset")][SwaggerOperation("ResetPassword")]
+[ApiExplorerSettings(GroupName = "/v1/reset")]
+[SwaggerOperation("ResetPassword")]
 
 public async Task<IActionResult>
     ResetPasswordAsync(
@@ -3302,23 +3549,27 @@ public async Task<IActionResult>
             private ResetPasswordResponseBuilder() { }
 
             
+
+     
+            
+
+             public static ResetPasswordResponseBuilder Build200
+            (
+)
+
+            {
+            return new ResetPasswordResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static ResetPasswordResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new ResetPasswordResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -3331,7 +3582,7 @@ public async Task<IActionResult>
 
                 return new ResetPasswordResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
@@ -3363,7 +3614,8 @@ public async Task<IActionResult>
 [HttpGet]
 [SwaggerResponse(200,type: typeof( ConventionsHandicapWorkspace[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/workspaces")][SwaggerOperation("GetWorkspaces")]
+[ApiExplorerSettings(GroupName = "/v1/workspaces")]
+[SwaggerOperation("GetWorkspaces")]
 
 public async Task<IActionResult>
     GetWorkspacesAsync(
@@ -3390,23 +3642,30 @@ public async Task<IActionResult>
             private GetWorkspacesResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetWorkspacesResponseBuilder Build200
+            (
+ ConventionsHandicapWorkspace
+[]
+ content
+)
+
+            {
+            return new GetWorkspacesResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetWorkspacesResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetWorkspacesResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -3419,7 +3678,7 @@ public async Task<IActionResult>
 
                 return new GetWorkspacesResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
@@ -3452,7 +3711,8 @@ public async Task<IActionResult>
 [SwaggerResponse(200,type: typeof(ConventionsHandicapWorkspace),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/workspaces")][SwaggerOperation("PutWorkspace")]
+[ApiExplorerSettings(GroupName = "/v1/workspaces")]
+[SwaggerOperation("PutWorkspace")]
 
 public async Task<IActionResult>
     PutWorkspaceAsync(
@@ -3482,23 +3742,29 @@ public async Task<IActionResult>
             private PutWorkspaceResponseBuilder() { }
 
             
+
+     
+            
+
+             public static PutWorkspaceResponseBuilder Build200
+            (
+ConventionsHandicapWorkspace
+ content
+)
+
+            {
+            return new PutWorkspaceResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static PutWorkspaceResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new PutWorkspaceResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -3511,11 +3777,13 @@ public async Task<IActionResult>
 
                 return new PutWorkspaceResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -3528,7 +3796,7 @@ public async Task<IActionResult>
 
                 return new PutWorkspaceResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
@@ -3568,7 +3836,8 @@ public async Task<IActionResult>
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/workspaces/{workspaceId}")][SwaggerOperation("UpdateWorkspace")]
+[ApiExplorerSettings(GroupName = "/v1/workspaces/{workspaceId}")]
+[SwaggerOperation("UpdateWorkspace")]
 
 public async Task<IActionResult>
     UpdateWorkspaceAsync(
@@ -3604,23 +3873,29 @@ public async Task<IActionResult>
             private UpdateWorkspaceResponseBuilder() { }
 
             
+
+     
+            
+
+             public static UpdateWorkspaceResponseBuilder Build200
+            (
+ConventionsHandicapWorkspace
+ content
+)
+
+            {
+            return new UpdateWorkspaceResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static UpdateWorkspaceResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new UpdateWorkspaceResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -3633,11 +3908,13 @@ public async Task<IActionResult>
 
                 return new UpdateWorkspaceResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -3650,11 +3927,13 @@ public async Task<IActionResult>
 
                 return new UpdateWorkspaceResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -3667,7 +3946,7 @@ public async Task<IActionResult>
 
                 return new UpdateWorkspaceResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -3706,7 +3985,8 @@ public async Task<IActionResult>
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/workspaces/{workspaceId}")][SwaggerOperation("DeleteWorkspace")]
+[ApiExplorerSettings(GroupName = "/v1/workspaces/{workspaceId}")]
+[SwaggerOperation("DeleteWorkspace")]
 
 public async Task<IActionResult>
     DeleteWorkspaceAsync(
@@ -3739,23 +4019,27 @@ public async Task<IActionResult>
             private DeleteWorkspaceResponseBuilder() { }
 
             
+
+     
+            
+
+             public static DeleteWorkspaceResponseBuilder Build204
+            (
+)
+
+            {
+            return new DeleteWorkspaceResponseBuilder()
+      
+            .WithStatusCode(204);
+            } 
+
             
 
             
-
-            public static DeleteWorkspaceResponseBuilder Build204(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)204, errorMessage, arguments) });
-
-                return new DeleteWorkspaceResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("204" == "default" ? 500 : 204);
-                }
-
                 
+     
             
+
             
 
             
@@ -3768,11 +4052,13 @@ public async Task<IActionResult>
 
                 return new DeleteWorkspaceResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("400" == "default" ? 500 : 400);
+                .WithStatusCode(400);
                 }
 
                 
+     
             
+
             
 
             
@@ -3785,11 +4071,13 @@ public async Task<IActionResult>
 
                 return new DeleteWorkspaceResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -3802,7 +4090,7 @@ public async Task<IActionResult>
 
                 return new DeleteWorkspaceResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 
@@ -3839,7 +4127,8 @@ public async Task<IActionResult>
 [SwaggerResponse(200,type: typeof(ConventionsHandicapWorkspace),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
-[ApiExplorerSettings(GroupName = "/v1/workspaces/{workspaceId}")][SwaggerOperation("GetWorkspace")]
+[ApiExplorerSettings(GroupName = "/v1/workspaces/{workspaceId}")]
+[SwaggerOperation("GetWorkspace")]
 
 public async Task<IActionResult>
     GetWorkspaceAsync(
@@ -3872,23 +4161,29 @@ public async Task<IActionResult>
             private GetWorkspaceResponseBuilder() { }
 
             
+
+     
+            
+
+             public static GetWorkspaceResponseBuilder Build200
+            (
+ConventionsHandicapWorkspace
+ content
+)
+
+            {
+            return new GetWorkspaceResponseBuilder()
+      
+            .WithStatusCode(200);
+            } 
+
             
 
             
-
-            public static GetWorkspaceResponseBuilder Build200(string errorMessage = "", Dictionary<string,object>
-                arguments=null)
-                {
-
-                var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)200, errorMessage, arguments) });
-
-                return new GetWorkspaceResponseBuilder()
-                .WithContent(content)
-                .WithStatusCode("200" == "default" ? 500 : 200);
-                }
-
                 
+     
             
+
             
 
             
@@ -3901,11 +4196,13 @@ public async Task<IActionResult>
 
                 return new GetWorkspaceResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("401" == "default" ? 500 : 401);
+                .WithStatusCode(401);
                 }
 
                 
+     
             
+
             
 
             
@@ -3918,7 +4215,7 @@ public async Task<IActionResult>
 
                 return new GetWorkspaceResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("404" == "default" ? 500 : 404);
+                .WithStatusCode(404);
                 }
 
                 

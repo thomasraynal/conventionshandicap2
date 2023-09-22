@@ -6,14 +6,14 @@
 
 {{#each definitions}}
 
-{{#if_not_empty x-skip}}
+{{#if_not_empty x-codegen-ignore}}
 
 {{else}}
 
 
 {{set 'name' @key}}
 
-### FILE _Generated/Models/{{get 'name'}}.Generated.cs
+### FILE Models/_Generated/{{get 'name'}}.Generated.cs
 
 using Anabasis.Api;
 using Microsoft.AspNetCore.Authorization;
@@ -79,11 +79,11 @@ namespace {{uppercase_first_letter (get 'appNamespace')}}.Model
 
 {{set 'name' @key}}
 
-{{#if_not_empty x-skip}}
+{{#if_not_empty x-codegen-ignore}}
 
 {{else}}
 
-### FILE _Generated/Models/{{get 'name'}}.Generated.cs
+### FILE Models/_Generated/{{get 'name'}}.Generated.cs
 
 using Anabasis.Api;
 using Microsoft.AspNetCore.Authorization;

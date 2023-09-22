@@ -200,29 +200,37 @@ class Build : NukeBuild
 
       });
 
-        Target CodeGenGenerateFromOpenApiSpec => _ => _
-        .DependsOn(CodeGenCreateProject)
-        .Requires(() => CodeGenProjectKind, () => CodeGenProjectName,  () => CodeGenOpenApiSpecLocalPath)
-        .Executes(() =>
+    Target CodeGenGenerateFromOpenApiSpec => _ => _
+    .DependsOn(CodeGenCreateProject)
+    .Requires(() => CodeGenProjectKind, () => CodeGenProjectName, () => CodeGenOpenApiSpecLocalPath)
+    .Executes(() =>
+    {
+
+        var outputDirectory = $"./src/{CodeGenProjectName}";
+
+        Logger.Information($"Generating {outputDirectory}...");
+
+        var outputDirectoryGeneratedFolders = Directory.GetDirectories(outputDirectory, string.Empty, SearchOption.AllDirectories).Where(directory => directory.Contains("_Generated"));
+
+        foreach (var directory in outputDirectoryGeneratedFolders)
         {
+            Logger.Information($"Deleting {directory}...");
+            Directory.Delete(directory, true);
+        }
 
-            var outputDirectory = $"./src/{CodeGenProjectName}";
-            var outputDirectoryGeneratedFolder = Path.Combine(outputDirectory, "_Generated");
+        var startProcess = ProcessTasks.StartProcess("CodegenUP", $"-s {CodeGenOpenApiSpecLocalPath} -o {outputDirectory} -t {BuildProjectDirectory / "CodeGenTemplates"}", logOutput: true);
 
-            if (Directory.Exists(outputDirectoryGeneratedFolder))
-            {
-                Directory.Delete(outputDirectoryGeneratedFolder, true);
-            }
+        if (!startProcess.WaitForExit())
+        {
+            throw new Exception("!StartProcess().WaitForExit()");
+        }
 
-            var startProcess = ProcessTasks.StartProcess("CodegenUP", $"-s {CodeGenOpenApiSpecLocalPath} -o {outputDirectory} -t {BuildProjectDirectory / "CodeGenTemplates"}", logOutput: true);
+        if (startProcess.ExitCode > 0)
+        {
+            throw new Exception($"Exit code => {startProcess.ExitCode}");
+        }
 
-            if (!startProcess.WaitForExit())
-            {
-                throw new Exception("!StartProcess().WaitForExit()");
-            }
-
-
-        });
+    });
 
 
     //Target NgBuild => _ => _

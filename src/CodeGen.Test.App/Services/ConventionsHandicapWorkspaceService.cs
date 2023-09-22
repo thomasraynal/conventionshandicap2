@@ -1,9 +1,7 @@
-﻿using ConventionsHandicap.Controller.Dto;
-using ConventionsHandicap.EntityFramework;
+﻿using ConventionsHandicap.EntityFramework;
 using ConventionsHandicap.Model;
 using ConventionsHandicap.Model.Contracts;
 using ConventionsHandicap.Shared;
-using ConventionsHandicap.App.Controllers.Dto;
 using ConventionsHandicap.App.Shared.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace ConventionsHandicap.Services
 {
@@ -61,7 +60,7 @@ namespace ConventionsHandicap.Services
 
                     var workspace = new ConventionsHandicapWorkspace()
                     {
-                        Logo = createWorkspaceDto.Logo,
+                        Logo = createWorkspaceDto.Logo == null ? null : new Uri(createWorkspaceDto.Logo),
                         Id = Guid.NewGuid(),
                         Name = createWorkspaceDto.Name
                     };
@@ -194,7 +193,7 @@ namespace ConventionsHandicap.Services
 
                     if (null != updateWorkspaceDto.Logo)
                     {
-                        workspace.Logo = updateWorkspaceDto.Logo;
+                        workspace.Logo = updateWorkspaceDto.Logo == null ? null : new Uri(updateWorkspaceDto.Logo);
                     }
 
                     conventionHandicapDbContext.ConventionsHandicapWorkspaces.Update(workspace);

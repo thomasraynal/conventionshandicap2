@@ -1,6 +1,6 @@
 ﻿{{#if_not_empty paths}}
 
-### FILE _Generated/Controllers/{{uppercase_first_letter x-product.appName}}ControllerBase.Generated.cs
+### FILE Controllers/_Generated/{{uppercase_first_letter x-product.appName}}ControllerBase.Generated.cs
 
 using Anabasis.Api;
 using Microsoft.AspNetCore.Authorization;
@@ -61,8 +61,9 @@ public abstract partial class {{uppercase_first_letter x-product.appName}}Contro
 {{#one_line}}[SwaggerResponse({{@key}},
 {{#if_not_empty schema}}type: typeof({{schema.x-refName}}),{{/if_not_empty}}
 {{#if_not_empty content}}  {{#with content.[0]}}type: typeof({{>ConvertType [0].schema}}), {{/with}}{{/if_not_empty}}
-Description = "{{message}}")]{{/one_line}}{{/each}}[ApiExplorerSettings(GroupName = "{{get 'path'}}")][SwaggerOperation("{{uppercase_first_letter operationId}}")]
-{{set 'operationId' operationId}}
+Description = "{{message}}")]{{/one_line}}{{/each}}[ApiExplorerSettings(GroupName = "{{get 'path'}}")]
+[SwaggerOperation("{{uppercase_first_letter operationId}}")]
+
 public async Task<IActionResult>
     {{uppercase_first_letter operationId}}Async(
     {{#each parameters}}
@@ -98,24 +99,30 @@ public async Task<IActionResult>
             [JsonConstructor]
             private {{uppercase_first_letter operationId}}ResponseBuilder() { }
 
+            {{set 'operationId' operationId}}
+
             {{#each responses}}
+     
             {{set 'code' @key}}
-            {{#if_equals @key 'default'}} public static {{uppercase_first_letter operationId}}ResponseBuilder Build{{set 'code'}}({{#if_not_empty schema}}{{schema.x-refName}} content{{/if_not_empty}})
+
+            {{#if_equals @index '0'}} public static {{uppercase_first_letter (get 'operationId')}}ResponseBuilder Build{{get 'code'}}
+            ({{>GetResponseContent}})
+
             {
-            return new {{uppercase_first_letter operationId}}ResponseBuilder()
-            {{#if_not_empty schema}}.WithContent(content){{/if_not_empty}}
-            .WithStatusCode("{{@key}}" == "default" ? 500 : {{@key}});
+            return new {{uppercase_first_letter (get 'operationId')}}ResponseBuilder()
+      
+            .WithStatusCode({{@key}});
             } {{/if_equals}}
 
-            {{#if_not_equals @key 'default'}}{{#if_not_empty schema}}public static {{uppercase_first_letter (get 'operationId') }}ResponseBuilder Build{{@key}}({{#if_not_empty schema}}{{schema.x-refName}} content{{/if_not_empty}})
+            {{#if_not_equals @index '0'}}{{#if_not_empty schema}}public static {{uppercase_first_letter (get 'operationId')}}ResponseBuilder Build{{@key}}({{>GetResponseContent}})
             {
             return new {{uppercase_first_letter (get 'operationId') }}ResponseBuilder()
-            {{#if_not_empty schema}}.WithContent(content){{/if_not_empty}}
-            .WithStatusCode("{{@key}}" == "default" ? 500 : {{@key}});
+           
+            .WithStatusCode({{@key}});
 
             }{{/if_not_empty}}{{/if_not_equals}}
 
-            {{#if_not_equals @key 'default'}}public static {{uppercase_first_letter (get 'operationId') }}ResponseBuilder Build{{@key}}(string errorMessage = "{{{message}}}", Dictionary<string,object>
+            {{#if_not_equals @index '0'}}public static {{uppercase_first_letter (get 'operationId') }}ResponseBuilder Build{{@key}}(string errorMessage = "{{{message}}}", Dictionary<string,object>
                 arguments=null)
                 {
 
@@ -123,13 +130,13 @@ public async Task<IActionResult>
 
                 return new {{uppercase_first_letter (get 'operationId') }}ResponseBuilder()
                 .WithContent(content)
-                .WithStatusCode("{{@key}}" == "default" ? 500 : {{@key}});
+                .WithStatusCode({{@key}});
                 }
                 {{/if_not_equals}}
 
                 {{#if_not_empty schema}}public static ErrorResponseMessage GetDefaultErrorResponseMessage{{@key}}(string errorMessage = "{{{message}}}", Dictionary<string,object>
                     arguments=null)
-                    {
+                    {   
                     return new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode){{@key}}, errorMessage, arguments) });
 
                     }{{/if_not_empty}}
