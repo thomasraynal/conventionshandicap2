@@ -38,6 +38,7 @@ public abstract partial class ConventionsHandicapApiControllerBase:ControllerBas
 
 [Route("/v1/referential/academies", Name = "GetAcademies")]
 [HttpGet]
+  [Authorize]  
 [SwaggerResponse(200,type: typeof( Academy[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/referential/academies")]
@@ -139,6 +140,7 @@ public async Task<IActionResult>
 
 [Route("/v1/referential/academies/{academyName}", Name = "GetAcademy")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof(Academy),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -266,6 +268,7 @@ Academy
 
 [Route("/v1/features/certificates/demands", Name = "GetCertificateDemands")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof( CertificateDemandDto[]),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -417,6 +420,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands", Name = "DeleteCertificateDemand")]
 [HttpDelete]
+   
 [SwaggerResponse(204,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -563,6 +567,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands", Name = "CreateCertificateDemand")]
 [HttpPut]
+   
 [SwaggerResponse(200,type: typeof(CertificateDemandDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -702,6 +707,7 @@ CertificateDemandDto
 
 [Route("/v1/features/certificates/demands", Name = "UpdateCertificateDemand")]
 [HttpPatch]
+   
 [SwaggerResponse(200,type: typeof(CertificateDemandDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -850,6 +856,7 @@ CertificateDemandDto
 
 [Route("/v1/features/certificates/demands/{certificateDemandId}", Name = "GetCertificateDemand")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof(CertificateDemandDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1011,6 +1018,7 @@ CertificateDemandDto
 
 [Route("/v1/features/certificates/demands/{certificateDemandId}/file/{metadataCode}", Name = "AddFileToCertificateDemand")]
 [HttpPost]
+   
 [SwaggerResponse(200,type: typeof(CertificateDemandDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1169,6 +1177,7 @@ CertificateDemandDto
 
 [Route("/v1/features/certificates/demands/mail", Name = "SendMailForCertificateDemand")]
 [HttpPost]
+   
 [SwaggerResponse(202,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1305,6 +1314,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands/medatada", Name = "GetAllCertificateDemandMetadata")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof( ConventionsHandicapCertificateMetadata[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/medatada")]
@@ -1406,6 +1416,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands/medatada/{academyId}", Name = "GetCertificateDemandMetadataForAcademy")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof( ConventionsHandicapCertificateMetadata[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1537,6 +1548,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands/medatada/{academyId}/{departmentId}", Name = "GetCertificateDemandMetadataForAcademyAndDepartment")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof( ConventionsHandicapCertificateMetadata[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1674,6 +1686,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}", Name = "GetCertificateDemandTemplate")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof(string),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1802,6 +1815,7 @@ string
 
 [Route("/v1/features/certificates/demands/template", Name = "GetCertificateDemandTemplates")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof(CertificateTemplateDto),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1922,6 +1936,7 @@ CertificateTemplateDto
 
 [Route("/v1/features/certificates/demands/template/{academy}", Name = "GetCertificateDemandTemplatesForAcademy")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof( CertificateTemplateDto[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -2053,6 +2068,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands/template/{academy}/{department}", Name = "GetCertificateDemandTemplatesForAcademyAndDepartment")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof( CertificateTemplateDto[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -2185,6 +2201,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features", Name = "GetFeatures")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof( ConventionsHandicapFeature[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features")]
@@ -2292,6 +2309,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/{featureId}", Name = "GetFeatureById")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof(ConventionsHandicapFeature),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -2414,6 +2432,7 @@ ConventionsHandicapFeature
 
 [Route("/v1/mail", Name = "SendMail")]
 [HttpPost]
+   
 [SwaggerResponse(202,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -2530,6 +2549,7 @@ public async Task<IActionResult>
 
 [Route("/v1/users", Name = "GetUsers")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof( UserDto[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/users")]
@@ -2627,6 +2647,7 @@ public async Task<IActionResult>
 
 [Route("/v1/users", Name = "UpdateUser")]
 [HttpPatch]
+   
 [SwaggerResponse(200,type: typeof(UserDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -2765,6 +2786,7 @@ UserDto
 
 [Route("/v1/users", Name = "CreateUser")]
 [HttpPut]
+   
 [SwaggerResponse(200,type: typeof(UserDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -2883,6 +2905,7 @@ UserDto
 
 [Route("/v1/users", Name = "DeleteUser")]
 [HttpDelete]
+   
 [SwaggerResponse(204,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -3000,6 +3023,7 @@ public async Task<IActionResult>
 
 [Route("/v1/users/current", Name = "GetCurrentUser")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof(UserDto),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -3115,6 +3139,7 @@ UserDto
 
 [Route("/v1/login", Name = "Login")]
 [HttpPost]
+   
 [SwaggerResponse(200,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/login")]
@@ -3211,6 +3236,7 @@ public async Task<IActionResult>
 
 [Route("/v1/register", Name = "Register")]
 [HttpPost]
+   
 [SwaggerResponse(201,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/register")]
@@ -3315,6 +3341,7 @@ public async Task<IActionResult>
 
 [Route("/v1/confirm", Name = "ConfirmMail")]
 [HttpGet]
+   
 [SwaggerResponse(200,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/confirm")]
@@ -3420,6 +3447,7 @@ public async Task<IActionResult>
 
 [Route("/v1/forgot", Name = "ForgotPassword")]
 [HttpPost]
+   
 [SwaggerResponse(204,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/forgot")]
@@ -3516,6 +3544,7 @@ public async Task<IActionResult>
 
 [Route("/v1/reset", Name = "ResetPassword")]
 [HttpPost]
+   
 [SwaggerResponse(200,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/reset")]
@@ -3612,6 +3641,7 @@ public async Task<IActionResult>
 
 [Route("/v1/workspaces", Name = "GetWorkspaces")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof( ConventionsHandicapWorkspace[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/workspaces")]
@@ -3708,6 +3738,7 @@ public async Task<IActionResult>
 
 [Route("/v1/workspaces", Name = "PutWorkspace")]
 [HttpPut]
+   
 [SwaggerResponse(200,type: typeof(ConventionsHandicapWorkspace),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -3832,6 +3863,7 @@ ConventionsHandicapWorkspace
 
 [Route("/v1/workspaces/{workspaceId}", Name = "UpdateWorkspace")]
 [HttpPatch]
+   
 [SwaggerResponse(200,type: typeof(ConventionsHandicapWorkspace),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -3981,6 +4013,7 @@ ConventionsHandicapWorkspace
 
 [Route("/v1/workspaces/{workspaceId}", Name = "DeleteWorkspace")]
 [HttpDelete]
+   
 [SwaggerResponse(204,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -4124,6 +4157,7 @@ public async Task<IActionResult>
 
 [Route("/v1/workspaces/{workspaceId}", Name = "GetWorkspace")]
 [HttpGet]
+   
 [SwaggerResponse(200,type: typeof(ConventionsHandicapWorkspace),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]

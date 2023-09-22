@@ -11,6 +11,7 @@ x-product:
 paths:
   /v1/referential/academies:
     get:
+      x-authorize: true
       tags:
         - Academy
       operationId: getAcademies

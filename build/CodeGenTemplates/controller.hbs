@@ -57,6 +57,7 @@ public abstract partial class {{uppercase_first_letter x-product.appName}}Contro
 
 [Route("{{get 'path'}}", Name = "{{uppercase_first_letter operationId}}")]
 [Http{{uppercase_first_letter (get 'httpMethod')}}]
+{{#if_not_empty 'x-authorize'}}{{#if_not_empty x-authorize.roles}}[Authorize(Roles = "{{x-authorize.roles}}")]{{else}}  {{#if_equals x-authorize 'true'}}[Authorize]{{/if_equals}}{{/if_not_empty}} {{/if_not_empty}}
 {{#each responses}}
 {{#one_line}}[SwaggerResponse({{@key}},
 {{#if_not_empty schema}}type: typeof({{schema.x-refName}}),{{/if_not_empty}}
@@ -142,16 +143,6 @@ public async Task<IActionResult>
                     }{{/if_not_empty}}
                     {{/each}}
                     }
-
-
-
-
-
-
-
-
-
-
                     {{/each}}
                     {{/each}}
 

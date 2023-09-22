@@ -266,7 +266,10 @@ class Build : NukeBuild
           {
               throw new Exception("!StartProcess().WaitForExit()");
           }
-
+          if (startProcess.ExitCode > 0)
+          {
+              throw new Exception($"Exit code => {startProcess.ExitCode}");
+          }
 
       });
 
@@ -280,7 +283,10 @@ class Build : NukeBuild
             {
                 throw new Exception("!StartProcess().WaitForExit()");
             }
-
+            if (startProcess.ExitCode > 0)
+            {
+                throw new Exception($"Exit code => {startProcess.ExitCode}");
+            }
 
         });
 
@@ -294,7 +300,10 @@ class Build : NukeBuild
           {
               throw new Exception("!StartProcess().WaitForExit()");
           }
-
+          if (startProcess.ExitCode > 0)
+          {
+              throw new Exception($"Exit code => {startProcess.ExitCode}");
+          }
 
       });
 
