@@ -16,16 +16,9 @@ namespace ConventionsHandicap
 {
 
 
-    public class AcademyController : ConventionsHandicapApiControllerBase
+    public partial class ConventionsHandicapController
     {
-        private readonly IConventionsHandicapReferentialService _conventionsHandicapReferentialService;
-
-        public AcademyController(IConventionsHandicapReferentialService conventionsHandicapReferentialService)
-        {
-            _conventionsHandicapReferentialService = conventionsHandicapReferentialService;
-        }
-
-
+   
         protected override async Task<GetAcademiesResponseBuilder> GetAcademiesInternalAsync()
         {
             var academies = await _conventionsHandicapReferentialService.GetAcademiesAsync();

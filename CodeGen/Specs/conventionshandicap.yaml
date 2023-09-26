@@ -32,6 +32,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/referential/academies/{academyName}:
     get:
+      x-authorize: true
       tags:
         - Academy
       operationId: getAcademy
@@ -62,6 +63,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features/certificates/demands:
     get:
+      x-authorize: true
       operationId: getCertificateDemands
       tags:
         - ConventionsHandicapCertificateDemand
@@ -100,6 +102,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseMessage'
     delete:
+      x-authorize: true
       operationId: deleteCertificateDemand
       tags:
         - ConventionsHandicapCertificateDemand
@@ -138,6 +141,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseMessage'
     put:
+      x-authorize: true
       operationId: createCertificateDemand
       tags:
         - ConventionsHandicapCertificateDemand
@@ -181,6 +185,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseMessage'
     patch:
+      x-authorize: true
       operationId: updateCertificateDemand
       tags:
         - ConventionsHandicapCertificateDemand
@@ -225,6 +230,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features/certificates/demands/{certificateDemandId}:
     get:
+      x-authorize: true
       operationId: getCertificateDemand
       tags:
         - ConventionsHandicapCertificateDemand
@@ -268,6 +274,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features/certificates/demands/{certificateDemandId}/file/{metadataCode}:
     post:
+      x-authorize: true
       operationId: addFileToCertificateDemand
       tags:
         - ConventionsHandicapCertificateDemand
@@ -328,6 +335,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features/certificates/demands/mail:
     post:
+      x-authorize: true
       operationId: sendMailForCertificateDemand
       tags:
         - ConventionsHandicapCertificateDemandMail
@@ -368,6 +376,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features/certificates/demands/medatada:
     get:
+      x-authorize: true
       operationId: getAllCertificateDemandMetadata
       tags:
         - ConventionsHandicapCertificateDemandMetadata
@@ -388,6 +397,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features/certificates/demands/medatada/{academyId}:
     get:
+      x-authorize: true
       operationId: getCertificateDemandMetadataForAcademy
       tags:
         - ConventionsHandicapCertificateDemandMetadata
@@ -420,6 +430,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features/certificates/demands/medatada/{academyId}/{departmentId}:
     get:
+      x-authorize: true
       operationId: getCertificateDemandMetadataForAcademyAndDepartment
       tags:
         - ConventionsHandicapCertificateDemandMetadata
@@ -457,6 +468,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}:
     get:
+      x-authorize: true
       operationId: getCertificateDemandTemplate
       tags:
         - ConventionsHandicapCertificateDemandTemplate
@@ -495,6 +507,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features/certificates/demands/template:
     get:
+      x-authorize: true
       operationId: getCertificateDemandTemplates
       tags:
         - ConventionsHandicapCertificateDemandTemplate
@@ -519,6 +532,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features/certificates/demands/template/{academy}:
     get:
+      x-authorize: true
       operationId: getCertificateDemandTemplatesForAcademy
       tags:
         - ConventionsHandicapCertificateDemandTemplate
@@ -551,6 +565,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features/certificates/demands/template/{academy}/{department}:
     get:
+      x-authorize: true
       operationId: getCertificateDemandTemplatesForAcademyAndDepartment
       tags:
         - ConventionsHandicapCertificateDemandTemplate
@@ -588,6 +603,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features:
     get:
+      x-authorize: true
       operationId: getFeatures
       tags:
         - ConventionsHandicapFeature
@@ -614,6 +630,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/features/{featureId}:
     get:
+      x-authorize: true
       operationId: getFeatureById
       tags:
         - ConventionsHandicapFeature
@@ -645,6 +662,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/mail:
     post:
+      x-authorize: true
       operationId: sendMail
       tags:
         - ConventionsHandicapMail
@@ -679,6 +697,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/users:
     get:
+      x-authorize:
+        roles: 'Manager,Administrator'
       operationId: getUsers
       tags:
         - ConventionsHandicapUser
@@ -698,6 +718,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseMessage'
     patch:
+      x-authorize: true
       operationId: updateUser
       tags:
         - ConventionsHandicapUser
@@ -741,6 +762,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseMessage'
     put:
+      x-authorize: true
       operationId: createUser
       tags:
         - ConventionsHandicapUser
@@ -778,6 +800,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseMessage'
     delete:
+      x-authorize: true
       operationId: deleteUser
       tags:
         - ConventionsHandicapUser
@@ -812,6 +835,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/users/current:
     get:
+      x-authorize: true
       operationId: getCurrentUser
       tags:
         - ConventionsHandicapUser
@@ -917,6 +941,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/forgot:
     post:
+      x-authorize: true
       operationId: forgotPassword
       tags:
         - ConventionsHandicapUserManagement
@@ -945,6 +970,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/reset:
     post:
+      x-authorize: true
       operationId: resetPassword
       tags:
         - ConventionsHandicapUserManagement
@@ -973,6 +999,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/workspaces:
     get:
+      x-authorize: true
       operationId: getWorkspaces
       tags:
         - ConventionsHandicapWorkspace
@@ -992,6 +1019,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseMessage'
     put:
+      x-authorize:
+        roles: 'Administrator'
       operationId: putWorkspace
       tags:
         - ConventionsHandicapWorkspace
@@ -1030,6 +1059,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseMessage'
   /v1/workspaces/{workspaceId}:
     patch:
+      x-authorize:
+        roles: 'Administrator'
       operationId: updateWorkspace
       tags:
         - ConventionsHandicapWorkspace
@@ -1080,6 +1111,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseMessage'
     delete:
+      x-authorize:
+        roles: 'Administrator'
       operationId: deleteWorkspace
       tags:
         - ConventionsHandicapWorkspace
@@ -1112,6 +1145,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseMessage'
     get:
+      x-authorize: true
       operationId: getWorkspace
       tags:
         - ConventionsHandicapWorkspace

@@ -18,6 +18,9 @@
 
 
 	<ItemGroup>
+	  <None Update="config.app.development.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	  <None Update="config.app.production.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>

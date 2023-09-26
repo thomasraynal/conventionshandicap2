@@ -38,7 +38,7 @@ public abstract partial class ConventionsHandicapApiControllerBase:ControllerBas
 
 [Route("/v1/referential/academies", Name = "GetAcademies")]
 [HttpGet]
-  [Authorize]  
+  [Authorize] 
 [SwaggerResponse(200,type: typeof( Academy[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/referential/academies")]
@@ -82,7 +82,7 @@ public async Task<IActionResult>
 
             {
             return new GetAcademiesResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -115,16 +115,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -140,7 +130,7 @@ public async Task<IActionResult>
 
 [Route("/v1/referential/academies/{academyName}", Name = "GetAcademy")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof(Academy),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -190,7 +180,7 @@ Academy
 
             {
             return new GetAcademyResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -242,16 +232,6 @@ Academy
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -268,7 +248,7 @@ Academy
 
 [Route("/v1/features/certificates/demands", Name = "GetCertificateDemands")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof( CertificateDemandDto[]),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -320,7 +300,7 @@ public async Task<IActionResult>
 
             {
             return new GetCertificateDemandsResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -390,16 +370,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -420,7 +390,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands", Name = "DeleteCertificateDemand")]
 [HttpDelete]
-   
+  [Authorize] 
 [SwaggerResponse(204,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -475,7 +445,6 @@ public async Task<IActionResult>
 
             {
             return new DeleteCertificateDemandResponseBuilder()
-      
             .WithStatusCode(204);
             } 
 
@@ -545,16 +514,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -567,7 +526,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands", Name = "CreateCertificateDemand")]
 [HttpPut]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof(CertificateDemandDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -585,14 +544,21 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await CreateCertificateDemandInternalAsync();
+    var responseBuilder = await CreateCertificateDemandInternalAsync(
+    
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<CreateCertificateDemandResponseBuilder>
-        CreateCertificateDemandInternalAsync()
+        CreateCertificateDemandInternalAsync(
+    
+    CreateCertificateDemandDto
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -615,7 +581,7 @@ CertificateDemandDto
 
             {
             return new CreateCertificateDemandResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -685,16 +651,6 @@ CertificateDemandDto
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -707,7 +663,7 @@ CertificateDemandDto
 
 [Route("/v1/features/certificates/demands", Name = "UpdateCertificateDemand")]
 [HttpPatch]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof(CertificateDemandDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -725,14 +681,21 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await UpdateCertificateDemandInternalAsync();
+    var responseBuilder = await UpdateCertificateDemandInternalAsync(
+    
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<UpdateCertificateDemandResponseBuilder>
-        UpdateCertificateDemandInternalAsync()
+        UpdateCertificateDemandInternalAsync(
+    
+    UpdateCertificateDemandDto
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -755,7 +718,7 @@ CertificateDemandDto
 
             {
             return new UpdateCertificateDemandResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -826,16 +789,6 @@ CertificateDemandDto
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -856,7 +809,7 @@ CertificateDemandDto
 
 [Route("/v1/features/certificates/demands/{certificateDemandId}", Name = "GetCertificateDemand")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof(CertificateDemandDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -913,7 +866,7 @@ CertificateDemandDto
 
             {
             return new GetCertificateDemandResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -984,16 +937,6 @@ CertificateDemandDto
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -1018,7 +961,7 @@ CertificateDemandDto
 
 [Route("/v1/features/certificates/demands/{certificateDemandId}/file/{metadataCode}", Name = "AddFileToCertificateDemand")]
 [HttpPost]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof(CertificateDemandDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1051,7 +994,10 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await AddFileToCertificateDemandInternalAsync(certificateDemandId, metadataCode, workspaceId);
+    var responseBuilder = await AddFileToCertificateDemandInternalAsync(certificateDemandId, metadataCode, workspaceId
+    ,
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
@@ -1061,7 +1007,11 @@ public async Task<IActionResult>
         AddFileToCertificateDemandInternalAsync( Guid
   certificateDemandId,   string
   metadataCode,   Guid
-  workspaceId )
+  workspaceId 
+    ,
+    IFormFile
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -1084,7 +1034,7 @@ CertificateDemandDto
 
             {
             return new AddFileToCertificateDemandResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -1155,16 +1105,6 @@ CertificateDemandDto
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -1177,7 +1117,7 @@ CertificateDemandDto
 
 [Route("/v1/features/certificates/demands/mail", Name = "SendMailForCertificateDemand")]
 [HttpPost]
-   
+  [Authorize] 
 [SwaggerResponse(202,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1195,14 +1135,21 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await SendMailForCertificateDemandInternalAsync();
+    var responseBuilder = await SendMailForCertificateDemandInternalAsync(
+    
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<SendMailForCertificateDemandResponseBuilder>
-        SendMailForCertificateDemandInternalAsync()
+        SendMailForCertificateDemandInternalAsync(
+    
+    ConventionsHandicapCertificateDemandSendMailRequest
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -1223,7 +1170,6 @@ public async Task<IActionResult>
 
             {
             return new SendMailForCertificateDemandResponseBuilder()
-      
             .WithStatusCode(202);
             } 
 
@@ -1294,16 +1240,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -1314,7 +1250,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands/medatada", Name = "GetAllCertificateDemandMetadata")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof( ConventionsHandicapCertificateMetadata[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/medatada")]
@@ -1358,7 +1294,7 @@ public async Task<IActionResult>
 
             {
             return new GetAllCertificateDemandMetadataResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -1391,16 +1327,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -1416,7 +1342,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands/medatada/{academyId}", Name = "GetCertificateDemandMetadataForAcademy")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof( ConventionsHandicapCertificateMetadata[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1467,7 +1393,7 @@ public async Task<IActionResult>
 
             {
             return new GetCertificateDemandMetadataForAcademyResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -1519,16 +1445,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -1548,7 +1464,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands/medatada/{academyId}/{departmentId}", Name = "GetCertificateDemandMetadataForAcademyAndDepartment")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof( ConventionsHandicapCertificateMetadata[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1605,7 +1521,7 @@ public async Task<IActionResult>
 
             {
             return new GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -1657,16 +1573,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -1686,7 +1592,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}", Name = "GetCertificateDemandTemplate")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof(string),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1742,7 +1648,7 @@ string
 
             {
             return new GetCertificateDemandTemplateResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -1794,16 +1700,6 @@ string
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -1815,7 +1711,7 @@ string
 
 [Route("/v1/features/certificates/demands/template", Name = "GetCertificateDemandTemplates")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof(CertificateTemplateDto),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1859,7 +1755,7 @@ CertificateTemplateDto
 
             {
             return new GetCertificateDemandTemplatesResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -1911,16 +1807,6 @@ CertificateTemplateDto
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -1936,7 +1822,7 @@ CertificateTemplateDto
 
 [Route("/v1/features/certificates/demands/template/{academy}", Name = "GetCertificateDemandTemplatesForAcademy")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof( CertificateTemplateDto[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -1987,7 +1873,7 @@ public async Task<IActionResult>
 
             {
             return new GetCertificateDemandTemplatesForAcademyResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -2039,16 +1925,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -2068,7 +1944,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/certificates/demands/template/{academy}/{department}", Name = "GetCertificateDemandTemplatesForAcademyAndDepartment")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof( CertificateTemplateDto[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -2125,7 +2001,7 @@ public async Task<IActionResult>
 
             {
             return new GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -2177,16 +2053,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -2201,7 +2067,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features", Name = "GetFeatures")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof( ConventionsHandicapFeature[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features")]
@@ -2251,7 +2117,7 @@ public async Task<IActionResult>
 
             {
             return new GetFeaturesResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -2284,16 +2150,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -2309,7 +2165,7 @@ public async Task<IActionResult>
 
 [Route("/v1/features/{featureId}", Name = "GetFeatureById")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof(ConventionsHandicapFeature),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -2359,7 +2215,7 @@ ConventionsHandicapFeature
 
             {
             return new GetFeatureByIdResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -2411,16 +2267,6 @@ ConventionsHandicapFeature
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -2432,7 +2278,7 @@ ConventionsHandicapFeature
 
 [Route("/v1/mail", Name = "SendMail")]
 [HttpPost]
-   
+  [Authorize] 
 [SwaggerResponse(202,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -2449,14 +2295,21 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await SendMailInternalAsync();
+    var responseBuilder = await SendMailInternalAsync(
+    
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<SendMailResponseBuilder>
-        SendMailInternalAsync()
+        SendMailInternalAsync(
+    
+    ConventionsHandicapSendMailToConventionHandicapDto
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -2477,7 +2330,6 @@ public async Task<IActionResult>
 
             {
             return new SendMailResponseBuilder()
-      
             .WithStatusCode(202);
             } 
 
@@ -2529,16 +2381,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -2549,7 +2391,7 @@ public async Task<IActionResult>
 
 [Route("/v1/users", Name = "GetUsers")]
 [HttpGet]
-   
+[Authorize(Roles = "Manager,Administrator")] 
 [SwaggerResponse(200,type: typeof( UserDto[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/users")]
@@ -2593,7 +2435,7 @@ public async Task<IActionResult>
 
             {
             return new GetUsersResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -2625,16 +2467,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -2647,7 +2479,7 @@ public async Task<IActionResult>
 
 [Route("/v1/users", Name = "UpdateUser")]
 [HttpPatch]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof(UserDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -2665,14 +2497,21 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await UpdateUserInternalAsync();
+    var responseBuilder = await UpdateUserInternalAsync(
+    
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<UpdateUserResponseBuilder>
-        UpdateUserInternalAsync()
+        UpdateUserInternalAsync(
+    
+    UpdateUserRequest
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -2695,7 +2534,7 @@ UserDto
 
             {
             return new UpdateUserResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -2765,16 +2604,6 @@ UserDto
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -2786,7 +2615,7 @@ UserDto
 
 [Route("/v1/users", Name = "CreateUser")]
 [HttpPut]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof(UserDto),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -2803,14 +2632,21 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await CreateUserInternalAsync();
+    var responseBuilder = await CreateUserInternalAsync(
+    
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<CreateUserResponseBuilder>
-        CreateUserInternalAsync()
+        CreateUserInternalAsync(
+    
+    CreateUserRequest
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -2833,7 +2669,7 @@ UserDto
 
             {
             return new CreateUserResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -2884,16 +2720,6 @@ UserDto
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -2905,7 +2731,7 @@ UserDto
 
 [Route("/v1/users", Name = "DeleteUser")]
 [HttpDelete]
-   
+  [Authorize] 
 [SwaggerResponse(204,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -2922,14 +2748,21 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await DeleteUserInternalAsync();
+    var responseBuilder = await DeleteUserInternalAsync(
+    
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<DeleteUserResponseBuilder>
-        DeleteUserInternalAsync()
+        DeleteUserInternalAsync(
+    
+    DeleteUserRequest
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -2950,7 +2783,6 @@ public async Task<IActionResult>
 
             {
             return new DeleteUserResponseBuilder()
-      
             .WithStatusCode(204);
             } 
 
@@ -3002,16 +2834,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -3023,7 +2845,7 @@ public async Task<IActionResult>
 
 [Route("/v1/users/current", Name = "GetCurrentUser")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof(UserDto),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -3067,7 +2889,7 @@ UserDto
 
             {
             return new GetCurrentUserResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -3119,16 +2941,6 @@ UserDto
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -3155,14 +2967,21 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await LoginInternalAsync();
+    var responseBuilder = await LoginInternalAsync(
+    
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<LoginResponseBuilder>
-        LoginInternalAsync()
+        LoginInternalAsync(
+    
+    ConventionsHandicapLoginDto
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -3183,7 +3002,6 @@ public async Task<IActionResult>
 
             {
             return new LoginResponseBuilder()
-      
             .WithStatusCode(200);
             } 
 
@@ -3216,16 +3034,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -3252,14 +3060,21 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await RegisterInternalAsync();
+    var responseBuilder = await RegisterInternalAsync(
+    
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<RegisterResponseBuilder>
-        RegisterInternalAsync()
+        RegisterInternalAsync(
+    
+    RegistrationDto
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -3280,7 +3095,6 @@ public async Task<IActionResult>
 
             {
             return new RegisterResponseBuilder()
-      
             .WithStatusCode(201);
             } 
 
@@ -3308,16 +3122,6 @@ public async Task<IActionResult>
 
                 
                     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3394,7 +3198,6 @@ public async Task<IActionResult>
 
             {
             return new ConfirmMailResponseBuilder()
-      
             .WithStatusCode(200);
             } 
 
@@ -3427,16 +3230,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -3447,7 +3240,7 @@ public async Task<IActionResult>
 
 [Route("/v1/forgot", Name = "ForgotPassword")]
 [HttpPost]
-   
+  [Authorize] 
 [SwaggerResponse(204,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/forgot")]
@@ -3463,14 +3256,21 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await ForgotPasswordInternalAsync();
+    var responseBuilder = await ForgotPasswordInternalAsync(
+    
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<ForgotPasswordResponseBuilder>
-        ForgotPasswordInternalAsync()
+        ForgotPasswordInternalAsync(
+    
+    ForgotPasswordDto
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -3491,7 +3291,6 @@ public async Task<IActionResult>
 
             {
             return new ForgotPasswordResponseBuilder()
-      
             .WithStatusCode(204);
             } 
 
@@ -3524,16 +3323,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -3544,7 +3333,7 @@ public async Task<IActionResult>
 
 [Route("/v1/reset", Name = "ResetPassword")]
 [HttpPost]
-   
+  [Authorize] 
 [SwaggerResponse(200,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/reset")]
@@ -3560,14 +3349,21 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await ResetPasswordInternalAsync();
+    var responseBuilder = await ResetPasswordInternalAsync(
+    
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<ResetPasswordResponseBuilder>
-        ResetPasswordInternalAsync()
+        ResetPasswordInternalAsync(
+    
+    ResetPasswordDto
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -3588,7 +3384,6 @@ public async Task<IActionResult>
 
             {
             return new ResetPasswordResponseBuilder()
-      
             .WithStatusCode(200);
             } 
 
@@ -3621,16 +3416,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -3641,7 +3426,7 @@ public async Task<IActionResult>
 
 [Route("/v1/workspaces", Name = "GetWorkspaces")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof( ConventionsHandicapWorkspace[]),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/workspaces")]
@@ -3685,7 +3470,7 @@ public async Task<IActionResult>
 
             {
             return new GetWorkspacesResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -3717,16 +3502,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -3738,7 +3513,7 @@ public async Task<IActionResult>
 
 [Route("/v1/workspaces", Name = "PutWorkspace")]
 [HttpPut]
-   
+[Authorize(Roles = "Administrator")] 
 [SwaggerResponse(200,type: typeof(ConventionsHandicapWorkspace),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -3755,14 +3530,21 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await PutWorkspaceInternalAsync();
+    var responseBuilder = await PutWorkspaceInternalAsync(
+    
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<PutWorkspaceResponseBuilder>
-        PutWorkspaceInternalAsync()
+        PutWorkspaceInternalAsync(
+    
+    CreateWorkspaceDto
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -3785,7 +3567,7 @@ ConventionsHandicapWorkspace
 
             {
             return new PutWorkspaceResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -3837,16 +3619,6 @@ ConventionsHandicapWorkspace
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -3863,7 +3635,7 @@ ConventionsHandicapWorkspace
 
 [Route("/v1/workspaces/{workspaceId}", Name = "UpdateWorkspace")]
 [HttpPatch]
-   
+[Authorize(Roles = "Administrator")] 
 [SwaggerResponse(200,type: typeof(ConventionsHandicapWorkspace),Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -3886,7 +3658,10 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await UpdateWorkspaceInternalAsync(workspaceId);
+    var responseBuilder = await UpdateWorkspaceInternalAsync(workspaceId
+    ,
+    requestBody
+    );
 
     return responseBuilder.BuildResult();
 
@@ -3894,7 +3669,11 @@ public async Task<IActionResult>
 
     protected virtual Task<UpdateWorkspaceResponseBuilder>
         UpdateWorkspaceInternalAsync( Guid
-  workspaceId )
+  workspaceId 
+    ,
+    UpdateWorkspaceDto
+ requestBody
+    )
         {
         throw new NotImplementedException();
         }
@@ -3917,7 +3696,7 @@ ConventionsHandicapWorkspace
 
             {
             return new UpdateWorkspaceResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -3987,16 +3766,6 @@ ConventionsHandicapWorkspace
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -4013,7 +3782,7 @@ ConventionsHandicapWorkspace
 
 [Route("/v1/workspaces/{workspaceId}", Name = "DeleteWorkspace")]
 [HttpDelete]
-   
+[Authorize(Roles = "Administrator")] 
 [SwaggerResponse(204,Description = "")]
 [SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
@@ -4062,7 +3831,6 @@ public async Task<IActionResult>
 
             {
             return new DeleteWorkspaceResponseBuilder()
-      
             .WithStatusCode(204);
             } 
 
@@ -4132,16 +3900,6 @@ public async Task<IActionResult>
 
 
 
-
-
-
-
-
-
-
-
-
-
 /// <summary>
     /// 
 ///</summary>
@@ -4157,7 +3915,7 @@ public async Task<IActionResult>
 
 [Route("/v1/workspaces/{workspaceId}", Name = "GetWorkspace")]
 [HttpGet]
-   
+  [Authorize] 
 [SwaggerResponse(200,type: typeof(ConventionsHandicapWorkspace),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
@@ -4207,7 +3965,7 @@ ConventionsHandicapWorkspace
 
             {
             return new GetWorkspaceResponseBuilder()
-      
+                .WithContent(content)
             .WithStatusCode(200);
             } 
 
@@ -4254,16 +4012,6 @@ ConventionsHandicapWorkspace
 
                 
                     }
-
-
-
-
-
-
-
-
-
-
 
                     }
                     }

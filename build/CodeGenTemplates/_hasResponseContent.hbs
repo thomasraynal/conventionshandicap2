@@ -1,0 +1,12 @@
+{{#if_not_empty schema}}
+true
+{{else}}
+{{#if_not_empty content}}
+{{#with content.[0]}}
+true
+{{/with}}
+{{else}}
+false
+{{/if_not_empty}}   
+{{/if_not_empty}}
+

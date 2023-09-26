@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="..\ConventionsHandicap.EntityFramework\config.app.development.json" Link="config.app.development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\ConventionsHandicap.EntityFramework\config.app.json" Link="config.app.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

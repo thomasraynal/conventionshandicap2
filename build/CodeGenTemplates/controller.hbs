@@ -83,14 +83,24 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{name}}{{#unless @last}}, {{/unless}}{{/each}});
+    var responseBuilder = await {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}{{#if_not_empty requestBody}}
+    {{#if_not_empty parameters}},{{/if_not_empty}}
+    {{#with requestBody.content.[0]}}
+    requestBody
+    {{/with}}
+    {{/if_not_empty}});
 
     return responseBuilder.BuildResult();
 
     }
 
     protected virtual Task<{{uppercase_first_letter operationId}}ResponseBuilder>
-        {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{#if_not_equals in 'body'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_not_equals}}{{#if_equals in 'body'}}{{schema.x-refName}} {{name}}{{/if_equals}}{{#unless @last}}, {{/unless}} {{/each}})
+        {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{#if_not_equals in 'body'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_not_equals}}{{#if_equals in 'body'}}{{schema.x-refName}} {{name}}{{/if_equals}}{{#unless @last}}, {{/unless}} {{/each}}{{#if_not_empty requestBody}}
+    {{#if_not_empty parameters}},{{/if_not_empty}}
+    {{#with requestBody.content.[0]}}
+    {{>ConvertType [0].schema}} requestBody
+    {{/with}}
+    {{/if_not_empty}})
         {
         throw new NotImplementedException();
         }
@@ -111,14 +121,30 @@ public async Task<IActionResult>
 
             {
             return new {{uppercase_first_letter (get 'operationId')}}ResponseBuilder()
-      
+                {{#if_not_empty schema}}
+                .WithContent(content)
+                {{else}}
+                {{#if_not_empty content}}
+                {{#with content.[0]}}
+                .WithContent(content)
+                {{/with}}
+                {{/if_not_empty}}   
+                {{/if_not_empty}}
             .WithStatusCode({{@key}});
             } {{/if_equals}}
 
             {{#if_not_equals @index '0'}}{{#if_not_empty schema}}public static {{uppercase_first_letter (get 'operationId')}}ResponseBuilder Build{{@key}}({{>GetResponseContent}})
             {
             return new {{uppercase_first_letter (get 'operationId') }}ResponseBuilder()
-           
+                           {{#if_not_empty schema}}
+                .WithContent(content)
+                {{else}}
+                {{#if_not_empty content}}
+                {{#with content.[0]}}
+                .WithContent(content)
+                {{/with}}
+                {{/if_not_empty}}   
+                {{/if_not_empty}}
             .WithStatusCode({{@key}});
 
             }{{/if_not_empty}}{{/if_not_equals}}

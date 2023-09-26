@@ -29,7 +29,7 @@ namespace ConventionsHandicap.Services
             _serviceScopeFactory = serviceScopeFactory;
         }
 
-        public async Task<IConventionsHandicapWorkspace> CreateWorkspaceAsync(IConventionsHandicapUser currentUser, CreateWorkspaceDto createWorkspaceDto)
+        public async Task<ConventionsHandicapWorkspace> CreateWorkspaceAsync(IConventionsHandicapUser currentUser, CreateWorkspaceDto createWorkspaceDto)
         {
             using (var scope = _serviceScopeFactory.CreateScope())
             {
@@ -98,7 +98,7 @@ namespace ConventionsHandicap.Services
         }
 
 
-        public async Task<IConventionsHandicapWorkspace[]> GetAllMyWorkspacesAsync(IConventionsHandicapUser currentUser)
+        public async Task<ConventionsHandicapWorkspace[]> GetAllMyWorkspacesAsync(IConventionsHandicapUser currentUser)
         {
             using (var scope = _serviceScopeFactory.CreateScope())
             {
@@ -109,7 +109,7 @@ namespace ConventionsHandicap.Services
             }
         }
 
-        public async Task<IConventionsHandicapWorkspace?> GetOneWorkspaceByIdAsync(IConventionsHandicapUser currentUser, Guid workspaceId)
+        public async Task<ConventionsHandicapWorkspace?> GetOneWorkspaceByIdAsync(IConventionsHandicapUser currentUser, Guid workspaceId)
         {
             using (var scope = _serviceScopeFactory.CreateScope())
             {
@@ -120,7 +120,7 @@ namespace ConventionsHandicap.Services
             }
         }
 
-        public async Task<IConventionsHandicapWorkspace?> GetOneWorkspaceByNameAsync(IConventionsHandicapUser currentUser, string workspaceName)
+        public async Task<ConventionsHandicapWorkspace?> GetOneWorkspaceByNameAsync(IConventionsHandicapUser currentUser, string workspaceName)
         {
             using (var scope = _serviceScopeFactory.CreateScope())
             {
@@ -146,7 +146,7 @@ namespace ConventionsHandicap.Services
             return highestRoleInWorkspaceOrNull.UserRole;
         }
 
-        public async Task<IConventionsHandicapWorkspace> UpdateWorkspaceAsync(IConventionsHandicapUser currentUser, Guid workspaceId, UpdateWorkspaceDto updateWorkspaceDto)
+        public async Task<ConventionsHandicapWorkspace> UpdateWorkspaceAsync(IConventionsHandicapUser currentUser, Guid workspaceId, UpdateWorkspaceDto updateWorkspaceDto)
         {
             using (var scope = _serviceScopeFactory.CreateScope())
             {
