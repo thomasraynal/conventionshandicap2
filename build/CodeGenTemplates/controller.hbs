@@ -68,10 +68,10 @@ Description = "{{message}}")]{{/one_line}}{{/each}}[ApiExplorerSettings(GroupNam
 public async Task<IActionResult>
     {{uppercase_first_letter operationId}}Async(
     {{#each parameters}}
-    {{#if_equals in 'path'}} {{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}} {{/if_equals}}
+    {{#if_equals in 'path'}} {{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_equals}}
     {{#if_equals in 'body'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_equals}}
     {{#if_equals in 'header'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_equals}}
-    {{#if_equals in 'query'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}} {{/if_equals}}
+    {{#if_equals in 'query'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{#if_not_equals required 'true'}}?{{/if_not_equals}}{{name}}{{/if_equals}}
     {{#unless @last}}, {{/unless}}{{/each}}
     {{#if_not_empty requestBody}}
     {{#if_not_empty parameters}},{{/if_not_empty}}
@@ -95,7 +95,7 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<{{uppercase_first_letter operationId}}ResponseBuilder>
-        {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{#if_not_equals in 'body'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}} {{name}}{{/if_not_equals}}{{#if_equals in 'body'}}{{schema.x-refName}} {{name}}{{/if_equals}}{{#unless @last}}, {{/unless}} {{/each}}{{#if_not_empty requestBody}}
+        {{uppercase_first_letter operationId}}InternalAsync({{#each parameters}}{{#if_not_equals in 'body'}}{{#if_not_empty 'schema'}} {{>ConvertType schema }} {{else}} {{>ConvertType}} {{/if_not_empty}}{{#if_not_equals required 'true'}}?{{/if_not_equals}}{{name}}{{/if_not_equals}}{{#if_equals in 'body'}}{{schema.x-refName}} {{name}}{{/if_equals}}{{#unless @last}}, {{/unless}} {{/each}}{{#if_not_empty requestBody}}
     {{#if_not_empty parameters}},{{/if_not_empty}}
     {{#with requestBody.content.[0]}}
     {{>ConvertType [0].schema}} requestBody

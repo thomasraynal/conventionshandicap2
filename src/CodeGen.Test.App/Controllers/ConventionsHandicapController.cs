@@ -16,14 +16,23 @@ namespace ConventionsHandicap
         private readonly IConventionsHandicapReferentialService _conventionsHandicapReferentialService;
         private readonly UserManager<ConventionsHandicapUser> _userManager;
         private readonly IConventionsHandicapWorkspaceService _workspaceService;
+        private readonly IConventionsHandicapFeaturesService _conventionsHandicapFeaturesService;
+        private readonly IConventionsHandicapCertificateDemandService _certificateDemandService;
+        private readonly IConventionsHandicapWorkspaceService _conventionsHandicapWorkspaceService;
+        private readonly IConventionsHandicapCertificateDemandMailService _mailService;
 
         public ConventionsHandicapController(IConventionsHandicapReferentialService conventionsHandicapReferentialService,
             IConventionsHandicapWorkspaceService workspaceService,
+            IConventionsHandicapFeaturesService conventionsHandicapFeaturesService,
+            ConventionsHandicapWorkspaceService conventionsHandicapWorkspaceService,
+            IConventionsHandicapCertificateDemandService certificateDemandService,
+            IConventionsHandicapCertificateDemandMailService mailService,
             UserManager<ConventionsHandicapUser> userManager)
         {
             _conventionsHandicapReferentialService = conventionsHandicapReferentialService;
             _userManager = userManager;
             _workspaceService = workspaceService;
+            _conventionsHandicapFeaturesService = conventionsHandicapFeaturesService;
         }
     }
 }

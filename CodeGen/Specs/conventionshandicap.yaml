@@ -469,7 +469,7 @@ paths:
   /v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}:
     get:
       x-authorize: true
-      operationId: getCertificateDemandTemplate
+      operationId: generateCertificate
       tags:
         - ConventionsHandicapCertificateDemandTemplate
       parameters:
@@ -610,6 +610,7 @@ paths:
       parameters:
         - name: workspaceId
           in: query
+          required: false
           schema:
             type: string
             format: Guid

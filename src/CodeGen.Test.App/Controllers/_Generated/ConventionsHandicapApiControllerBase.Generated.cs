@@ -140,7 +140,7 @@ public async Task<IActionResult>
 public async Task<IActionResult>
     GetAcademyAsync(
       string
-  academyName 
+  academyName
     
     
     
@@ -157,7 +157,7 @@ public async Task<IActionResult>
 
     protected virtual Task<GetAcademyResponseBuilder>
         GetAcademyInternalAsync( string
-  academyName )
+ academyName )
         {
         throw new NotImplementedException();
         }
@@ -262,7 +262,7 @@ public async Task<IActionResult>
     
     
      Guid
-  workspaceId 
+  workspaceId
     
     )
 
@@ -276,7 +276,7 @@ public async Task<IActionResult>
 
     protected virtual Task<GetCertificateDemandsResponseBuilder>
         GetCertificateDemandsInternalAsync( Guid
-  workspaceId )
+ workspaceId )
         {
         throw new NotImplementedException();
         }
@@ -401,12 +401,12 @@ public async Task<IActionResult>
 public async Task<IActionResult>
     DeleteCertificateDemandAsync(
       Guid
-  CertificateDemandId 
+  CertificateDemandId
     
     
     
     ,       Guid
-  WorkspaceId 
+  WorkspaceId
     
     
     
@@ -423,8 +423,8 @@ public async Task<IActionResult>
 
     protected virtual Task<DeleteCertificateDemandResponseBuilder>
         DeleteCertificateDemandInternalAsync( Guid
-  CertificateDemandId,   Guid
-  WorkspaceId )
+ CertificateDemandId,   Guid
+ WorkspaceId )
         {
         throw new NotImplementedException();
         }
@@ -820,7 +820,7 @@ CertificateDemandDto
 public async Task<IActionResult>
     GetCertificateDemandAsync(
       Guid
-  certificateDemandId 
+  certificateDemandId
     
     
     
@@ -828,7 +828,7 @@ public async Task<IActionResult>
     
     
      Guid
-  workspaceId 
+  workspaceId
     
     )
 
@@ -842,8 +842,8 @@ public async Task<IActionResult>
 
     protected virtual Task<GetCertificateDemandResponseBuilder>
         GetCertificateDemandInternalAsync( Guid
-  certificateDemandId,   Guid
-  workspaceId )
+ certificateDemandId,   Guid
+ workspaceId )
         {
         throw new NotImplementedException();
         }
@@ -972,12 +972,12 @@ CertificateDemandDto
 public async Task<IActionResult>
     AddFileToCertificateDemandAsync(
       Guid
-  certificateDemandId 
+  certificateDemandId
     
     
     
     ,       string
-  metadataCode 
+  metadataCode
     
     
     
@@ -985,7 +985,7 @@ public async Task<IActionResult>
     
     
      Guid
-  workspaceId 
+  workspaceId
     
     ,
     IFormFile
@@ -1005,9 +1005,9 @@ public async Task<IActionResult>
 
     protected virtual Task<AddFileToCertificateDemandResponseBuilder>
         AddFileToCertificateDemandInternalAsync( Guid
-  certificateDemandId,   string
-  metadataCode,   Guid
-  workspaceId 
+ certificateDemandId,   string
+ metadataCode,   Guid
+ workspaceId 
     ,
     IFormFile
  requestBody
@@ -1352,7 +1352,7 @@ public async Task<IActionResult>
 public async Task<IActionResult>
     GetCertificateDemandMetadataForAcademyAsync(
       string
-  academyId 
+  academyId
     
     
     
@@ -1369,7 +1369,7 @@ public async Task<IActionResult>
 
     protected virtual Task<GetCertificateDemandMetadataForAcademyResponseBuilder>
         GetCertificateDemandMetadataForAcademyInternalAsync( string
-  academyId )
+ academyId )
         {
         throw new NotImplementedException();
         }
@@ -1474,12 +1474,12 @@ public async Task<IActionResult>
 public async Task<IActionResult>
     GetCertificateDemandMetadataForAcademyAndDepartmentAsync(
       string
-  academyId 
+  academyId
     
     
     
     ,       string
-  departmentId 
+  departmentId
     
     
     
@@ -1496,8 +1496,8 @@ public async Task<IActionResult>
 
     protected virtual Task<GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder>
         GetCertificateDemandMetadataForAcademyAndDepartmentInternalAsync( string
-  academyId,   string
-  departmentId )
+ academyId,   string
+ departmentId )
         {
         throw new NotImplementedException();
         }
@@ -1590,24 +1590,24 @@ public async Task<IActionResult>
 /// <response code="404"></response>
 
 
-[Route("/v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}", Name = "GetCertificateDemandTemplate")]
+[Route("/v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}", Name = "GenerateCertificate")]
 [HttpGet]
   [Authorize] 
 [SwaggerResponse(200,type: typeof(string),Description = "")]
 [SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
 [SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}")]
-[SwaggerOperation("GetCertificateDemandTemplate")]
+[SwaggerOperation("GenerateCertificate")]
 
 public async Task<IActionResult>
-    GetCertificateDemandTemplateAsync(
+    GenerateCertificateAsync(
       Guid
-  certificateDemandId 
+  certificateDemandId
     
     
     
     ,       Guid
-  certificateTemplateId 
+  certificateTemplateId
     
     
     
@@ -1616,38 +1616,38 @@ public async Task<IActionResult>
 
 
     {
-    var responseBuilder = await GetCertificateDemandTemplateInternalAsync(certificateDemandId, certificateTemplateId);
+    var responseBuilder = await GenerateCertificateInternalAsync(certificateDemandId, certificateTemplateId);
 
     return responseBuilder.BuildResult();
 
     }
 
-    protected virtual Task<GetCertificateDemandTemplateResponseBuilder>
-        GetCertificateDemandTemplateInternalAsync( Guid
-  certificateDemandId,   Guid
-  certificateTemplateId )
+    protected virtual Task<GenerateCertificateResponseBuilder>
+        GenerateCertificateInternalAsync( Guid
+ certificateDemandId,   Guid
+ certificateTemplateId )
         {
         throw new NotImplementedException();
         }
 
-        public partial class GetCertificateDemandTemplateResponseBuilder : ResponseBuilder<GetCertificateDemandTemplateResponseBuilder>
+        public partial class GenerateCertificateResponseBuilder : ResponseBuilder<GenerateCertificateResponseBuilder>
             {
             [JsonConstructor]
-            private GetCertificateDemandTemplateResponseBuilder() { }
+            private GenerateCertificateResponseBuilder() { }
 
             
 
      
             
 
-             public static GetCertificateDemandTemplateResponseBuilder Build200
+             public static GenerateCertificateResponseBuilder Build200
             (
 string
  content
 )
 
             {
-            return new GetCertificateDemandTemplateResponseBuilder()
+            return new GenerateCertificateResponseBuilder()
                 .WithContent(content)
             .WithStatusCode(200);
             } 
@@ -1663,13 +1663,13 @@ string
 
             
 
-            public static GetCertificateDemandTemplateResponseBuilder Build401(string errorMessage = "", Dictionary<string,object>
+            public static GenerateCertificateResponseBuilder Build401(string errorMessage = "", Dictionary<string,object>
                 arguments=null)
                 {
 
                 var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)401, errorMessage, arguments) });
 
-                return new GetCertificateDemandTemplateResponseBuilder()
+                return new GenerateCertificateResponseBuilder()
                 .WithContent(content)
                 .WithStatusCode(401);
                 }
@@ -1682,13 +1682,13 @@ string
 
             
 
-            public static GetCertificateDemandTemplateResponseBuilder Build404(string errorMessage = "", Dictionary<string,object>
+            public static GenerateCertificateResponseBuilder Build404(string errorMessage = "", Dictionary<string,object>
                 arguments=null)
                 {
 
                 var content = new ErrorResponseMessage(new[] { new UserErrorMessage((HttpStatusCode)404, errorMessage, arguments) });
 
-                return new GetCertificateDemandTemplateResponseBuilder()
+                return new GenerateCertificateResponseBuilder()
                 .WithContent(content)
                 .WithStatusCode(404);
                 }
@@ -1832,7 +1832,7 @@ CertificateTemplateDto
 public async Task<IActionResult>
     GetCertificateDemandTemplatesForAcademyAsync(
       string
-  academy 
+  academy
     
     
     
@@ -1849,7 +1849,7 @@ public async Task<IActionResult>
 
     protected virtual Task<GetCertificateDemandTemplatesForAcademyResponseBuilder>
         GetCertificateDemandTemplatesForAcademyInternalAsync( string
-  academy )
+ academy )
         {
         throw new NotImplementedException();
         }
@@ -1954,12 +1954,12 @@ public async Task<IActionResult>
 public async Task<IActionResult>
     GetCertificateDemandTemplatesForAcademyAndDepartmentAsync(
       string
-  academy 
+  academy
     
     
     
     ,       string
-  department 
+  department
     
     
     
@@ -1976,8 +1976,8 @@ public async Task<IActionResult>
 
     protected virtual Task<GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder>
         GetCertificateDemandTemplatesForAcademyAndDepartmentInternalAsync( string
-  academy,   string
-  department )
+ academy,   string
+ department )
         {
         throw new NotImplementedException();
         }
@@ -2079,7 +2079,7 @@ public async Task<IActionResult>
     
     
      Guid
-  workspaceId 
+  ?workspaceId
     
     )
 
@@ -2093,7 +2093,7 @@ public async Task<IActionResult>
 
     protected virtual Task<GetFeaturesResponseBuilder>
         GetFeaturesInternalAsync( Guid
-  workspaceId )
+ ?workspaceId )
         {
         throw new NotImplementedException();
         }
@@ -2175,7 +2175,7 @@ public async Task<IActionResult>
 public async Task<IActionResult>
     GetFeatureByIdAsync(
       Guid
-  featureId 
+  featureId
     
     
     
@@ -2192,7 +2192,7 @@ public async Task<IActionResult>
 
     protected virtual Task<GetFeatureByIdResponseBuilder>
         GetFeatureByIdInternalAsync( Guid
-  featureId )
+ featureId )
         {
         throw new NotImplementedException();
         }
@@ -3157,12 +3157,12 @@ public async Task<IActionResult>
     
     
      string
-  Email 
+  Email
     ,     
     
     
      string
-  Token 
+  Token
     
     )
 
@@ -3176,8 +3176,8 @@ public async Task<IActionResult>
 
     protected virtual Task<ConfirmMailResponseBuilder>
         ConfirmMailInternalAsync( string
-  Email,   string
-  Token )
+ Email,   string
+ Token )
         {
         throw new NotImplementedException();
         }
@@ -3646,7 +3646,7 @@ ConventionsHandicapWorkspace
 public async Task<IActionResult>
     UpdateWorkspaceAsync(
       Guid
-  workspaceId 
+  workspaceId
     
     
     
@@ -3669,7 +3669,7 @@ public async Task<IActionResult>
 
     protected virtual Task<UpdateWorkspaceResponseBuilder>
         UpdateWorkspaceInternalAsync( Guid
-  workspaceId 
+ workspaceId 
     ,
     UpdateWorkspaceDto
  requestBody
@@ -3793,7 +3793,7 @@ ConventionsHandicapWorkspace
 public async Task<IActionResult>
     DeleteWorkspaceAsync(
       Guid
-  workspaceId 
+  workspaceId
     
     
     
@@ -3810,7 +3810,7 @@ public async Task<IActionResult>
 
     protected virtual Task<DeleteWorkspaceResponseBuilder>
         DeleteWorkspaceInternalAsync( Guid
-  workspaceId )
+ workspaceId )
         {
         throw new NotImplementedException();
         }
@@ -3925,7 +3925,7 @@ public async Task<IActionResult>
 public async Task<IActionResult>
     GetWorkspaceAsync(
       Guid
-  workspaceId 
+  workspaceId
     
     
     
@@ -3942,7 +3942,7 @@ public async Task<IActionResult>
 
     protected virtual Task<GetWorkspaceResponseBuilder>
         GetWorkspaceInternalAsync( Guid
-  workspaceId )
+ workspaceId )
         {
         throw new NotImplementedException();
         }
