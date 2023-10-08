@@ -1,5 +1,6 @@
 ﻿using ConventionsHandicap;
 using ConventionsHandicap.App.Contracts;
+using ConventionsHandicap.App.Features.CertificateDemand.Contracts;
 using ConventionsHandicap.EntityFramework;
 using ConventionsHandicap.Services;
 using Microsoft.AspNetCore.Identity;
@@ -33,6 +34,10 @@ namespace ConventionsHandicap
             _userManager = userManager;
             _workspaceService = workspaceService;
             _conventionsHandicapFeaturesService = conventionsHandicapFeaturesService;
+            _certificateDemandService = certificateDemandService;
+            _conventionsHandicapWorkspaceService = conventionsHandicapWorkspaceService;
+            _mailService = mailService;
+
         }
     }
 }

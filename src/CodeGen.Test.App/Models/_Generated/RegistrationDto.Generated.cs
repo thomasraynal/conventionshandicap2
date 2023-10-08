@@ -25,15 +25,18 @@ namespace ConventionsHandicap.Model
 public partial class RegistrationDto 
 { 
     [Required(ErrorMessage = "username is required")]
-    public string
+    public                     string
+
    Username{get; set;}
 
     [Required(ErrorMessage = "password is required")]
-    public string
+    public                     string
+
    Password{get; set;}
 
     [Required(ErrorMessage = "userEmail is required")]
-    public string
+    public                     string
+
    UserEmail{get; set;}
 
 }

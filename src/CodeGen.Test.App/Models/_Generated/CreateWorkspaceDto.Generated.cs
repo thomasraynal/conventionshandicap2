@@ -25,11 +25,13 @@ namespace ConventionsHandicap.Model
 public partial class CreateWorkspaceDto 
 { 
     
-    public string
+    public                     string
+
 ?   Logo{get; set;}
 
     [Required(ErrorMessage = "name is required")]
-    public string
+    public                     string
+
    Name{get; set;}
 
 }

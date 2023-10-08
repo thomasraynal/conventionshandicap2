@@ -21,38 +21,22 @@ namespace ConventionsHandicap.Model
 {
 
 
-
-public partial class ConventionsHandicapCertificateMetadata 
-{ 
-    
-    public string
-?   Code{get; set;}
-
-    
-    public string
-?   Label{get; set;}
-
-    
-    public string
-?   Information{get; set;}
-
-    
-    public string
-?   Group{get; set;}
-
-    
-    public string
-   MetadataType{get; set;}
-
+/// <summary>
+///  
+/// </summary>
+[JsonConverter(typeof(StringEnumConverter))]
+[DataContract]
+public enum CertificateDemandStatus
+{
+    [EnumMember(Value = "ToComplete")]
+    @ToComplete,
+    [EnumMember(Value = "ToValidate")]
+    @ToValidate,
+    [EnumMember(Value = "Validated")]
+    @Validated,
 }
 
-
 }
-
-
-
-
-
 
 
 

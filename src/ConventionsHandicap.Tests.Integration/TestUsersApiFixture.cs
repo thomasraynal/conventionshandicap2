@@ -1,9 +1,8 @@
 ﻿using Anabasis.Api;
 using Anabasis.Common;
 using Anabasis.Identity.Dto;
-using ConventionsHandicap.App.Controllers.Dto;
-using ConventionsHandicap.Controller.Dto;
 using ConventionsHandicap.EntityFramework;
+using ConventionsHandicap.Model;
 using ConventionsHandicap.Shared;
 using NUnit.Framework;
 using System;

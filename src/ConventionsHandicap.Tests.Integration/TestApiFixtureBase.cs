@@ -1,6 +1,5 @@
 ﻿using Anabasis.Common.Shared;
 using Anabasis.Identity.Dto;
-using ConventionsHandicap.Controller.Dto;
 using ConventionsHandicap.EntityFramework;
 using ConventionsHandicap.Model;
 using Microsoft.AspNetCore.Identity;

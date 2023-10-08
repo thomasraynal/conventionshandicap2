@@ -7,7 +7,7 @@ x-product:
     appNamespace: conventionsHandicap
     appUsings: ['ConventionsHandicap.EntityFramework']
     appProjectReferences : ['src/CodeGen.Helpers/CodeGen.Helpers.csproj']
-    appPackageReferences : ['Anabasis.Api']
+    appPackageReferences : ['Anabasis.Api', 'Anabasis.Identity']
 paths:
   /v1/referential/academies:
     get:
@@ -1216,11 +1216,8 @@ components:
           type: string
           format: Guid
         certificateDemandStatus:
-          enum:
-            - A COMPLETER
-            - A VALIDER
-            - VALIDÉ
-          type: string
+          schema:
+            $ref: '#/components/schemas/CertificateDemandStatus'
         userId:
           type: string
           format: Guid
@@ -1237,6 +1234,17 @@ components:
             nullable: true
           nullable: true
       additionalProperties: false
+    CertificateDemandStatus:
+        x-type: ConventionsHandicapCertificateDemandStatus
+        x-enum-member:
+          - A COMPLETER
+          - A VALIDER
+          - VALIDÉ
+        enum:
+          - ToComplete
+          - ToValidate
+          - Validated
+        type: string
     CertificateTemplateDto:
       type: object
       properties:
@@ -1277,6 +1285,7 @@ components:
           type: boolean
       additionalProperties: false
     ConventionsHandicapCertificateMetadata:
+      x-codegen-ignore: true
       type: object
       properties:
         code:
@@ -1292,12 +1301,16 @@ components:
           type: string
           nullable: true
         metadataType:
-          enum:
-            - Technical
-            - Field
-            - File
-          type: string
+          schema:
+            $ref: '#/components/schemas/MetadataType'
       additionalProperties: false
+    MetadataType:
+      x-codegen-ignore: true
+      type: string
+      enum:
+        - Technical
+        - Field
+        - File
     ConventionsHandicapFeature:
       x-codegen-ignore: true
       type: object
@@ -1397,12 +1410,8 @@ components:
           type: string
           format: Guid
         userRole:
-          enum:
-            - None
-            - User
-            - Manager
-            - Administrator
-          type: string
+          schema:
+            $ref: '#/components/schemas/ConventionsHandicapUserRole'
         userEmail:
           minLength: 1
           type: string
@@ -1553,11 +1562,8 @@ components:
           type: string
           format: date-time
         certificateDemandStatus:
-          enum:
-            - A COMPLETER
-            - A VALIDER
-            - VALIDÉ
-          type: string
+          schema:
+            $ref: '#/components/schemas/CertificateDemandStatus'
         department:
           type: string
           nullable: true
@@ -1589,12 +1595,8 @@ components:
           type: string
           format: Guid
         userRole:
-          enum:
-            - None
-            - User
-            - Manager
-            - Administrator
-          type: string
+          schema:
+            $ref: '#/components/schemas/ConventionsHandicapUserRole'
         userEmail:
           type: string
           nullable: true
@@ -1602,6 +1604,14 @@ components:
           type: string
           format: Guid
       additionalProperties: false
+    ConventionsHandicapUserRole:
+      x-codegen-ignore: true
+      type: string
+      enum:
+        - None
+        - User
+        - Manager
+        - Administrator
     UpdateWorkspaceDto:
       required:
         - features
@@ -1718,16 +1728,6 @@ components:
           type: string
           nullable: true
       additionalProperties: false
-    TestEnum:
-      x-enum-member:
-        - A COMPLETER
-        - A VALIDER
-        - VALIDÉ
-      enum:
-        - ToComplete
-        - ToValidate
-        - Validated
-      type: string
   securitySchemes:
     Bearer:
       type: apiKey

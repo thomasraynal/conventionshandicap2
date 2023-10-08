@@ -25,29 +25,48 @@ namespace ConventionsHandicap.Model
 public partial class ConventionsHandicapCertificateDemandSendMailRequest 
 { 
     
-    public Guid
+    public                 Guid
+
    WorkspaceId{get; set;}
 
     
-    public Guid
+    public                 Guid
+
 ?   CertificateDemandId{get; set;}
 
     
-    public string
+    public                     string
+
 ?   SubjectText{get; set;}
 
     
-    public string
+    public                     string
+
 ?   BodyText{get; set;}
 
     
-    public bool
+    public             bool
    IsHtml{get; set;}
 
 }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

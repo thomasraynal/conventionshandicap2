@@ -1,6 +1,4 @@
-using ConventionsHandicap.Controller.Dto;
 using ConventionsHandicap.Model;
-using ConventionsHandicap.App.Features.CertificateDemand.Controllers.Dto;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Threading.Tasks;

@@ -1,12 +1,9 @@
-﻿using ConventionsHandicap.Controller.Dto;
-using ConventionsHandicap.EntityFramework;
+﻿using ConventionsHandicap.EntityFramework;
 using ConventionsHandicap.Model;
 using ConventionsHandicap.Model.Features.CertificateDemand;
 using ConventionsHandicap.Services;
 using ConventionsHandicap.Shared;
 using ConventionsHandicap.App.Features.CertificateDemand.Contracts;
-using ConventionsHandicap.App.Features.CertificateDemand.Controllers.Dto;
-using ConventionsHandicap.App.Features.CertificateDemand.Shared;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ConventionsHandicap.App.Features.CertificateDemand.Shared;
 
 namespace ConventionsHandicap.App.Features.CertificateDemand.Services
 {
@@ -101,7 +99,7 @@ namespace ConventionsHandicap.App.Features.CertificateDemand.Services
                         department: department,
                         childLastName: createCertificateDemandDto.ChildLastName,
                         childFirstName: createCertificateDemandDto.ChildFirstName,
-                        childDateOfBirth: createCertificateDemandDto.ChildDateOfBirth.Value,
+                        childDateOfBirth: createCertificateDemandDto.ChildDateOfBirth,
                         workspace: workspace,
                         certificateDemandStatus: ConventionsHandicapCertificateDemandStatus.ToComplete,
                         user: currentUser as ConventionsHandicapUser,
@@ -276,7 +274,7 @@ namespace ConventionsHandicap.App.Features.CertificateDemand.Services
                             .Include(demand => demand.Properties)
                             .FirstOrDefaultAsync();
 
-                    var currentUserRoleOnWorkspace = await _conventionsHandicapWorkspaceService.GetUserRoleForWorkpaceAsync(currentUser, updateCertificateDemandDto.WorkspaceId.Value);
+                    var currentUserRoleOnWorkspace = await _conventionsHandicapWorkspaceService.GetUserRoleForWorkpaceAsync(currentUser, updateCertificateDemandDto.WorkspaceId);
 
 
                     if (null == currentConventionsHandicapCertificateDemand)
@@ -378,7 +376,7 @@ namespace ConventionsHandicap.App.Features.CertificateDemand.Services
 
                     currentConventionsHandicapCertificateDemand.Academy = academy;
                     currentConventionsHandicapCertificateDemand.Department = department;
-                    currentConventionsHandicapCertificateDemand.ChildDateOfBirth = updateCertificateDemandDto.ChildDateOfBirth.Value;
+                    currentConventionsHandicapCertificateDemand.ChildDateOfBirth = updateCertificateDemandDto.ChildDateOfBirth;
                     currentConventionsHandicapCertificateDemand.ChildFirstName = updateCertificateDemandDto.ChildFirstName;
                     currentConventionsHandicapCertificateDemand.ChildLastName = updateCertificateDemandDto.ChildLastName;
                     currentConventionsHandicapCertificateDemand.CertificateDemandStatus= newProjectStatus;
@@ -388,7 +386,7 @@ namespace ConventionsHandicap.App.Features.CertificateDemand.Services
 
                     await conventionHandicapDbContext.SaveChangesAsync();
 
-                    var newConventionsHandicapCertificateDemand = await GetOneCertificateDemandAsync(currentUser, updateCertificateDemandDto.CertificateDemandId.Value);
+                    var newConventionsHandicapCertificateDemand = await GetOneCertificateDemandAsync(currentUser, updateCertificateDemandDto.CertificateDemandId);
 
                     return (newConventionsHandicapCertificateDemand, false);
 

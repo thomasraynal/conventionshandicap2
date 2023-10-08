@@ -25,45 +25,53 @@ namespace ConventionsHandicap.Model
 public partial class UpdateCertificateDemandDto 
 { 
     
-    public string
+    public                     string
+
 ?   Academy{get; set;}
 
     [Required(ErrorMessage = "childFirstName is required")]
-    public string
+    public                     string
+
    ChildFirstName{get; set;}
 
     [Required(ErrorMessage = "childLastName is required")]
-    public string
+    public                     string
+
    ChildLastName{get; set;}
 
     [Required(ErrorMessage = "childDateOfBirth is required")]
-    public string
+    public                     DateTime
+
    ChildDateOfBirth{get; set;}
 
     
-    public string
+    public     ConventionsHandicapCertificateDemandStatus
    CertificateDemandStatus{get; set;}
 
     
-    public string
+    public                     string
+
 ?   Department{get; set;}
 
     [Required(ErrorMessage = "certificates is required")]
-    public  Guid
+    public                                 Guid
+
 []
    Certificates{get; set;}
 
     
-    public  Property
+    public                         Property
 []
 ?   Properties{get; set;}
 
     [Required(ErrorMessage = "workspaceId is required")]
-    public Guid
+    public                 Guid
+
    WorkspaceId{get; set;}
 
     [Required(ErrorMessage = "certificateDemandId is required")]
-    public Guid
+    public                 Guid
+
    CertificateDemandId{get; set;}
 
 }

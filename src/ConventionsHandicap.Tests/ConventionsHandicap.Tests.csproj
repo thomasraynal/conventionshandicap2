@@ -15,7 +15,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\ConventionsHandicap.App\ConventionsHandicap.App.csproj" />
 	  <ProjectReference Include="..\ConventionsHandicap.EntityFramework\ConventionsHandicap.EntityFramework.csproj" />
 	</ItemGroup>
 

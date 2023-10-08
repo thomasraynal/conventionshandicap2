@@ -25,7 +25,8 @@ namespace ConventionsHandicap.Model
 public partial class ForgotPasswordDto 
 { 
     [Required(ErrorMessage = "email is required")]
-    public string
+    public                     string
+
    Email{get; set;}
 
 }

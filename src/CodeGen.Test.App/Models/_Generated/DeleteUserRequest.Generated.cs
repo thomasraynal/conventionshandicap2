@@ -25,11 +25,13 @@ namespace ConventionsHandicap.Model
 public partial class DeleteUserRequest 
 { 
     [Required(ErrorMessage = "workspaceId is required")]
-    public Guid
+    public                 Guid
+
    WorkspaceId{get; set;}
 
     [Required(ErrorMessage = "userId is required")]
-    public Guid
+    public                 Guid
+
    UserId{get; set;}
 
 }

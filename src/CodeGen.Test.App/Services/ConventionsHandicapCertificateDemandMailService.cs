@@ -8,7 +8,6 @@ using ConventionsHandicap.App.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
-using ConventionsHandicap.App.Features.CertificateDemand.Controllers.Dto;
 
 namespace ConventionsHandicap.App.Features.CertificateDemand.Services
 {

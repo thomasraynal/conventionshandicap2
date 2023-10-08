@@ -25,15 +25,18 @@ namespace ConventionsHandicap.Model
 public partial class ConventionsHandicapLoginDto 
 { 
     [Required(ErrorMessage = "workspaceId is required")]
-    public Guid
+    public                 Guid
+
    WorkspaceId{get; set;}
 
     [Required(ErrorMessage = "username is required")]
-    public string
+    public                     string
+
    Username{get; set;}
 
     [Required(ErrorMessage = "password is required")]
-    public string
+    public                     string
+
    Password{get; set;}
 
 }

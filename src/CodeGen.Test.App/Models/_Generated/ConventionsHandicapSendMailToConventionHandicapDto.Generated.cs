@@ -25,15 +25,18 @@ namespace ConventionsHandicap.Model
 public partial class ConventionsHandicapSendMailToConventionHandicapDto 
 { 
     [Required(ErrorMessage = "bodyText is required")]
-    public string
+    public                     string
+
    BodyText{get; set;}
 
     [Required(ErrorMessage = "subjectText is required")]
-    public string
+    public                     string
+
    SubjectText{get; set;}
 
     [Required(ErrorMessage = "workspaceId is required")]
-    public Guid
+    public                 Guid
+
    WorkspaceId{get; set;}
 
 }

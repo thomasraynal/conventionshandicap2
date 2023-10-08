@@ -39,8 +39,8 @@ public abstract partial class ConventionsHandicapApiControllerBase:ControllerBas
 [Route("/v1/referential/academies", Name = "GetAcademies")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof( Academy[]),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(                        Academy[]),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/referential/academies")]
 [SwaggerOperation("GetAcademies")]
 
@@ -75,7 +75,7 @@ public async Task<IActionResult>
 
              public static GetAcademiesResponseBuilder Build200
             (
- Academy
+                        Academy
 []
  content
 )
@@ -131,15 +131,16 @@ public async Task<IActionResult>
 [Route("/v1/referential/academies/{academyName}", Name = "GetAcademy")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof(Academy),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        Academy),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/referential/academies/{academyName}")]
 [SwaggerOperation("GetAcademy")]
 
 public async Task<IActionResult>
     GetAcademyAsync(
-      string
+                          string
+
   academyName
     
     
@@ -156,7 +157,8 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<GetAcademyResponseBuilder>
-        GetAcademyInternalAsync( string
+        GetAcademyInternalAsync(                     string
+
  academyName )
         {
         throw new NotImplementedException();
@@ -174,7 +176,7 @@ public async Task<IActionResult>
 
              public static GetAcademyResponseBuilder Build200
             (
-Academy
+        Academy
  content
 )
 
@@ -249,10 +251,10 @@ Academy
 [Route("/v1/features/certificates/demands", Name = "GetCertificateDemands")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof( CertificateDemandDto[]),Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(                        CertificateDemandDto[]),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands")]
 [SwaggerOperation("GetCertificateDemands")]
 
@@ -261,7 +263,8 @@ public async Task<IActionResult>
     
     
     
-     Guid
+                     Guid
+
   workspaceId
     
     )
@@ -275,7 +278,8 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<GetCertificateDemandsResponseBuilder>
-        GetCertificateDemandsInternalAsync( Guid
+        GetCertificateDemandsInternalAsync(                 Guid
+
  workspaceId )
         {
         throw new NotImplementedException();
@@ -293,7 +297,7 @@ public async Task<IActionResult>
 
              public static GetCertificateDemandsResponseBuilder Build200
             (
- CertificateDemandDto
+                        CertificateDemandDto
 []
  content
 )
@@ -392,20 +396,22 @@ public async Task<IActionResult>
 [HttpDelete]
   [Authorize] 
 [SwaggerResponse(204,Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands")]
 [SwaggerOperation("DeleteCertificateDemand")]
 
 public async Task<IActionResult>
     DeleteCertificateDemandAsync(
-      Guid
+                      Guid
+
   CertificateDemandId
     
     
     
-    ,       Guid
+    ,                       Guid
+
   WorkspaceId
     
     
@@ -422,8 +428,10 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<DeleteCertificateDemandResponseBuilder>
-        DeleteCertificateDemandInternalAsync( Guid
- CertificateDemandId,   Guid
+        DeleteCertificateDemandInternalAsync(                 Guid
+
+ CertificateDemandId,                   Guid
+
  WorkspaceId )
         {
         throw new NotImplementedException();
@@ -527,10 +535,10 @@ public async Task<IActionResult>
 [Route("/v1/features/certificates/demands", Name = "CreateCertificateDemand")]
 [HttpPut]
   [Authorize] 
-[SwaggerResponse(200,type: typeof(CertificateDemandDto),Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        CertificateDemandDto),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands")]
 [SwaggerOperation("CreateCertificateDemand")]
 
@@ -538,7 +546,7 @@ public async Task<IActionResult>
     CreateCertificateDemandAsync(
 
     
-    CreateCertificateDemandDto
+            CreateCertificateDemandDto
  requestBody
     )
 
@@ -556,7 +564,7 @@ public async Task<IActionResult>
     protected virtual Task<CreateCertificateDemandResponseBuilder>
         CreateCertificateDemandInternalAsync(
     
-    CreateCertificateDemandDto
+            CreateCertificateDemandDto
  requestBody
     )
         {
@@ -575,7 +583,7 @@ public async Task<IActionResult>
 
              public static CreateCertificateDemandResponseBuilder Build200
             (
-CertificateDemandDto
+        CertificateDemandDto
  content
 )
 
@@ -664,10 +672,10 @@ CertificateDemandDto
 [Route("/v1/features/certificates/demands", Name = "UpdateCertificateDemand")]
 [HttpPatch]
   [Authorize] 
-[SwaggerResponse(200,type: typeof(CertificateDemandDto),Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        CertificateDemandDto),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands")]
 [SwaggerOperation("UpdateCertificateDemand")]
 
@@ -675,7 +683,7 @@ public async Task<IActionResult>
     UpdateCertificateDemandAsync(
 
     
-    UpdateCertificateDemandDto
+            UpdateCertificateDemandDto
  requestBody
     )
 
@@ -693,7 +701,7 @@ public async Task<IActionResult>
     protected virtual Task<UpdateCertificateDemandResponseBuilder>
         UpdateCertificateDemandInternalAsync(
     
-    UpdateCertificateDemandDto
+            UpdateCertificateDemandDto
  requestBody
     )
         {
@@ -712,7 +720,7 @@ public async Task<IActionResult>
 
              public static UpdateCertificateDemandResponseBuilder Build200
             (
-CertificateDemandDto
+        CertificateDemandDto
  content
 )
 
@@ -810,16 +818,17 @@ CertificateDemandDto
 [Route("/v1/features/certificates/demands/{certificateDemandId}", Name = "GetCertificateDemand")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof(CertificateDemandDto),Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        CertificateDemandDto),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/{certificateDemandId}")]
 [SwaggerOperation("GetCertificateDemand")]
 
 public async Task<IActionResult>
     GetCertificateDemandAsync(
-      Guid
+                      Guid
+
   certificateDemandId
     
     
@@ -827,7 +836,8 @@ public async Task<IActionResult>
     ,     
     
     
-     Guid
+                     Guid
+
   workspaceId
     
     )
@@ -841,8 +851,10 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<GetCertificateDemandResponseBuilder>
-        GetCertificateDemandInternalAsync( Guid
- certificateDemandId,   Guid
+        GetCertificateDemandInternalAsync(                 Guid
+
+ certificateDemandId,                   Guid
+
  workspaceId )
         {
         throw new NotImplementedException();
@@ -860,7 +872,7 @@ public async Task<IActionResult>
 
              public static GetCertificateDemandResponseBuilder Build200
             (
-CertificateDemandDto
+        CertificateDemandDto
  content
 )
 
@@ -962,21 +974,23 @@ CertificateDemandDto
 [Route("/v1/features/certificates/demands/{certificateDemandId}/file/{metadataCode}", Name = "AddFileToCertificateDemand")]
 [HttpPost]
   [Authorize] 
-[SwaggerResponse(200,type: typeof(CertificateDemandDto),Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        CertificateDemandDto),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/{certificateDemandId}/file/{metadataCode}")]
 [SwaggerOperation("AddFileToCertificateDemand")]
 
 public async Task<IActionResult>
     AddFileToCertificateDemandAsync(
-      Guid
+                      Guid
+
   certificateDemandId
     
     
     
-    ,       string
+    ,                           string
+
   metadataCode
     
     
@@ -984,11 +998,12 @@ public async Task<IActionResult>
     ,     
     
     
-     Guid
+                     Guid
+
   workspaceId
     
     ,
-    IFormFile
+                                IFormFile
  requestBody
     )
 
@@ -1004,12 +1019,15 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<AddFileToCertificateDemandResponseBuilder>
-        AddFileToCertificateDemandInternalAsync( Guid
- certificateDemandId,   string
- metadataCode,   Guid
+        AddFileToCertificateDemandInternalAsync(                 Guid
+
+ certificateDemandId,                       string
+
+ metadataCode,                   Guid
+
  workspaceId 
     ,
-    IFormFile
+                                IFormFile
  requestBody
     )
         {
@@ -1028,7 +1046,7 @@ public async Task<IActionResult>
 
              public static AddFileToCertificateDemandResponseBuilder Build200
             (
-CertificateDemandDto
+        CertificateDemandDto
  content
 )
 
@@ -1119,9 +1137,9 @@ CertificateDemandDto
 [HttpPost]
   [Authorize] 
 [SwaggerResponse(202,Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/mail")]
 [SwaggerOperation("SendMailForCertificateDemand")]
 
@@ -1129,7 +1147,7 @@ public async Task<IActionResult>
     SendMailForCertificateDemandAsync(
 
     
-    ConventionsHandicapCertificateDemandSendMailRequest
+            ConventionsHandicapCertificateDemandSendMailRequest
  requestBody
     )
 
@@ -1147,7 +1165,7 @@ public async Task<IActionResult>
     protected virtual Task<SendMailForCertificateDemandResponseBuilder>
         SendMailForCertificateDemandInternalAsync(
     
-    ConventionsHandicapCertificateDemandSendMailRequest
+            ConventionsHandicapCertificateDemandSendMailRequest
  requestBody
     )
         {
@@ -1251,8 +1269,8 @@ public async Task<IActionResult>
 [Route("/v1/features/certificates/demands/medatada", Name = "GetAllCertificateDemandMetadata")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof( ConventionsHandicapCertificateMetadata[]),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(                        ConventionsHandicapCertificateMetadata[]),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/medatada")]
 [SwaggerOperation("GetAllCertificateDemandMetadata")]
 
@@ -1287,7 +1305,7 @@ public async Task<IActionResult>
 
              public static GetAllCertificateDemandMetadataResponseBuilder Build200
             (
- ConventionsHandicapCertificateMetadata
+                        ConventionsHandicapCertificateMetadata
 []
  content
 )
@@ -1343,15 +1361,16 @@ public async Task<IActionResult>
 [Route("/v1/features/certificates/demands/medatada/{academyId}", Name = "GetCertificateDemandMetadataForAcademy")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof( ConventionsHandicapCertificateMetadata[]),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(                        ConventionsHandicapCertificateMetadata[]),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/medatada/{academyId}")]
 [SwaggerOperation("GetCertificateDemandMetadataForAcademy")]
 
 public async Task<IActionResult>
     GetCertificateDemandMetadataForAcademyAsync(
-      string
+                          string
+
   academyId
     
     
@@ -1368,7 +1387,8 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<GetCertificateDemandMetadataForAcademyResponseBuilder>
-        GetCertificateDemandMetadataForAcademyInternalAsync( string
+        GetCertificateDemandMetadataForAcademyInternalAsync(                     string
+
  academyId )
         {
         throw new NotImplementedException();
@@ -1386,7 +1406,7 @@ public async Task<IActionResult>
 
              public static GetCertificateDemandMetadataForAcademyResponseBuilder Build200
             (
- ConventionsHandicapCertificateMetadata
+                        ConventionsHandicapCertificateMetadata
 []
  content
 )
@@ -1465,20 +1485,22 @@ public async Task<IActionResult>
 [Route("/v1/features/certificates/demands/medatada/{academyId}/{departmentId}", Name = "GetCertificateDemandMetadataForAcademyAndDepartment")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof( ConventionsHandicapCertificateMetadata[]),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(                        ConventionsHandicapCertificateMetadata[]),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/medatada/{academyId}/{departmentId}")]
 [SwaggerOperation("GetCertificateDemandMetadataForAcademyAndDepartment")]
 
 public async Task<IActionResult>
     GetCertificateDemandMetadataForAcademyAndDepartmentAsync(
-      string
+                          string
+
   academyId
     
     
     
-    ,       string
+    ,                           string
+
   departmentId
     
     
@@ -1495,8 +1517,10 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder>
-        GetCertificateDemandMetadataForAcademyAndDepartmentInternalAsync( string
- academyId,   string
+        GetCertificateDemandMetadataForAcademyAndDepartmentInternalAsync(                     string
+
+ academyId,                       string
+
  departmentId )
         {
         throw new NotImplementedException();
@@ -1514,7 +1538,7 @@ public async Task<IActionResult>
 
              public static GetCertificateDemandMetadataForAcademyAndDepartmentResponseBuilder Build200
             (
- ConventionsHandicapCertificateMetadata
+                        ConventionsHandicapCertificateMetadata
 []
  content
 )
@@ -1593,20 +1617,22 @@ public async Task<IActionResult>
 [Route("/v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}", Name = "GenerateCertificate")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof(string),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(                    string),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template/generate/{certificateDemandId}/{certificateTemplateId}")]
 [SwaggerOperation("GenerateCertificate")]
 
 public async Task<IActionResult>
     GenerateCertificateAsync(
-      Guid
+                      Guid
+
   certificateDemandId
     
     
     
-    ,       Guid
+    ,                       Guid
+
   certificateTemplateId
     
     
@@ -1623,8 +1649,10 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<GenerateCertificateResponseBuilder>
-        GenerateCertificateInternalAsync( Guid
- certificateDemandId,   Guid
+        GenerateCertificateInternalAsync(                 Guid
+
+ certificateDemandId,                   Guid
+
  certificateTemplateId )
         {
         throw new NotImplementedException();
@@ -1642,7 +1670,8 @@ public async Task<IActionResult>
 
              public static GenerateCertificateResponseBuilder Build200
             (
-string
+                    string
+
  content
 )
 
@@ -1712,9 +1741,9 @@ string
 [Route("/v1/features/certificates/demands/template", Name = "GetCertificateDemandTemplates")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof(CertificateTemplateDto),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        CertificateTemplateDto),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template")]
 [SwaggerOperation("GetCertificateDemandTemplates")]
 
@@ -1749,7 +1778,7 @@ public async Task<IActionResult>
 
              public static GetCertificateDemandTemplatesResponseBuilder Build200
             (
-CertificateTemplateDto
+        CertificateTemplateDto
  content
 )
 
@@ -1823,15 +1852,16 @@ CertificateTemplateDto
 [Route("/v1/features/certificates/demands/template/{academy}", Name = "GetCertificateDemandTemplatesForAcademy")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof( CertificateTemplateDto[]),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(                        CertificateTemplateDto[]),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template/{academy}")]
 [SwaggerOperation("GetCertificateDemandTemplatesForAcademy")]
 
 public async Task<IActionResult>
     GetCertificateDemandTemplatesForAcademyAsync(
-      string
+                          string
+
   academy
     
     
@@ -1848,7 +1878,8 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<GetCertificateDemandTemplatesForAcademyResponseBuilder>
-        GetCertificateDemandTemplatesForAcademyInternalAsync( string
+        GetCertificateDemandTemplatesForAcademyInternalAsync(                     string
+
  academy )
         {
         throw new NotImplementedException();
@@ -1866,7 +1897,7 @@ public async Task<IActionResult>
 
              public static GetCertificateDemandTemplatesForAcademyResponseBuilder Build200
             (
- CertificateTemplateDto
+                        CertificateTemplateDto
 []
  content
 )
@@ -1945,20 +1976,22 @@ public async Task<IActionResult>
 [Route("/v1/features/certificates/demands/template/{academy}/{department}", Name = "GetCertificateDemandTemplatesForAcademyAndDepartment")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof( CertificateTemplateDto[]),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(                        CertificateTemplateDto[]),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/certificates/demands/template/{academy}/{department}")]
 [SwaggerOperation("GetCertificateDemandTemplatesForAcademyAndDepartment")]
 
 public async Task<IActionResult>
     GetCertificateDemandTemplatesForAcademyAndDepartmentAsync(
-      string
+                          string
+
   academy
     
     
     
-    ,       string
+    ,                           string
+
   department
     
     
@@ -1975,8 +2008,10 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder>
-        GetCertificateDemandTemplatesForAcademyAndDepartmentInternalAsync( string
- academy,   string
+        GetCertificateDemandTemplatesForAcademyAndDepartmentInternalAsync(                     string
+
+ academy,                       string
+
  department )
         {
         throw new NotImplementedException();
@@ -1994,7 +2029,7 @@ public async Task<IActionResult>
 
              public static GetCertificateDemandTemplatesForAcademyAndDepartmentResponseBuilder Build200
             (
- CertificateTemplateDto
+                        CertificateTemplateDto
 []
  content
 )
@@ -2068,8 +2103,8 @@ public async Task<IActionResult>
 [Route("/v1/features", Name = "GetFeatures")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof( ConventionsHandicapFeature[]),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(                        ConventionsHandicapFeature[]),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features")]
 [SwaggerOperation("GetFeatures")]
 
@@ -2078,7 +2113,8 @@ public async Task<IActionResult>
     
     
     
-     Guid
+                     Guid
+
   ?workspaceId
     
     )
@@ -2092,7 +2128,8 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<GetFeaturesResponseBuilder>
-        GetFeaturesInternalAsync( Guid
+        GetFeaturesInternalAsync(                 Guid
+
  ?workspaceId )
         {
         throw new NotImplementedException();
@@ -2110,7 +2147,7 @@ public async Task<IActionResult>
 
              public static GetFeaturesResponseBuilder Build200
             (
- ConventionsHandicapFeature
+                        ConventionsHandicapFeature
 []
  content
 )
@@ -2166,15 +2203,16 @@ public async Task<IActionResult>
 [Route("/v1/features/{featureId}", Name = "GetFeatureById")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof(ConventionsHandicapFeature),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        ConventionsHandicapFeature),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/features/{featureId}")]
 [SwaggerOperation("GetFeatureById")]
 
 public async Task<IActionResult>
     GetFeatureByIdAsync(
-      Guid
+                      Guid
+
   featureId
     
     
@@ -2191,7 +2229,8 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<GetFeatureByIdResponseBuilder>
-        GetFeatureByIdInternalAsync( Guid
+        GetFeatureByIdInternalAsync(                 Guid
+
  featureId )
         {
         throw new NotImplementedException();
@@ -2209,7 +2248,7 @@ public async Task<IActionResult>
 
              public static GetFeatureByIdResponseBuilder Build200
             (
-ConventionsHandicapFeature
+        ConventionsHandicapFeature
  content
 )
 
@@ -2280,8 +2319,8 @@ ConventionsHandicapFeature
 [HttpPost]
   [Authorize] 
 [SwaggerResponse(202,Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/mail")]
 [SwaggerOperation("SendMail")]
 
@@ -2289,7 +2328,7 @@ public async Task<IActionResult>
     SendMailAsync(
 
     
-    ConventionsHandicapSendMailToConventionHandicapDto
+            ConventionsHandicapSendMailToConventionHandicapDto
  requestBody
     )
 
@@ -2307,7 +2346,7 @@ public async Task<IActionResult>
     protected virtual Task<SendMailResponseBuilder>
         SendMailInternalAsync(
     
-    ConventionsHandicapSendMailToConventionHandicapDto
+            ConventionsHandicapSendMailToConventionHandicapDto
  requestBody
     )
         {
@@ -2392,8 +2431,8 @@ public async Task<IActionResult>
 [Route("/v1/users", Name = "GetUsers")]
 [HttpGet]
 [Authorize(Roles = "Manager,Administrator")] 
-[SwaggerResponse(200,type: typeof( UserDto[]),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(                        UserDto[]),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/users")]
 [SwaggerOperation("GetUsers")]
 
@@ -2428,7 +2467,7 @@ public async Task<IActionResult>
 
              public static GetUsersResponseBuilder Build200
             (
- UserDto
+                        UserDto
 []
  content
 )
@@ -2480,10 +2519,10 @@ public async Task<IActionResult>
 [Route("/v1/users", Name = "UpdateUser")]
 [HttpPatch]
   [Authorize] 
-[SwaggerResponse(200,type: typeof(UserDto),Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        UserDto),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/users")]
 [SwaggerOperation("UpdateUser")]
 
@@ -2491,7 +2530,7 @@ public async Task<IActionResult>
     UpdateUserAsync(
 
     
-    UpdateUserRequest
+            UpdateUserRequest
  requestBody
     )
 
@@ -2509,7 +2548,7 @@ public async Task<IActionResult>
     protected virtual Task<UpdateUserResponseBuilder>
         UpdateUserInternalAsync(
     
-    UpdateUserRequest
+            UpdateUserRequest
  requestBody
     )
         {
@@ -2528,7 +2567,7 @@ public async Task<IActionResult>
 
              public static UpdateUserResponseBuilder Build200
             (
-UserDto
+        UserDto
  content
 )
 
@@ -2616,9 +2655,9 @@ UserDto
 [Route("/v1/users", Name = "CreateUser")]
 [HttpPut]
   [Authorize] 
-[SwaggerResponse(200,type: typeof(UserDto),Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        UserDto),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/users")]
 [SwaggerOperation("CreateUser")]
 
@@ -2626,7 +2665,7 @@ public async Task<IActionResult>
     CreateUserAsync(
 
     
-    CreateUserRequest
+            CreateUserRequest
  requestBody
     )
 
@@ -2644,7 +2683,7 @@ public async Task<IActionResult>
     protected virtual Task<CreateUserResponseBuilder>
         CreateUserInternalAsync(
     
-    CreateUserRequest
+            CreateUserRequest
  requestBody
     )
         {
@@ -2663,7 +2702,7 @@ public async Task<IActionResult>
 
              public static CreateUserResponseBuilder Build200
             (
-UserDto
+        UserDto
  content
 )
 
@@ -2733,8 +2772,8 @@ UserDto
 [HttpDelete]
   [Authorize] 
 [SwaggerResponse(204,Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/users")]
 [SwaggerOperation("DeleteUser")]
 
@@ -2742,7 +2781,7 @@ public async Task<IActionResult>
     DeleteUserAsync(
 
     
-    DeleteUserRequest
+            DeleteUserRequest
  requestBody
     )
 
@@ -2760,7 +2799,7 @@ public async Task<IActionResult>
     protected virtual Task<DeleteUserResponseBuilder>
         DeleteUserInternalAsync(
     
-    DeleteUserRequest
+            DeleteUserRequest
  requestBody
     )
         {
@@ -2846,9 +2885,9 @@ public async Task<IActionResult>
 [Route("/v1/users/current", Name = "GetCurrentUser")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof(UserDto),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        UserDto),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/users/current")]
 [SwaggerOperation("GetCurrentUser")]
 
@@ -2883,7 +2922,7 @@ public async Task<IActionResult>
 
              public static GetCurrentUserResponseBuilder Build200
             (
-UserDto
+        UserDto
  content
 )
 
@@ -2953,7 +2992,7 @@ UserDto
 [HttpPost]
    
 [SwaggerResponse(200,Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/login")]
 [SwaggerOperation("Login")]
 
@@ -2961,7 +3000,7 @@ public async Task<IActionResult>
     LoginAsync(
 
     
-    ConventionsHandicapLoginDto
+            ConventionsHandicapLoginDto
  requestBody
     )
 
@@ -2979,7 +3018,7 @@ public async Task<IActionResult>
     protected virtual Task<LoginResponseBuilder>
         LoginInternalAsync(
     
-    ConventionsHandicapLoginDto
+            ConventionsHandicapLoginDto
  requestBody
     )
         {
@@ -3046,7 +3085,7 @@ public async Task<IActionResult>
 [HttpPost]
    
 [SwaggerResponse(201,Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/register")]
 [SwaggerOperation("Register")]
 
@@ -3054,7 +3093,7 @@ public async Task<IActionResult>
     RegisterAsync(
 
     
-    RegistrationDto
+            RegistrationDto
  requestBody
     )
 
@@ -3072,7 +3111,7 @@ public async Task<IActionResult>
     protected virtual Task<RegisterResponseBuilder>
         RegisterInternalAsync(
     
-    RegistrationDto
+            RegistrationDto
  requestBody
     )
         {
@@ -3147,7 +3186,7 @@ public async Task<IActionResult>
 [HttpGet]
    
 [SwaggerResponse(200,Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/confirm")]
 [SwaggerOperation("ConfirmMail")]
 
@@ -3156,12 +3195,14 @@ public async Task<IActionResult>
     
     
     
-     string
+                         string
+
   Email
     ,     
     
     
-     string
+                         string
+
   Token
     
     )
@@ -3175,8 +3216,10 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<ConfirmMailResponseBuilder>
-        ConfirmMailInternalAsync( string
- Email,   string
+        ConfirmMailInternalAsync(                     string
+
+ Email,                       string
+
  Token )
         {
         throw new NotImplementedException();
@@ -3242,7 +3285,7 @@ public async Task<IActionResult>
 [HttpPost]
   [Authorize] 
 [SwaggerResponse(204,Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/forgot")]
 [SwaggerOperation("ForgotPassword")]
 
@@ -3250,7 +3293,7 @@ public async Task<IActionResult>
     ForgotPasswordAsync(
 
     
-    ForgotPasswordDto
+            ForgotPasswordDto
  requestBody
     )
 
@@ -3268,7 +3311,7 @@ public async Task<IActionResult>
     protected virtual Task<ForgotPasswordResponseBuilder>
         ForgotPasswordInternalAsync(
     
-    ForgotPasswordDto
+            ForgotPasswordDto
  requestBody
     )
         {
@@ -3335,7 +3378,7 @@ public async Task<IActionResult>
 [HttpPost]
   [Authorize] 
 [SwaggerResponse(200,Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/reset")]
 [SwaggerOperation("ResetPassword")]
 
@@ -3343,7 +3386,7 @@ public async Task<IActionResult>
     ResetPasswordAsync(
 
     
-    ResetPasswordDto
+            ResetPasswordDto
  requestBody
     )
 
@@ -3361,7 +3404,7 @@ public async Task<IActionResult>
     protected virtual Task<ResetPasswordResponseBuilder>
         ResetPasswordInternalAsync(
     
-    ResetPasswordDto
+            ResetPasswordDto
  requestBody
     )
         {
@@ -3427,8 +3470,8 @@ public async Task<IActionResult>
 [Route("/v1/workspaces", Name = "GetWorkspaces")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof( ConventionsHandicapWorkspace[]),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(                        ConventionsHandicapWorkspace[]),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/workspaces")]
 [SwaggerOperation("GetWorkspaces")]
 
@@ -3463,7 +3506,7 @@ public async Task<IActionResult>
 
              public static GetWorkspacesResponseBuilder Build200
             (
- ConventionsHandicapWorkspace
+                        ConventionsHandicapWorkspace
 []
  content
 )
@@ -3514,9 +3557,9 @@ public async Task<IActionResult>
 [Route("/v1/workspaces", Name = "PutWorkspace")]
 [HttpPut]
 [Authorize(Roles = "Administrator")] 
-[SwaggerResponse(200,type: typeof(ConventionsHandicapWorkspace),Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        ConventionsHandicapWorkspace),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/workspaces")]
 [SwaggerOperation("PutWorkspace")]
 
@@ -3524,7 +3567,7 @@ public async Task<IActionResult>
     PutWorkspaceAsync(
 
     
-    CreateWorkspaceDto
+            CreateWorkspaceDto
  requestBody
     )
 
@@ -3542,7 +3585,7 @@ public async Task<IActionResult>
     protected virtual Task<PutWorkspaceResponseBuilder>
         PutWorkspaceInternalAsync(
     
-    CreateWorkspaceDto
+            CreateWorkspaceDto
  requestBody
     )
         {
@@ -3561,7 +3604,7 @@ public async Task<IActionResult>
 
              public static PutWorkspaceResponseBuilder Build200
             (
-ConventionsHandicapWorkspace
+        ConventionsHandicapWorkspace
  content
 )
 
@@ -3636,23 +3679,24 @@ ConventionsHandicapWorkspace
 [Route("/v1/workspaces/{workspaceId}", Name = "UpdateWorkspace")]
 [HttpPatch]
 [Authorize(Roles = "Administrator")] 
-[SwaggerResponse(200,type: typeof(ConventionsHandicapWorkspace),Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        ConventionsHandicapWorkspace),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/workspaces/{workspaceId}")]
 [SwaggerOperation("UpdateWorkspace")]
 
 public async Task<IActionResult>
     UpdateWorkspaceAsync(
-      Guid
+                      Guid
+
   workspaceId
     
     
     
     
     ,
-    UpdateWorkspaceDto
+            UpdateWorkspaceDto
  requestBody
     )
 
@@ -3668,10 +3712,11 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<UpdateWorkspaceResponseBuilder>
-        UpdateWorkspaceInternalAsync( Guid
+        UpdateWorkspaceInternalAsync(                 Guid
+
  workspaceId 
     ,
-    UpdateWorkspaceDto
+            UpdateWorkspaceDto
  requestBody
     )
         {
@@ -3690,7 +3735,7 @@ public async Task<IActionResult>
 
              public static UpdateWorkspaceResponseBuilder Build200
             (
-ConventionsHandicapWorkspace
+        ConventionsHandicapWorkspace
  content
 )
 
@@ -3784,15 +3829,16 @@ ConventionsHandicapWorkspace
 [HttpDelete]
 [Authorize(Roles = "Administrator")] 
 [SwaggerResponse(204,Description = "")]
-[SwaggerResponse(400,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(400,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/workspaces/{workspaceId}")]
 [SwaggerOperation("DeleteWorkspace")]
 
 public async Task<IActionResult>
     DeleteWorkspaceAsync(
-      Guid
+                      Guid
+
   workspaceId
     
     
@@ -3809,7 +3855,8 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<DeleteWorkspaceResponseBuilder>
-        DeleteWorkspaceInternalAsync( Guid
+        DeleteWorkspaceInternalAsync(                 Guid
+
  workspaceId )
         {
         throw new NotImplementedException();
@@ -3916,15 +3963,16 @@ public async Task<IActionResult>
 [Route("/v1/workspaces/{workspaceId}", Name = "GetWorkspace")]
 [HttpGet]
   [Authorize] 
-[SwaggerResponse(200,type: typeof(ConventionsHandicapWorkspace),Description = "")]
-[SwaggerResponse(401,type: typeof(ErrorResponseMessage),Description = "")]
-[SwaggerResponse(404,type: typeof(ErrorResponseMessage),Description = "")]
+[SwaggerResponse(200,type: typeof(        ConventionsHandicapWorkspace),Description = "")]
+[SwaggerResponse(401,type: typeof(        ErrorResponseMessage),Description = "")]
+[SwaggerResponse(404,type: typeof(        ErrorResponseMessage),Description = "")]
 [ApiExplorerSettings(GroupName = "/v1/workspaces/{workspaceId}")]
 [SwaggerOperation("GetWorkspace")]
 
 public async Task<IActionResult>
     GetWorkspaceAsync(
-      Guid
+                      Guid
+
   workspaceId
     
     
@@ -3941,7 +3989,8 @@ public async Task<IActionResult>
     }
 
     protected virtual Task<GetWorkspaceResponseBuilder>
-        GetWorkspaceInternalAsync( Guid
+        GetWorkspaceInternalAsync(                 Guid
+
  workspaceId )
         {
         throw new NotImplementedException();
@@ -3959,7 +4008,7 @@ public async Task<IActionResult>
 
              public static GetWorkspaceResponseBuilder Build200
             (
-ConventionsHandicapWorkspace
+        ConventionsHandicapWorkspace
  content
 )
 

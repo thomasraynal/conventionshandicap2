@@ -1,6 +1,6 @@
-﻿using ConventionsHandicap.Model;
+﻿using ConventionsHandicap.App.Features.CertificateDemand.Shared;
+using ConventionsHandicap.Model;
 using ConventionsHandicap.Model.Features.CertificateDemand;
-using ConventionsHandicap.App.Features.CertificateDemand.Shared;
 
 namespace ConventionsHandicap.App.Features.CertificateDemand.Contracts
 {

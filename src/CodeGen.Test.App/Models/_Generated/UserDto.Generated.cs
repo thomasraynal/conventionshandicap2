@@ -25,21 +25,25 @@ namespace ConventionsHandicap.Model
 public partial class UserDto 
 { 
     
-    public Guid
+    public                 Guid
+
    Id{get; set;}
 
     
-    public string
+    public                     string
+
 ?   Email{get; set;}
 
     
-    public bool
+    public             bool
    MailConfirmed{get; set;}
 
 }
 
 
 }
+
+
 
 
 

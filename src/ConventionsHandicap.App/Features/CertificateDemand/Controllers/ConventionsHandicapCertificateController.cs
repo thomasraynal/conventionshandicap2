@@ -66,7 +66,7 @@ namespace ConventionsHandicap.Controller
         {
             var certificates = await _certificateService.GetCertificatesAsync();
 
-            return Ok(certificates.Select(certificate => certificate.ToCertificateDemandDto()));
+            return Ok(certificates.Select(certificate => certificate.ToCertificateTemplateDto()));
         }
 
         [ProducesResponseType(typeof(ErrorResponseMessage), (int)HttpStatusCode.NotFound)]
@@ -78,7 +78,7 @@ namespace ConventionsHandicap.Controller
         {
             var certificates = await _certificateService.GetCertificatesTemplatesByAcademyAsync(academy);
 
-            return Ok(certificates.Select(certificate => certificate.ToCertificateDemandDto()));
+            return Ok(certificates.Select(certificate => certificate.ToCertificateTemplateDto()));
         }
 
         [ProducesResponseType(typeof(ErrorResponseMessage), (int)HttpStatusCode.NotFound)]
@@ -90,7 +90,7 @@ namespace ConventionsHandicap.Controller
         {
             var certificates = await _certificateService.GetCertificateTemplatesByAcademyAndDepartmentAsync(academy, department);
 
-            return Ok(certificates.Select(certificate => certificate.ToCertificateDemandDto()));
+            return Ok(certificates.Select(certificate => certificate.ToCertificateTemplateDto()));
         }
     }
 }
