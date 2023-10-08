@@ -23,25 +23,31 @@ namespace ConventionsHandicap.Model
 
 
 public partial class CertificateTemplateDto 
-{ 
-    
-    public Guid
+{
+
+
+        public                 Guid
+
    Id{get; set;}
 
     
-    public string
+    public                     string
+
 ?   Academy{get; set;}
 
     
-    public string
+    public                     string
+
 ?   Department{get; set;}
 
     
-    public string
+    public                     string
+
 ?   TemplateName{get; set;}
 
     
-    public string
+    public                     string
+
 ?   FriendlyName{get; set;}
 
 }

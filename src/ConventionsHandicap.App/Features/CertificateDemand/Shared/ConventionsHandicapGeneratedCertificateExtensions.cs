@@ -10,7 +10,7 @@ namespace ConventionsHandicap.App.Features.CertificateDemand.Shared
 {
     public static class ConventionsHandicapCertificateTemplateExtensions
     {
-        public static CertificateTemplateDto ToCertificateDemandDto(this ConventionsHandicapCertificateTemplate conventionsHandicapCertificateTemplate)
+        public static CertificateTemplateDto ToCertificateTemplateDto(this ConventionsHandicapCertificateTemplate conventionsHandicapCertificateTemplate)
         {
             return new CertificateTemplateDto(
                 conventionsHandicapCertificateTemplate.Id,

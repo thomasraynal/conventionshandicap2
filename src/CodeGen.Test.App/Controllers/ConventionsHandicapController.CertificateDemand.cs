@@ -1,4 +1,5 @@
-﻿using ConventionsHandicap.Model;
+﻿using ConventionsHandicap.App.Shared;
+using ConventionsHandicap.Model;
 using ConventionsHandicap.Shared;
 using DocumentFormat.OpenXml.Bibliography;
 using Microsoft.AspNetCore.Http;
@@ -12,7 +13,7 @@ namespace ConventionsHandicap
 {
     public partial class ConventionsHandicapController
     {
-        protected async override Task<AddFileToCertificateDemandResponseBuilder> AddFileToCertificateDemandInternalAsync(Guid certificateDemandIdcertificateDemandId, string metadataCodemetadataCode, Guid workspaceIdworkspaceId, IFormFile requestBody)
+        protected async override Task<AddFileToCertificateDemandResponseBuilder> AddFileToCertificateDemandInternalAsync(Guid certificateDemandId, string metadataCode, Guid workspaceId, IFormFile file)
         {
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
 

@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CodeGen.Helpers\CodeGen.Helpers.csproj" />
+    <ProjectReference Include="..\..\CodeGen\CodeGen.csproj" />
     <ProjectReference Include="..\ConventionsHandicap.EntityFramework\ConventionsHandicap.EntityFramework.csproj" />
   </ItemGroup>
 

@@ -25,11 +25,13 @@ namespace ConventionsHandicap.Model
 public partial class Property 
 { 
     [Required(ErrorMessage = "code is required")]
-    public string
+    public                     string
+
    Code{get; set;}
 
     
-    public string
+    public                     string
+
 ?   Value{get; set;}
 
 }

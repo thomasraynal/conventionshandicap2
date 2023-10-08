@@ -25,7 +25,8 @@ namespace ConventionsHandicap.Model
 public partial class Department 
 { 
     
-    public string
+    public                     string
+
 ?   Name{get; set;}
 
 }

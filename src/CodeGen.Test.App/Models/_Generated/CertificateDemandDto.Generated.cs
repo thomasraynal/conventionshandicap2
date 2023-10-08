@@ -23,50 +23,61 @@ namespace ConventionsHandicap.Model
 
 
 public partial class CertificateDemandDto 
-{ 
-    
-    public Guid
+{
+
+
+        public                 Guid
+
    Id{get; set;}
 
     
-    public string
+    public                     string
+
 ?   Academy{get; set;}
 
     
-    public string
+    public                     string
+
 ?   Department{get; set;}
 
     
-    public string
+    public                     string
+
 ?   ChildFirstName{get; set;}
 
     
-    public string
+    public                     string
+
 ?   ChildLastName{get; set;}
 
     
-    public string
+    public                     DateTime
+
    ChildDateOfBirth{get; set;}
 
     
-    public Guid
+    public                 Guid
+
    WorkspaceId{get; set;}
 
     
-    public string
+    public     ConventionsHandicapCertificateDemandStatus
    CertificateDemandStatus{get; set;}
 
     
-    public Guid
+    public                 Guid
+
    UserId{get; set;}
 
     
-    public  Guid
+    public                                 Guid
+
 []
 ?   CertificateTemplates{get; set;}
 
     
-    public Dictionary<string, string
+    public                     Dictionary<string,                     string
+
 >
 ?   Properties{get; set;}
 

@@ -25,25 +25,33 @@ namespace ConventionsHandicap.Model
 public partial class UpdateUserRequest 
 { 
     [Required(ErrorMessage = "workspaceId is required")]
-    public Guid
+    public                 Guid
+
    WorkspaceId{get; set;}
 
     [Required(ErrorMessage = "userRole is required")]
-    public string
+    public         ConventionsHandicapUserRole
    UserRole{get; set;}
 
     
-    public string
+    public                     string
+
 ?   UserEmail{get; set;}
 
     [Required(ErrorMessage = "userId is required")]
-    public Guid
+    public                 Guid
+
    UserId{get; set;}
 
 }
 
 
 }
+
+
+
+
+
 
 
 

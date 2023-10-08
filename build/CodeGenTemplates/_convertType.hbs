@@ -1,47 +1,56 @@
 {{#if_not_empty x-type}}
-{{x-type}}
+    {{x-type}}
 {{else}}
-{{#if_not_empty x-refName}}
-{{uppercase_first_letter x-refName}}
-{{else}}
-{{#if_not_empty type}}
-{{#if_equals type 'integer'}}
-{{#if_equals format 'int64'}}
-long
-{{else}}
-int
-{{/if_equals}}
-{{/if_equals}}
-{{#if_equals type 'string'}}
-{{#if_equals format 'guid'}}
-Guid
-{{else}}
-string
-{{/if_equals}}
-{{/if_equals}}
-{{#if_equals type 'boolean'}}
-bool
-{{/if_equals}}
-{{#if_equals type 'array'}}
- {{>ConvertType items }}[]
-{{/if_equals}}
-{{#if_equals type 'object'}}
-{{#if_not_empty additionalProperties}}
-Dictionary<string, {{>ConvertType additionalProperties }}>
-{{else}}
-{{#if_not_empty properties}}
-{{#with properties}}
-{{#if_equals file.format 'binary'}}
-IFormFile
-{{/if_equals}}
-{{/with}}
-{{else}}
-object
-{{/if_not_empty}}
-{{/if_not_empty }}  
-{{/if_equals}}
-{{else}}
-object
-{{/if_not_empty }}  
+    {{#if_not_empty x-refName}}
+        {{uppercase_first_letter x-refName}}
+    {{else}}
+        {{#if_not_empty type}}
+            {{#if_equals type 'integer'}}
+                {{#if_equals format 'int64'}}
+                long
+                {{else}}
+                int
+                {{/if_equals}}
+            {{/if_equals}}
+            {{#if_equals type 'string'}}
+                {{#if_equals format 'guid'}}
+                Guid
+                {{else}}
+                    {{#if_equals format 'date-time'}}
+                    DateTime
+                    {{else}}
+                    string
+                    {{/if_equals}}
+                {{/if_equals}}
+
+            {{/if_equals}}
+            {{#if_equals type 'boolean'}}
+            bool
+            {{/if_equals}}
+            {{#if_equals type 'array'}}
+                {{>ConvertType items }}[]
+            {{/if_equals}}
+            {{#if_equals type 'object'}}
+                {{#if_not_empty additionalProperties}}
+                    Dictionary<string, {{>ConvertType additionalProperties }}>
+                {{else}}
+                    {{#if_not_empty properties}}
+                        {{#with properties}}
+                            {{#if_equals file.format 'binary'}}
+                            IFormFile
+                            {{/if_equals}}
+                        {{/with}}
+                    {{else}}
+                    object
+                    {{/if_not_empty}}
+                {{/if_not_empty }}  
+            {{/if_equals}}
+            {{else}}
+                {{#if_not_empty 'schema'}} 
+                    {{>ConvertType schema }} 
+                {{else}}
+                object
+                {{/if_not_empty }}  
+        {{/if_not_empty }}  
 {{/if_not_empty}}
 {{/if_not_empty}}

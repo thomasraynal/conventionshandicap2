@@ -1,6 +1,5 @@
-using Anabasis.Identity;
-using ConventionsHandicap.App.Features.CertificateDemand.Controllers.Dto;
 using ConventionsHandicap.EntityFramework;
+using ConventionsHandicap.Model;
 using System.Threading.Tasks;
 
 namespace ConventionsHandicap.App.Features.CertificateDemand.Contracts

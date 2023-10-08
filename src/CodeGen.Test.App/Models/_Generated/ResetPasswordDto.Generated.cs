@@ -25,15 +25,18 @@ namespace ConventionsHandicap.Model
 public partial class ResetPasswordDto 
 { 
     [Required(ErrorMessage = "email is required")]
-    public string
+    public                     string
+
    Email{get; set;}
 
     [Required(ErrorMessage = "token is required")]
-    public string
+    public                     string
+
    Token{get; set;}
 
     [Required(ErrorMessage = "password is required")]
-    public string
+    public                     string
+
    Password{get; set;}
 
 }

@@ -42,7 +42,7 @@ namespace {{uppercase_first_letter (get 'appNamespace')}}.Model
 {{#if_not_equals type 'object'}}
   {{#if_not_equals type 'array'}}
         {{#if_empty enum }}
-          {{>Object}}
+          {{>Object}} 
         {{/if_empty }}
       {{/if_equals }}
   {{/if_not_equals }}
@@ -125,7 +125,11 @@ namespace {{uppercase_first_letter (get 'appNamespace')}}.Model
 {{/if_equals}}
 
 {{#if_equals type 'object'}}
-{{>Object}}
+  {{#if_not_empty x-type }}
+      {{x-type}}
+    {{else}}
+      {{>Object}}
+  {{/if_not_empty }}
 {{/if_equals }}
 
 }
@@ -137,4 +141,7 @@ namespace {{uppercase_first_letter (get 'appNamespace')}}.Model
 
 
 {{/if_not_empty}}
+
+
+
 

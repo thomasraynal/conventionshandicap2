@@ -2,7 +2,6 @@
 using Anabasis.Common.Configuration;
 using Anabasis.Identity;
 using ConventionsHandicap.App;
-using ConventionsHandicap.Controller;
 using ConventionsHandicap.EntityFramework;
 using ConventionsHandicap.Model;
 using Microsoft.AspNetCore.Builder;
@@ -87,7 +86,7 @@ namespace ConventionsHandicap.Tests.Integration
 
                 });
 
-                serviceCollection.AddMvc().AddApplicationPart(typeof(ConventionsHandicapWorkspaceController).Assembly);
+                serviceCollection.AddMvc().AddApplicationPart(typeof(ConventionsHandicapController).Assembly);
 
             });
 

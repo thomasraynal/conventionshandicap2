@@ -1,11 +1,7 @@
-﻿using ConventionsHandicap.EntityFramework;
+﻿using ConventionsHandicap.App.Features.CertificateDemand.Shared;
+using ConventionsHandicap.EntityFramework;
 using ConventionsHandicap.Model.Features.CertificateDemand;
-using ConventionsHandicap.App.Features.CertificateDemand.Controllers.Dto;
-using ConventionsHandicap.App.Features.CertificateDemand.Shared;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ConventionsHandicap.App.Features.CertificateDemand.Contracts
